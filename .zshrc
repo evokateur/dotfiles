@@ -25,6 +25,8 @@ dotfiles() {
   /usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME "$@"
 }
 
+alias dot='dotfiles'
+
 if [ -f .venv/bin/activate ]
 then
     source .venv/bin/activate
