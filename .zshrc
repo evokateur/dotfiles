@@ -2,6 +2,7 @@ PS1='%(?.%F{green}√.%F{red}?%?)%f %B%F{240}%1~%f%b $ '
 setopt nonomatch
 
 export PATH="/usr/local/opt/mysql-client/bin:$PATH"
+export PATH="/Library/TeX/texbin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
 export PATH="/usr/local/opt/openvpn/sbin:$PATH"
 
