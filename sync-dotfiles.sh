@@ -8,6 +8,7 @@ function dotfiles {
     /usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME "$@"
 }
 
+dotfiles fetch
 dotfiles checkout 2>&1 | grep -E "^\s+" | awk '{print $1}' | while read -r file; do
     echo "⚠️  Backing up $file to ~/.dotfiles-backup/"
     mkdir -p "$(dirname "$HOME/.dotfiles-backup/$file")"
