@@ -8,7 +8,6 @@ export PATH="/usr/local/opt/openvpn/sbin:$PATH"
 
 alias vim?='pgrep vim > /dev/null || vim'
 alias srsync="rsync -av -e ssh --exclude='.git/'"
-alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
 autoload -Uz compinit && compinit
 autoload -U add-zsh-hook
@@ -17,6 +16,14 @@ export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 export PATH="/usr/local/opt/mysql-client/bin:$PATH"
+
+dotfiles() {
+  if [[ "$1" == "add" && "$2" == "." ]]; then
+    echo "❌ Refusing to run 'dotfiles add .' — be specific!"
+    return 1
+  fi
+  /usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME "$@"
+}
 
 if [ -f .venv/bin/activate ]
 then
