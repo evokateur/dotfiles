@@ -4,8 +4,6 @@ set -e
 echo "🔧 Cloning dotfiles repo as bare Git repo..."
 git clone --bare git@github.com:evokateur/dotfiles.git $HOME/.dotfiles
 
-echo "🔧 Creating dotfiles alias..."
-alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 function dotfiles {
     /usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME "$@"
 }
