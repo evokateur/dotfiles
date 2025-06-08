@@ -62,4 +62,35 @@ function venv_auto_switch() {
 
 add-zsh-hook chpwd venv_auto_switch
 
+getenv() {
+    local var="$1"
+    [ -z "$var" ] && return        # silent if no arg
+
+    # Grab the first non-comment line that defines the var
+    local line
+    line=$(grep -E "^\s*$var\s*=" .env | grep -Ev '^\s*#' | head -n 1) || return
+    [ -z "$line" ] && return       # silent if not found
+
+    # Everything after the first '='
+    local value=${line#*=}
+
+    # Strip optional surrounding ' or "
+    value=$(printf '%s' "$value" | sed -E 's/^"([^"]*)"$/\1/; s/^'\''([^'\'']*)'\''$/\1/')
+
+    [ -n "$value" ] || return
+    printf '%s\n' "$value"
+
+    # Copy to clipboard if a suitable tool exists
+    if command -v pbcopy >/dev/null 2>&1; then
+        printf '%s' "$value" | pbcopy
+        echo "..copied to clipboard"
+    elif command -v xclip >/dev/null 2>&1; then
+        printf '%s' "$value" | xclip -selection clipboard
+        echo "..copied to clipboard"
+    elif command -v wl-copy >/dev/null 2>&1; then
+        printf '%s' "$value" | wl-copy
+        echo "..copied to clipboard"
+    fi
+}
+
 export PATH="/Users/wesley/.pixi/bin:$PATH"
