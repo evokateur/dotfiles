@@ -14,7 +14,7 @@ Running `bootstrap.sh`
 
 1. Clones the `config` branch as a bare repository into `~/.dotfiles`
 
-2. Backs up any pre-existing files that would be overwritten to `~/.dotfiles-backup`
+2. Moves pre-existing files that would be overwritten to `~/.dotfiles-backup`
 
 3. Checks out the files from the `config` branch into `~/.`
 
