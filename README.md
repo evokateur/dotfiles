@@ -19,3 +19,36 @@ Running `bootstrap.sh`
 3. Checks out the files from the `config` branch into `~/.`
 
 4. Configures the `~/.dotfiles` repo to ignore untracked files
+
+The `.zshrc` in the config branch contains a `dotfiles` function for working with the `~/.dotfiles` repo (with a corresponding alias).
+
+```shell
+dotfiles() {
+  if [[ "$1" == "add" && "$2" == "." ]]; then
+    echo "❌ Refusing to run 'dotfiles add .' — be specific!"
+    return 1
+  fi
+  /usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME "$@"
+}
+
+alias dot='dotfiles'
+```
+
+Some example usage below
+
+```shell
+√ ~ $ dot status
+On branch config
+nothing to commit (use -u to show untracked files)
+√ ~ $ dot add .
+❌ Refusing to run 'dotfiles add .' — be specific!
+?1 ~ $ dot add .zprofile
+√ ~ $ dot status
+On branch config
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	new file:   .zprofile
+
+Untracked files not listed (use -u option to show untracked files)
+```
+
