@@ -1,11 +1,11 @@
 #!/bin/bash
 set -e
 
-echo "🔧 Cloning dotfiles repo as bare Git repo..."
-git clone --bare git@github.com:evokateur/dotfiles.git $HOME/.dotfiles
+echo "📥 cloning dotfiles config branch as a bare repo..."
+git clone --bare --branch config git@github.com:evokateur/dotfiles.git $HOME/.dotfiles
 
-function dotfiles {
-    /usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME "$@"
+dotfiles() {
+    /usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME "$@"
 }
 
 echo "🔍 Backing up any pre-existing dotfiles that would be overwritten..."
