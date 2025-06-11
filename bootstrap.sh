@@ -3,7 +3,7 @@ set -e
 
 if [ ! -d "$HOME/.dotfiles" ]; then
     echo "📥 Cloning dotfiles config branch as a bare repo..."
-    git clone --bare --branch config git@github.com:yourname/dotfiles.git "$HOME/.dotfiles"
+    git clone --bare --branch config git@github.com:evokateur/dotfiles.git "$HOME/.dotfiles"
 else
     echo "✅ Dotfiles repo already exists at ~/.dotfiles"
 fi
