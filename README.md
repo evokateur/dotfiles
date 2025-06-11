@@ -1,6 +1,6 @@
 # dotfiles
 
-This repository contains my configuration files in the `config` branch.
+This repository contains my configuration files in the [`config`](https://github.com/evokateur/dotfiles/tree/config) branch.
 
 To deploy configuration to a new machine:
 
@@ -12,10 +12,10 @@ cd ~/code/dotfiles
 
 Running `bootstrap.sh`
 
-1. Clones the `config` branch as a bare repository into `~/.dotfiles`
+1. clones the `config` branch as a bare repository into `~/.dotfiles`
 
-2. Backs up any pre-existing files that would be overwritten to `~/.config-backup`
+2. backs up any pre-existing files that would be overwritten to `~/.config-backup`
 
-3. Checks out the files from the `config` branch into `~/.`
+3. checks out the files from the `config` branch into `~/.`
 
-4. Configures the `~/.dotfiles` repo to ignore untracked files
+4. configures the `~/.dotfiles` repo to ignore untracked files
