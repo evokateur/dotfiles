@@ -12,10 +12,10 @@ cd dotfiles
 
 Running `bootstrap.sh`
 
-1. clones the `config` branch as a bare repository into `~/.dotfiles`
+1. Clones the `config` branch as a bare repository into `~/.dotfiles`
 
-2. backs up any pre-existing files that would be overwritten to `~/.config-backup`
+2. Backs up any pre-existing files that would be overwritten to `~/.dotfiles-backup`
 
-3. checks out the files from the `config` branch into `~/.`
+3. Checks out the files from the `config` branch into `~/.`
 
-4. configures the `~/.dotfiles` repo to ignore untracked files
+4. Configures the `~/.dotfiles` repo to ignore untracked files
