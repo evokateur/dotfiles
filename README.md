@@ -5,8 +5,8 @@ This repository contains my configuration files in the [`config`](https://github
 To deploy configuration to a new machine:
 
 ```shell
-git clone git@github.com:evokateur/dotfiles.git ~/code/dotfiles
-cd ~/code/dotfiles
+git clone git@github.com:evokateur/dotfiles.git
+cd dotfiles
 ./bootstrap.sh
 ```
 
