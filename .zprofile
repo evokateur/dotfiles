@@ -11,8 +11,4 @@ export PATH="/Users/wesley/bin:$PATH"
 export PATH="/Users/wesley/node_modules/.bin:$PATH"
 export PATH="/Users/wesley/.pixi/bin:$PATH"
 
-export PYENV_ROOT="$HOME/.pyenv"
-[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
-
 set -o vi
