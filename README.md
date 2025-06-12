@@ -1,6 +1,6 @@
 # dotfiles
 
-This repository contains my configuration files in the [`config`](https://github.com/evokateur/dotfiles/tree/config) branch.
+This repository contains configuration files in the [`config`](https://github.com/evokateur/dotfiles/tree/config) branch.
 
 To deploy configuration to a new machine:
 
