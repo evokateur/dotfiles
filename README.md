@@ -1,6 +1,6 @@
 # dotfiles
 
-This repository contains configuration files in the [`config`](https://github.com/evokateur/dotfiles/tree/config) branch.
+This repository contains configuration files in the [`config`](https://github.com/evokateur/dotfiles/tree/config) branch
 
 To deploy configuration to a new machine:
 
@@ -32,7 +32,7 @@ dotfiles() {
 }
 ```
 
-as well as a corresponding alias.
+as well as a corresponding alias
 
 ```shell
 alias dot='dotfiles'
