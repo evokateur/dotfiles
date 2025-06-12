@@ -20,7 +20,7 @@ Running `bootstrap.sh`
 
 4. Configures the `~/.dotfiles` repo to ignore untracked files
 
-The `.zshrc` in the config branch contains a `dotfiles` function for working with the `~/.dotfiles` repo
+The `.zshrc` in the config branch contains a function for working with the `~/.dotfiles` repo
 
 ```shell
 dotfiles() {
