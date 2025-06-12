@@ -23,7 +23,7 @@ find_venv_root() {
     done
 }
 
-function venv_auto_switch() {
+venv_auto_switch() {
     local new_root=$(find_venv_root)
 
     if [[ -n "$new_root" ]]; then
@@ -37,6 +37,13 @@ function venv_auto_switch() {
             deactivate
             unset VENV_ROOT
         fi
+    fi
+}
+
+venv() {
+    if [ -f .venv/bin/activate ]
+    then
+        source .venv/bin/activate
     fi
 }
 
