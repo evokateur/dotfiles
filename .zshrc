@@ -4,6 +4,10 @@ setopt nonomatch
 autoload -Uz compinit && compinit
 autoload -U add-zsh-hook
 
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+
 dotfiles() {
     if [[ "$1" == "add" && "$2" == "." ]]; then
         echo "❌ Refusing to run 'dotfiles add .' — be specific!"
