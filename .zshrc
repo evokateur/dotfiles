@@ -27,7 +27,7 @@ find_venv_root() {
     done
 }
 
-venv() {
+venv_auto_activate() {
     local new_root=$(find_venv_root)
     if [[ -n "$new_root" ]]; then
         export VENV_ROOT="$new_root"
@@ -35,7 +35,7 @@ venv() {
     fi
 }
 
-venv
+venv_auto_activate
 
 venv_auto_switch() {
     local new_root=$(find_venv_root)
@@ -56,9 +56,9 @@ venv_auto_switch() {
 
 add-zsh-hook chpwd venv_auto_switch
 
-echo_venv() {
-    echo "VENV_ROOT: $VENV_ROOT"
-    echo "VIRTUAL_ENV: $VIRTUAL_ENV"
+venv() {
+    echo "VENV_ROOT=$VENV_ROOT"
+    echo "VIRTUAL_ENV=$VIRTUAL_ENV"
 }
 
 getenv() {
