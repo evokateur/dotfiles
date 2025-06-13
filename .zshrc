@@ -30,8 +30,8 @@ find_venv_root() {
 venv_auto_activate() {
     local new_root=$(find_venv_root)
     if [[ -n "$new_root" ]]; then
-        export VENV_ROOT="$new_root"
         source "$new_root/.venv/bin/activate"
+        export VENV_ROOT="$new_root"
     fi
 }
 
