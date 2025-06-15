@@ -10,6 +10,9 @@ if ! type bclm >//dev/null 2>&1; then
     exit 1
 fi
 
+default_bclm=81
+current_bclm=$(bclm read)
+
 has_battery() {
     pmset -g batt | grep -q 'InternalBattery'
 }
@@ -29,9 +32,21 @@ is_plugged_and_charging() {
 get_bat_pct() {
     current_capacity=$(ioreg -l | grep -o '"CurrentCapacity" = [0-9]*' | awk '{print $3}')
     max_capacity=$(ioreg -l | grep -o '"MaxCapacity" = [0-9]*' | awk '{print $3}')
-    percentage=$(echo "scale=2; ($current_capacity / $max_capacity) * 100" | bc)
+    percentage=$(echo "($current_capacity * 100) / $max_capacity" | bc)
 
     echo "$percentage"
+}
+
+reset_bclm() {
+    bclm write "$default_bclm"
+    echo "bclm reset to $default_bclm"
+}
+
+cleanup() {
+    bclm write "$default_bclm"
+    echo "interrupted.."
+    reset_bclm
+    exit 0
 }
 
 if ! has_battery; then
@@ -44,23 +59,20 @@ if is_not_plugged; then
     exit 1
 fi
 
-current_bclm=$(bclm read)
-
 if [ "$current_bclm" -eq 100 ] && batery_is_plugged_and_not_charging; then
     echo "bclm already set to 100 and battery not charging"
     exit 0
 fi
 
-default_bclm=81
 bclm write 100
 echo "bclm set to 100"
 
-sleep 1
+trap cleanup INT TERM
+
 while is_plugged_and_charging; do
-    echo "[charging] battery charged to $(get_bat_pct)%..."
+    echo "battery charged to $(get_bat_pct)%..."
     sleep 60
 done
 
-echo "[done] battery charged to $(get_bat_pct)%"
-bclm write "$default_bclm"
-echo "bclm reset to $default_bclm"
+echo "battery charged to $(get_bat_pct)%"
+reset_bclm
