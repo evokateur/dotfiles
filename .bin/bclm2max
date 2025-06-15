@@ -1,0 +1,45 @@
+#!/bin/sh
+
+if [ "$(id -u)" -ne 0 ]; then
+    echo 'script must be run by root' >&2
+    exit 1
+fi
+
+is_plugged_and_not_charging() {
+    pmset -g batt | grep -q 'AC Power' && pmset -g batt | grep -q 'charged'
+}
+
+is_plugged_and_charging() {
+    pmset -g batt | grep -q 'AC Power' && pmset -g batt | grep -q 'charging'
+}
+
+is_not_plugged() {
+    pmset -g batt | grep -q 'Battery Power'
+}
+
+get_batpc() {
+    current_capacity=$(ioreg -l | grep -o '"CurrentCapacity" = [0-9]*' | awk '{print $3}')
+    max_capacity=$(ioreg -l | grep -o '"MaxCapacity" = [0-9]*' | awk '{print $3}')
+    percentage=$(echo "scale=2; ($current_capacity / $max_capacity) * 100" | bc)
+
+    echo "$percentage"
+}
+
+if is_not_plugged; then
+    echo "script must be run while plugged in"
+    exit 1
+fi
+
+original_bclm=$(bclm read)
+bclm write 100
+echo "bclm set to 100"
+
+sleep 1
+while is_plugged_and_charging; do
+    echo "battery charging at $(get_batpc)%..."
+    sleep 60
+done
+
+echo "battery charged to $(get_batpc)%"
+bclm write "$original_bclm"
+echo "bclm reset to $original_bclm"
