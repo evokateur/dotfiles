@@ -30,7 +30,14 @@ if is_not_plugged; then
     exit 1
 fi
 
-original_bclm=$(bclm read)
+current_bclm=$(bclm read)
+
+if [ "$current_bclm" -eq 100 ] && batery_is_plugged_and_not_charging; then
+    echo "bclm already set to 100 and battery is plugged in but not charging"
+    exit 0
+fi
+
+default_bclm=81
 bclm write 100
 echo "bclm set to 100"
 
@@ -41,5 +48,5 @@ while is_plugged_and_charging; do
 done
 
 echo "battery charged to $(get_batpc)%"
-bclm write "$original_bclm"
-echo "bclm reset to $original_bclm"
+bclm write "$default_bclm"
+echo "bclm reset to $default_bclm"
