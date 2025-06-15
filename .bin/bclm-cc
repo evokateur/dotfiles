@@ -5,14 +5,18 @@ if [ "$(id -u)" -ne 0 ]; then
     exit 1
 fi
 
+if ! type bclm >//dev/null 2>&1; then
+    echo 'bclm command not found, exiting' >&2
+    exit 1
+fi
+
 has_battery() {
     pmset -g batt | grep -q 'InternalBattery'
 }
 
-if ! has_battery; then
-    echo 'no battery found, exiting'
-    exit 1
-fi
+is_not_plugged() {
+    pmset -g batt | grep -q 'Battery Power'
+}
 
 is_plugged_and_not_charging() {
     pmset -g batt | grep -q 'AC Power' && pmset -g batt | grep -q 'charged'
@@ -22,15 +26,6 @@ is_plugged_and_charging() {
     pmset -g batt | grep -q 'AC Power' && pmset -g batt | grep -q 'charging'
 }
 
-is_not_plugged() {
-    pmset -g batt | grep -q 'Battery Power'
-}
-
-if ! type bclm >//dev/null 2>&1; then
-    echo 'bclm command not found, exiting' >&2
-    exit 1
-fi
-
 get_bat_pct() {
     current_capacity=$(ioreg -l | grep -o '"CurrentCapacity" = [0-9]*' | awk '{print $3}')
     max_capacity=$(ioreg -l | grep -o '"MaxCapacity" = [0-9]*' | awk '{print $3}')
@@ -39,15 +34,20 @@ get_bat_pct() {
     echo "$percentage"
 }
 
+if ! has_battery; then
+    echo 'no battery found, exiting' >&2
+    exit 1
+fi
+
 if is_not_plugged; then
-    echo "script must be run while plugged in"
+    echo 'not plugged in, exiting' >&2
     exit 1
 fi
 
 current_bclm=$(bclm read)
 
 if [ "$current_bclm" -eq 100 ] && batery_is_plugged_and_not_charging; then
-    echo "bclm already set to 100 and battery is plugged in but not charging"
+    echo "bclm already set to 100 and battery not charging"
     exit 0
 fi
 
@@ -57,10 +57,10 @@ echo "bclm set to 100"
 
 sleep 1
 while is_plugged_and_charging; do
-    echo "battery charging at $(get_bat_pct)%..."
+    echo "[charging] battery charged to $(get_bat_pct)%..."
     sleep 60
 done
 
-echo "battery charged to $(get_bat_pct)%"
+echo "[done] battery charged to $(get_bat_pct)%"
 bclm write "$default_bclm"
 echo "bclm reset to $default_bclm"
