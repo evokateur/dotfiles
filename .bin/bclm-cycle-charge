@@ -22,7 +22,7 @@ is_not_plugged() {
 }
 
 is_plugged_and_charged() {
-    pmset -g batt | grep -q 'AC Power' && pmset -g batt | grep -q 'charged'
+    pmset -g batt | grep -q 'AC Power' && pmset -g batt | grep -Eq 'charged|finishing'
 }
 
 is_plugged_and_charging() {
@@ -73,24 +73,27 @@ if is_not_plugged; then
     exit 1
 fi
 
-if [ "$current_bclm" -ne 100 ]; then
-    bclm write 100
-    echo "bclm set to 100"
-else
+if [ "$current_bclm" -eq 100 ]; then
     echo "nothing to do,. exiting"
     exit 0
 fi
 
 trap cleanup INT TERM
 
-while is_plugged_and_charging; do
-    printf "\rbattery charging at %s.." "$(get_bat_pct)%"
-    sleep 1
-done
-echo
+echo "setting bclm to 100.."
+bclm write 100
+
+sleep 5
+if is_plugged_and_charging; then
+    while is_plugged_and_charging; do
+        printf "\rbattery charging at %s.." "$(get_bat_pct)%"
+        sleep 5
+    done
+    echo
+fi
 
 if is_not_plugged; then
-    echo "charging interrupted,."
+    echo "interrupted,."
 fi
 
 echo "battery $(get_bat_status)"
