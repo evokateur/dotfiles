@@ -46,7 +46,7 @@ reset_bclm() {
 }
 
 cleanup() {
-    echo "interrupted.."
+    printf "\ninterrupted..\n"
     reset_bclm
     exit 0
 }
@@ -72,9 +72,10 @@ fi
 trap cleanup INT TERM
 
 while is_plugged_and_charging; do
-    echo "battery charging at $(get_bat_pct)%..."
-    sleep 60
+    printf "\rbattery charging at %s%%.." "$(get_bat_pct)"
+    sleep 1
 done
+echo
 
 if is_not_plugged; then
     echo "battery charging interrupted, not plugged in"
