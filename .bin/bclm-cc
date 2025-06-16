@@ -74,15 +74,14 @@ if is_not_plugged; then
 fi
 
 if [ "$starting_bclm" -eq 100 ]; then
-    echo "nothing to do,. exiting"
+    echo "nothing to do, exiting"
     exit 0
 fi
 
 trap cleanup INT TERM
 
-echo "setting bclm to 100.."
 bclm write 100
-
+echo "set bclm to 100, waiting for effect.."
 sleep 5
 
 if is_plugged_and_charging; then
@@ -91,6 +90,7 @@ if is_plugged_and_charging; then
         sleep 5
     done
     echo
+    echo "done charging.."
 fi
 
 if is_not_plugged; then
