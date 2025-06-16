@@ -10,7 +10,6 @@ if ! type bclm >//dev/null 2>&1; then
     exit 1
 fi
 
-default_bclm=81
 current_bclm=$(bclm read)
 
 has_battery() {
@@ -21,7 +20,7 @@ is_not_plugged() {
     pmset -g batt | grep -q 'Battery Power'
 }
 
-is_plugged_and_not_charging() {
+is_plugged_and_charged() {
     pmset -g batt | grep -q 'AC Power' && pmset -g batt | grep -q 'charged'
 }
 
@@ -38,12 +37,11 @@ get_bat_pct() {
 }
 
 reset_bclm() {
-    bclm write "$default_bclm"
-    echo "bclm reset to $default_bclm"
+    bclm write "$current_bclm"
+    echo "bclm reset to $current_bclm"
 }
 
 cleanup() {
-    bclm write "$default_bclm"
     echo "interrupted.."
     reset_bclm
     exit 0
@@ -59,8 +57,8 @@ if is_not_plugged; then
     exit 1
 fi
 
-if [ "$current_bclm" -eq 100 ] && batery_is_plugged_and_not_charging; then
-    echo "bclm already set to 100 and battery not charging"
+if [ "$current_bclm" -eq 100 ] && is_plugged_and_charged; then
+    echo "bclm already set to 100 and battery charged"
     exit 0
 fi
 
@@ -70,9 +68,13 @@ echo "bclm set to 100"
 trap cleanup INT TERM
 
 while is_plugged_and_charging; do
-    echo "battery charged to $(get_bat_pct)%..."
+    echo "battery charging at $(get_bat_pct)%..."
     sleep 60
 done
+
+if is_not_plugged; then
+    echo "battery charging interrupted, not plugged in"
+fi
 
 echo "battery charged to $(get_bat_pct)%"
 reset_bclm
