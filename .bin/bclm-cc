@@ -11,6 +11,7 @@ if ! type bclm >//dev/null 2>&1; then
 fi
 
 current_bclm=$(bclm read)
+echo "current bclm is $current_bclm"
 
 has_battery() {
     pmset -g batt | grep -q 'InternalBattery'
@@ -37,6 +38,9 @@ get_bat_pct() {
 }
 
 reset_bclm() {
+    if [ "$current_bclm" -eq 100 ]; then
+        return
+    fi
     bclm write "$current_bclm"
     echo "bclm reset to $current_bclm"
 }
@@ -57,13 +61,13 @@ if is_not_plugged; then
     exit 1
 fi
 
-if [ "$current_bclm" -eq 100 ] && is_plugged_and_charged; then
+if [ "$current_bclm" -ne 100 ]; then
+    bclm write 100
+    echo "bclm set to 100"
+elif is_plugged_and_charged; then
     echo "bclm already set to 100 and battery charged"
     exit 0
 fi
-
-bclm write 100
-echo "bclm set to 100"
 
 trap cleanup INT TERM
 
