@@ -37,6 +37,18 @@ get_bat_pct() {
     echo "$percentage"
 }
 
+get_bat_status() {
+    if is_plugged_and_charged; then
+        echo "charged to $(get_bat_pct)%"
+    elif is_plugged_and_charging; then
+        echo "charging at $(get_bat_pct)%"
+    elif is_not_plugged; then
+        echo "not plugged in"
+    else
+        echo "unknown"
+    fi
+}
+
 reset_bclm() {
     if [ "$current_bclm" -eq 100 ]; then
         return
@@ -46,10 +58,9 @@ reset_bclm() {
 }
 
 cleanup() {
-    printf "\ninterrupted..\n"
-    echo "battery charged to $(get_bat_pct)%"
+    printf "\ninterrupted..\n" >&2
     reset_bclm
-    exit 0
+    exit 1
 }
 
 if ! has_battery; then
@@ -73,14 +84,14 @@ fi
 trap cleanup INT TERM
 
 while is_plugged_and_charging; do
-    printf "\rbattery charging at %s%%.." "$(get_bat_pct)"
+    printf "\rbattery charging at %s.." "$(get_bat_pct)%"
     sleep 1
 done
 echo
 
 if is_not_plugged; then
-    echo "charging interrupted, not plugged in"
+    echo "charging interrupted,."
 fi
 
-echo "battery charged to $(get_bat_pct)%"
+echo "battery $(get_bat_status)"
 reset_bclm
