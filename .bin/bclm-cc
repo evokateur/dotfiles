@@ -90,7 +90,6 @@ if is_plugged_and_charging; then
         sleep 5
     done
     echo
-    echo "done charging.."
 fi
 
 if is_not_plugged; then
