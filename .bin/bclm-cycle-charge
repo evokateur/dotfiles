@@ -94,7 +94,7 @@ if is_plugged_and_charging; then
 fi
 
 if is_not_plugged; then
-    echo "interrupted,."
+    echo "interrupted.."
 fi
 
 echo "battery $(get_bat_status)"
