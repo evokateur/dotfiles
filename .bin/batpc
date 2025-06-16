@@ -1,0 +1,17 @@
+#!/bin/bash
+
+current_capacity=$(ioreg -l | grep -o '"CurrentCapacity" = [0-9]*' | awk '{print $3}')
+max_capacity=$(ioreg -l | grep -o '"MaxCapacity" = [0-9]*' | awk '{print $3}')
+design_capacity=$(ioreg -l | grep -o '"DesignCapacity" = [0-9]*' | awk '{print $3}')
+
+if [[ -n "$current_capacity" && -n "$max_capacity" && "$max_capacity" -ne 0 && -n "$design_capacity" && "$design_capacity" -ne 0 ]]
+then
+    percentage=$(echo "scale=2; ($current_capacity / $max_capacity) * 100" | bc)
+    echo "Battery charge: $percentage%"
+
+    percentage=$(echo "scale=2; ($max_capacity / $design_capacity) * 100" | bc)
+    echo "Battery health: $percentage%"
+else
+    echo "Error: Could not extract battery data."
+    exit 1
+fi
