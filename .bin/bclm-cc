@@ -1,1 +1,101 @@
-bclm-cycle-charge
+#!/bin/sh
+
+if [ "$(id -u)" -ne 0 ]; then
+    echo 'script must be run by root' >&2
+    exit 1
+fi
+
+if ! type bclm >//dev/null 2>&1; then
+    echo 'bclm command not found, exiting' >&2
+    exit 1
+fi
+
+starting_bclm=$(bclm read)
+echo "current bclm is $starting_bclm"
+
+has_battery() {
+    pmset -g batt | grep -q 'InternalBattery'
+}
+
+is_not_plugged() {
+    pmset -g batt | grep -q 'Battery Power'
+}
+
+is_plugged_and_charged() {
+    pmset -g batt | grep -q 'AC Power' && pmset -g batt | grep -Eq 'charged|finishing'
+}
+
+is_plugged_and_charging() {
+    pmset -g batt | grep -q 'AC Power' && pmset -g batt | grep -q 'charging'
+}
+
+get_bat_pct() {
+    current_capacity=$(ioreg -l | grep -o '"CurrentCapacity" = [0-9]*' | awk '{print $3}')
+    max_capacity=$(ioreg -l | grep -o '"MaxCapacity" = [0-9]*' | awk '{print $3}')
+    percentage=$(echo "($current_capacity * 100) / $max_capacity" | bc)
+
+    echo "$percentage"
+}
+
+get_bat_status() {
+    if is_plugged_and_charged; then
+        echo "charged to $(get_bat_pct)%"
+    elif is_plugged_and_charging; then
+        echo "charging at $(get_bat_pct)%"
+    elif is_not_plugged; then
+        echo "not plugged in"
+    else
+        echo "unknown"
+    fi
+}
+
+reset_bclm() {
+    if [ "$starting_bclm" -eq 100 ]; then
+        return
+    fi
+    bclm write "$starting_bclm"
+    echo "bclm reset to $starting_bclm"
+}
+
+cleanup() {
+    printf "\ninterrupted..\n" >&2
+    reset_bclm
+    exit 1
+}
+
+if ! has_battery; then
+    echo 'no battery found, exiting' >&2
+    exit 1
+fi
+
+if is_not_plugged; then
+    echo 'not plugged in, exiting' >&2
+    exit 1
+fi
+
+if [ "$starting_bclm" -eq 100 ]; then
+    echo "nothing to do,. exiting"
+    exit 0
+fi
+
+trap cleanup INT TERM
+
+echo "setting bclm to 100.."
+bclm write 100
+
+sleep 5
+
+if is_plugged_and_charging; then
+    while is_plugged_and_charging; do
+        printf "\rbattery charging at %s.." "$(get_bat_pct)%"
+        sleep 5
+    done
+    echo
+fi
+
+if is_not_plugged; then
+    echo "interrupted.."
+fi
+
+echo "battery $(get_bat_status)"
+reset_bclm
