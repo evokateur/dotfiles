@@ -76,8 +76,8 @@ fi
 if [ "$current_bclm" -ne 100 ]; then
     bclm write 100
     echo "bclm set to 100"
-elif is_plugged_and_charged; then
-    echo "bclm already set to 100 and battery charged"
+else
+    echo "nothing to do,. exiting"
     exit 0
 fi
 
