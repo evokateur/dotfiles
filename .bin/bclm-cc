@@ -10,6 +10,7 @@ if ! type bclm >//dev/null 2>&1; then
     exit 1
 fi
 
+wait_interval=5
 starting_bclm=$(bclm read)
 echo "current bclm is $starting_bclm"
 
@@ -22,11 +23,11 @@ is_not_plugged() {
 }
 
 is_plugged_and_charged() {
-    pmset -g batt | grep -q 'AC Power' && pmset -g batt | grep -Eq 'charged|finishing'
+    pmset -g batt | grep -q 'AC Power' && pmset -g batt | grep -Eq 'charged|finishing|not charging'
 }
 
 is_plugged_and_charging() {
-    pmset -g batt | grep -q 'AC Power' && pmset -g batt | grep -q 'charging'
+    pmset -g batt | grep -q 'AC Power' && pmset -g batt | grep -q 'charging' && ! pmset -g batt | grep -q 'not charging'
 }
 
 get_bat_pct() {
@@ -38,12 +39,12 @@ get_bat_pct() {
 }
 
 get_bat_status() {
-    if is_plugged_and_charged; then
+    if is_not_plugged; then
+        echo "not plugged in"
+    elif is_plugged_and_charged; then
         echo "charged to $(get_bat_pct)%"
     elif is_plugged_and_charging; then
         echo "charging at $(get_bat_pct)%"
-    elif is_not_plugged; then
-        echo "not plugged in"
     else
         echo "unknown"
     fi
@@ -57,12 +58,14 @@ reset_bclm() {
         return
     fi
     bclm write "$starting_bclm"
-    echo "bclm reset to $starting_bclm"
 }
 
 cleanup() {
     printf "\ninterrupted..\n" >&2
     reset_bclm
+    echo "bclm reset to $starting_bclm", waiting ${wait_interval}s for effect..
+    sleep "$wait_interval"
+    echo "battery $(get_bat_status)"
     exit 0
 }
 
@@ -84,9 +87,8 @@ fi
 trap cleanup INT TERM
 
 bclm write 100
-n=5
-echo "bclm set to 100, waiting $n seconds for effect.."
-sleep "$n"
+echo "bclm set to 100, waiting ${wait_interval}s for effect.."
+sleep "$wait_interval"
 
 if is_plugged_and_charging; then
     while is_plugged_and_charging; do
@@ -98,9 +100,10 @@ fi
 
 if is_not_plugged; then
     echo "interrupted.."
+    echo "battery $(get_bat_status)"
 else
     echo "not charging.."
+    reset_bclm
+    echo "bclm reset to $starting_bclm", waiting ${wait_interval}s for effect..
+    echo "battery $(get_bat_status)"
 fi
-
-echo "battery $(get_bat_status)"
-reset_bclm
