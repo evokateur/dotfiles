@@ -50,6 +50,9 @@ get_bat_status() {
 }
 
 reset_bclm() {
+    if [ -z "$starting_bclm" ]; then
+        return
+    fi
     if [ "$starting_bclm" -eq 100 ]; then
         return
     fi
@@ -60,7 +63,7 @@ reset_bclm() {
 cleanup() {
     printf "\ninterrupted..\n" >&2
     reset_bclm
-    exit 1
+    exit 0
 }
 
 if ! has_battery; then
@@ -82,7 +85,7 @@ trap cleanup INT TERM
 
 bclm write 100
 n=5
-echo "bclm set to 100, waiting $n seconds.."
+echo "bclm set to 100, waiting $n seconds for effect.."
 sleep "$n"
 
 if is_plugged_and_charging; then
