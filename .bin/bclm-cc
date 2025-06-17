@@ -40,7 +40,7 @@ get_bat_pct() {
 
 get_bat_status() {
     if is_not_plugged; then
-        echo "not plugged in"
+        echo "discharging at $(get_bat_pct)%"
     elif is_plugged_and_charged; then
         echo "charged to $(get_bat_pct)%"
     elif is_plugged_and_charging; then
@@ -99,11 +99,13 @@ if is_plugged_and_charging; then
 fi
 
 if is_not_plugged; then
-    echo "interrupted.."
+    echo "battery unplugged.."
+    reset_bclm
+    echo "bclm reset to $starting_bclm"
     echo "battery $(get_bat_status)"
 else
-    echo "not charging.."
+    echo "charging is stopped"
     reset_bclm
-    echo "bclm reset to $starting_bclm", waiting ${wait_interval}s for effect..
+    echo "bclm reset to $starting_bclm"
     echo "battery $(get_bat_status)"
 fi
