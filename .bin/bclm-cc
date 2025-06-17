@@ -81,8 +81,9 @@ fi
 trap cleanup INT TERM
 
 bclm write 100
-echo "set bclm to 100, waiting for effect.."
-sleep 5
+n=5
+echo "bclm set to 100, waiting $n seconds.."
+sleep "$n"
 
 if is_plugged_and_charging; then
     while is_plugged_and_charging; do
@@ -94,6 +95,8 @@ fi
 
 if is_not_plugged; then
     echo "interrupted.."
+else
+    echo "not charging.."
 fi
 
 echo "battery $(get_bat_status)"
