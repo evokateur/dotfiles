@@ -88,6 +88,5 @@ getenv() {
     fi
 }
 
-alias vim?='pgrep vim > /dev/null || vim'
 alias srsync="rsync -av -e ssh --exclude='.git/'"
 alias dot='dotfiles'
