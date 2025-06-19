@@ -22,7 +22,7 @@ is_not_plugged() {
     pmset -g batt | grep -q 'Battery Power'
 }
 
-is_plugged_and_charged() {
+is_plugged_and_not_charging() {
     pmset -g batt | grep -q 'AC Power' && pmset -g batt | grep -Eq 'charged|finishing|not charging'
 }
 
@@ -41,8 +41,8 @@ get_bat_pct() {
 get_bat_status() {
     if is_not_plugged; then
         echo "discharging at $(get_bat_pct)%"
-    elif is_plugged_and_charged; then
-        echo "charged to $(get_bat_pct)%"
+    elif is_plugged_and_not_charging; then
+        echo "not charging at $(get_bat_pct)%"
     elif is_plugged_and_charging; then
         echo "charging at $(get_bat_pct)%"
     else
