@@ -5,8 +5,10 @@ if [ "$(id -u)" -ne 0 ]; then
     exit 1
 fi
 
+echo "starting full charge cycle.."
+bclm-cc
+
 echo "telling dropbox to quit.."
 osascript -e 'tell application "Dropbox" to quit'
 
-echo "starting bclm-cc script.."
-bclm-cc
+echo "undock!, undock!"
