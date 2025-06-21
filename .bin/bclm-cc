@@ -61,7 +61,7 @@ reset_bclm() {
 }
 
 cleanup() {
-    printf "\ninterrupted..\n" >&2
+    printf "\ninterrupted..\n"
     reset_bclm
     echo "bclm reset to $starting_bclm", waiting ${wait_interval}s for effect..
     sleep "$wait_interval"
