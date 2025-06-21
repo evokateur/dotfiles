@@ -1,0 +1,48 @@
+#!/bin/bash
+
+var="$1"
+[ -z "$var" ] && {
+    echo "usage: $0 <var name>"
+    exit 1
+}
+
+[ -f ".env" ] || {
+    echo ".env file not found"
+    exit 1
+}
+
+line=$(grep -E "^\s*$var\s*=" .env | grep -Ev '^\s*#' | head -n 1) || exit 1
+
+[ -z "$line" ] && {
+    echo "$var not found in .env"
+    exit 1
+}
+
+value=${line#*=}
+value=$(printf '%s' "$value" | sed -E 's/^"([^"]*)"$/\1/; s/^'\''([^'\'']*)'\''$/\1/')
+
+[ -n "$value" ] || {
+    echo "$var has an empty value"
+    exit 0
+}
+
+printf '%s=%s' "$var" "$value"
+
+if command -v pbcopy >/dev/null 2>&1; then
+    printf '%s' "$value" | pbcopy
+    echo " (copied to paste buffer)"
+elif command -v xclip >/dev/null 2>&1; then
+    printf '%s' "$value" | xclip -selection clipboard
+    echo " (copied to paste buffer)"
+elif command -v xsel >/dev/null 2>&1; then
+    printf '%s' "$value" | xsel --clipboard --input
+    echo " (copied to paste buffer)"
+elif command -v wl-copy >/dev/null 2>&1; then
+    printf '%s' "$value" | wl-copy
+    echo " (copied to paste buffer)"
+elif command -v clip >/dev/null 2>&1; then
+    printf '%s' "$value" | clip
+    echo " (copied to paste buffer)"
+else
+    echo
+fi

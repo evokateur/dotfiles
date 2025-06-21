@@ -61,32 +61,5 @@ venv() {
     echo "VIRTUAL_ENV=$VIRTUAL_ENV"
 }
 
-getenv() {
-    local var="$1"
-    [ -z "$var" ] && return
-
-    local line
-    line=$(grep -E "^\s*$var\s*=" .env | grep -Ev '^\s*#' | head -n 1) || return
-    [ -z "$line" ] && return
-
-    local value=${line#*=}
-
-    value=$(printf '%s' "$value" | sed -E 's/^"([^"]*)"$/\1/; s/^'\''([^'\'']*)'\''$/\1/')
-
-    [ -n "$value" ] || return
-    printf '%s\n' "$value"
-
-    if command -v pbcopy >/dev/null 2>&1; then
-        printf '%s' "$value" | pbcopy
-        echo "..copied to clipboard"
-    elif command -v xclip >/dev/null 2>&1; then
-        printf '%s' "$value" | xclip -selection clipboard
-        echo "..copied to clipboard"
-    elif command -v wl-copy >/dev/null 2>&1; then
-        printf '%s' "$value" | wl-copy
-        echo "..copied to clipboard"
-    fi
-}
-
 alias srsync="rsync -av -e ssh --exclude='.git/'"
 alias dot='dotfiles'
