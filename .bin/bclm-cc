@@ -73,13 +73,19 @@ wait_for() {
     return 1
 }
 
-cleanup() {
-    printf "\ninterrupted..\n"
+reset_bclm_and_report_status() {
+    reset_bclm
+    echo "bclm reset to $starting_bclm"
+    echo "battery $(get_bat_status)"
+}
+
+handle_interrupt() {
+    printf '\ninterrupted..\n' >&2
     reset_bclm
     echo "bclm reset to $starting_bclm, waiting for effect.."
     wait_for "is_plugged_and_not_charging"
     echo "battery $(get_bat_status)"
-    exit 0
+    exit 1
 }
 
 if ! has_battery; then
@@ -93,15 +99,19 @@ if is_not_plugged; then
 fi
 
 if [ "$starting_bclm" -eq 100 ]; then
-    echo "nothing to do, exiting"
-    exit 0
+    echo 'nothing to do, exiting' >&2
+    exit 1
 fi
 
-trap cleanup INT TERM
+trap handle_interrupt INT TERM
 
 bclm write 100
 echo "bclm set to 100, waiting for effect.."
-wait_for "is_plugged_and_charging"
+if ! wait_for "is_plugged_and_charging"; then
+    echo "waiting timed out.."
+    reset_bclm_and_report_status
+    exit 1
+fi
 
 if is_plugged_and_charging; then
     while is_plugged_and_charging; do
@@ -112,11 +122,10 @@ if is_plugged_and_charging; then
 fi
 
 if is_not_plugged; then
-    echo "battery unplugged.."
-else
-    echo "charging is stopped"
+    echo 'battery unplugged..' >&2
+    reset_bclm_and_report_status
+    exit 1
 fi
 
-reset_bclm
-echo "bclm reset to $starting_bclm"
-echo "battery $(get_bat_status)"
+echo "charging is stopped"
+reset_bclm_and_report_status
