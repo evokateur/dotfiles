@@ -6,6 +6,10 @@ if [[ "$input" =~ ^[0-9]{1,4}$ ]]; then
     padded=$(printf "%04d" "$input")
     hour="${padded:0:2}"
     min="${padded:2:2}"
+    ((10#$hour >= 0 && 10#$hour < 24)) && ((10#$min >= 0 && 10#$min < 60)) || {
+        echo "invalid time: $hour:$min" >&2
+        exit 1
+    }
 else
     echo "usage: since <hhmm or hh:mm>" >&2
     exit 1
