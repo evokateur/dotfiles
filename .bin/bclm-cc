@@ -51,10 +51,10 @@ get_bat_status() {
 
 reset_bclm() {
     if [ -z "$starting_bclm" ]; then
-        return
+        return 1
     fi
     if [ "$starting_bclm" -eq 100 ]; then
-        return
+        return 1
     fi
     bclm write "$starting_bclm"
 }
@@ -73,9 +73,8 @@ wait_for() {
     return 1
 }
 
-reset_bclm_and_report_status() {
-    reset_bclm
-    echo "bclm reset to $starting_bclm"
+reset_bclm_and_report() {
+    reset_bclm && echo "bclm reset to $starting_bclm"
     echo "battery $(get_bat_status)"
 }
 
@@ -109,23 +108,21 @@ bclm write 100
 echo "bclm set to 100, waiting for effect.."
 if ! wait_for "is_plugged_and_charging"; then
     echo "waiting timed out.."
-    reset_bclm_and_report_status
+    reset_bclm_and_report
     exit 1
 fi
 
-if is_plugged_and_charging; then
-    while is_plugged_and_charging; do
-        printf "\rbattery charging at %s.." "$(get_bat_pct)%"
-        sleep 5
-    done
-    echo
-fi
+while is_plugged_and_charging; do
+    printf "\rbattery charging at %s.." "$(get_bat_pct)%"
+    sleep 5
+done
+echo
 
 if is_not_plugged; then
     echo 'battery unplugged..' >&2
-    reset_bclm_and_report_status
+    reset_bclm_and_report
     exit 1
 fi
 
 echo "charging is stopped"
-reset_bclm_and_report_status
+reset_bclm_and_report
