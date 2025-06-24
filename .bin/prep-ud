@@ -11,4 +11,7 @@ bclm-cc || exit 1
 echo "telling dropbox to quit.."
 osascript -e 'tell application "Dropbox" to quit'
 
+echo "telling docker desktop to quit.."
+osascript -e 'tell application "Docker Desktop" to quit'
+
 echo "undock!, undock!"
