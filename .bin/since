@@ -1,0 +1,25 @@
+#!/bin/bash
+
+input="${1//:/}"
+
+if [[ "$input" =~ ^[0-9]{1,4}$ ]]; then
+    padded=$(printf "%04d" "$input")
+    hour="${padded:0:2}"
+    min="${padded:2:2}"
+else
+    echo "usage: since <hhmm or hh:mm>" >&2
+    exit 1
+fi
+
+now_epoch=$(date +%s)
+past_epoch=$(date -j -f "%H:%M" "$hour:$min" "+%s" 2>/dev/null)
+
+if ((past_epoch > now_epoch)); then
+    past_epoch=$(date -j -v-1d -f "%H:%M" "$hour:$min" "+%s")
+fi
+
+diff=$((now_epoch - past_epoch))
+hours=$((diff / 3600))
+minutes=$(((diff % 3600) / 60))
+
+printf "%d:%02d\n" "$hours" "$minutes"
