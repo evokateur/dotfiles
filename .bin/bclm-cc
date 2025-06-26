@@ -79,12 +79,12 @@ reset_bclm_and_report() {
 }
 
 handle_interrupt() {
-    printf '\ninterrupted..\n' >&2
+    printf '\ninterrupted..\n'
     reset_bclm
     echo "bclm reset to $starting_bclm, waiting for effect.."
     wait_for "is_plugged_and_not_charging"
     echo "battery $(get_bat_status)"
-    exit 1
+    exit 0
 }
 
 if ! has_battery; then
