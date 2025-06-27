@@ -3,35 +3,18 @@
 var="$1"
 
 [ -z "$var" ] && {
-    echo "usage: $0 <var name>"
-    exit 1
-}
-
-[ -f ".env" ] || {
-    echo "no .env file here"
-    exit 1
-}
-
-[[ "$var" =~ ^[a-zA-Z_][a-zA-Z0-9_]*$ ]] || {
-    echo "'$var' is not a valid variable name"
-    exit 1
-}
-
-(
-    set -e
-    source .env
-) 2>/dev/null || {
-    echo ".env contains invalid syntax"
+    echo "usage: $0 <env var name>"
     exit 1
 }
 
 (
     set -e
     set -u
-    source .env
+
+    [ -f ".env" ] && source .env
 
     [ -n "${!var+x}" ] || {
-        echo "$var is not set in .env"
+        echo "$var is not set"
         exit 1
     }
 
