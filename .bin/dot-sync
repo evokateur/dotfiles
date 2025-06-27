@@ -3,16 +3,16 @@
 this_computer_name=$(scutil --get ComputerName)
 
 if [ "$this_computer_name" != "turnip" ]; then
-    echo "running dot pull on turnip.."
+    echo "🔄  running 'dot pull' on turnip.."
     ssh turnip 'zsh -i -c "dot pull"'
 fi
 
 if [ "$this_computer_name" != "sfizio" ]; then
-    echo "running dot pull on sfizio.."
+    echo "🔄  running 'dot pull' on sfizio.."
     ssh sfizio 'zsh -i -c "dot pull"'
 fi
 
 if [ "$this_computer_name" != "cipolla" ]; then
-    echo "running dot pull on cipolla.."
+    echo "🔄  running 'dot pull' on cipolla.."
     ssh cipolla 'zsh -i -c "dot pull"'
 fi
