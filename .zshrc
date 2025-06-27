@@ -3,6 +3,7 @@ export LSCOLORS=ExFxBxDxCxegedabagacad
 
 export PATH="/Library/TeX/texbin:$PATH"
 export PATH="/usr/local/opt/mysql-client/bin:$PATH"
+export PATH="/usr/local/bin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
 export PATH="/usr/local/opt/mysql-client/bin:$PATH"
 export PATH="/usr/local/opt/openvpn/sbin:$PATH"
