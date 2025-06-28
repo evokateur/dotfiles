@@ -1,18 +1,12 @@
 #!/bin/bash
 
-this_computer_name=$(scutil --get ComputerName)
+this_computer=$(scutil --get ComputerName)
 
-if [ "$this_computer_name" != "turnip" ]; then
-    echo "🔄  running 'dot pull' on turnip.."
-    ssh turnip 'zsh -i -c "dot pull"'
-fi
+computers=("turnip" "sfizio" "cipolla")
 
-if [ "$this_computer_name" != "sfizio" ]; then
-    echo "🔄  running 'dot pull' on sfizio.."
-    ssh sfizio 'zsh -i -c "dot pull"'
-fi
-
-if [ "$this_computer_name" != "cipolla" ]; then
-    echo "🔄  running 'dot pull' on cipolla.."
-    ssh cipolla 'zsh -i -c "dot pull"'
-fi
+for computer in "${computers[@]}"; do
+    if [ "$this_computer" != "$computer" ]; then
+        echo "🔄  running 'dot pull' on $computer.."
+        ssh "$computer" 'zsh -i -c "dot pull"'
+    fi
+done
