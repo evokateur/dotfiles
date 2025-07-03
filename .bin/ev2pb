@@ -3,7 +3,7 @@
 var="$1"
 
 [ -z "$var" ] && {
-    echo "usage: $0 <env var name>"
+    echo "usage: $0 <environment variable name>"
     exit 1
 }
 
