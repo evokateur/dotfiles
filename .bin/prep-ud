@@ -5,6 +5,9 @@ if [ "$(id -u)" -ne 0 ]; then
     exit 1
 fi
 
+echo "telling dropbox to activate.."
+osascript -e 'tell application "Dropbox" to activate'
+
 echo "starting full charge cycle.."
 bclm-cc || exit 1
 
