@@ -7,19 +7,47 @@ if [[ "$input" =~ ^[0-9]{1,4}$ ]]; then
     hour="${padded:0:2}"
     min="${padded:2:2}"
     ((10#$hour >= 0 && 10#$hour < 24)) && ((10#$min >= 0 && 10#$min < 60)) || {
-        echo "invalid time: $hour:$min" >&2
+        echo "Invalid time: $hour:$min" >&2
         exit 1
     }
 else
-    echo "usage: since <hhmm or hh:mm>" >&2
+    echo "Usage: since <hhmm or hh:mm>" >&2
     exit 1
 fi
 
 now_epoch=$(date +%s)
-past_epoch=$(date -j -f "%H:%M" "$hour:$min" "+%s" 2>/dev/null)
+
+case "$(uname -s)" in
+Darwin)
+    now_epoch=$(date -j -f "%s" "$now_epoch" "+%s")
+    ;;
+Linux)
+    now_epoch=$(date -d "@$now_epoch" "+%s" 2>/dev/null)
+    ;;
+*)
+    echo "Unsupported OS: $(uname -s)" >&2
+    exit 1
+    ;;
+esac
+
+case $(uname -s) in
+Darwin)
+    past_epoch=$(date -j -f "%H:%M" "$hour:$min" "+%s" 2>/dev/null)
+    ;;
+Linux)
+    past_epoch=$(date -d "$hour:$min" "+%s" 2>/dev/null)
+    ;;
+esac
 
 if ((past_epoch > now_epoch)); then
-    past_epoch=$(date -j -v-1d -f "%H:%M" "$hour:$min" "+%s")
+    case $(uname -s) in
+    Darwin)
+        past_epoch=$(date -j -v-1d -f "%H:%M" "$hour:$min" "+%s")
+        ;;
+    Linux)
+        past_epoch=$(date -d "yesterday $hour:$min" +%s 2>/dev/null)
+        ;;
+    esac
 fi
 
 diff=$((now_epoch - past_epoch))
