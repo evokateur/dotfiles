@@ -1,0 +1,11 @@
+#!/bin/bash
+
+device_ids=$(xinput -list | grep -i 'pointer' | grep -o id=[0-9]. | grep -o [0-9].)
+
+for device_id in ${device_ids[@]}
+do
+    prop_id=`xinput list-props ${device_id} | grep -i "Natural Scrolling Enabled" | grep -Po '(?<=\().*(?=\))' | head -1`
+    if [ "${prop_id}" ]; then
+        xinput set-prop ${device_id} ${prop_id} 1
+    fi
+done
