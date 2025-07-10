@@ -19,6 +19,8 @@ export PATH=/usr/bin:$PATH
 export PATH=/usr/local/bin:$PATH
 export PATH=/usr/sandbox/:$PATH
 export PATH=/snap/bin:$PATH
+export PATH=$HOME/.npm-global/bin:$PATH
+export PATH=$HOME/.bin:$PATH
 export PATH=$HOME/.local/bin:$PATH
 
 # don't put duplicate lines or lines starting with space in the history.
@@ -198,5 +200,7 @@ cd() {
 alias srsync="rsync -av -e ssh --exclude='.git/' --exclude='node_modules/' --exclude='*.pyc' --exclude='__pycache__/' --exclude='.venv/' --exclude='env/' --exclude='.env/' --exclude='.mypy_cache/' --exclude='.pytest_cache/'"
 alias dot='dotfiles'
 alias pbcopy='xsel --clipboard --input'
+
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 get-natural
