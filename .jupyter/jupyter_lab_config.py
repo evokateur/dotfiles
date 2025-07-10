@@ -776,7 +776,7 @@ c = get_config()  # noqa
 #                        standard library module, which allows setting of the
 #                        BROWSER environment variable to override it.
 #  Default: ''
-c.ServerApp.browser = "/Applications/Chromium.app/Contents/MacOS/Chromium %s"
+# c.ServerApp.browser = "/Applications/Chromium.app/Contents/MacOS/Chromium %s"
 
 ## The full path to an SSL/TLS certificate file.
 #  Default: ''
