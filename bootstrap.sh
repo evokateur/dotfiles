@@ -21,7 +21,7 @@ dotfiles checkout 2>&1 | grep -E "^\s+" | awk '{print $1}' | while read -r file;
 done
 
 echo "checking out dotfiles into \$HOME.."
-dotfiles checkout config
+dotfiles checkout
 
 echo "syncing with remote branch and setting upstream to 'origin/config'.."
 dotfiles fetch
