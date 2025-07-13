@@ -17,6 +17,9 @@ echo "backing up dotfiles that would be overwritten by initial checkout.."
 mkdir -p "$HOME/.dotfiles-backup"
 dotfiles checkout 2>&1 | grep -E "^\s+" | awk '{print $1}' | while read -r file; do
     echo "backing up $file to ~/.dotfiles-backup/"
+    file_dir="$(dirname "$file")"
+    backup_dir="$HOME/.dotfiles-backup/$file_dir"
+    mkdir -p "$backup_dir"
     mv "$HOME/$file" "$HOME/.dotfiles-backup/$file"
 done
 
