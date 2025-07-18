@@ -14,6 +14,7 @@ export PATH="/Users/wesley/.bin:$PATH"
 export PATH="/Users/wesley/bin:$PATH"
 export PATH="/Users/wesley/node_modules/.bin:$PATH"
 export PATH="/Users/wesley/.pixi/bin:$PATH"
+export PATH="/Users/wesley/.claude/local:$PATH"
 
 set -o vi
 
@@ -82,4 +83,3 @@ venv() {
 
 alias srsync="rsync -av -e ssh --exclude='.git/' --exclude='node_modules/' --exclude='*.pyc' --exclude='__pycache__/' --exclude='.venv/' --exclude='env/' --exclude='.env/' --exclude='.mypy_cache/' --exclude='.pytest_cache/'"
 alias dot='dotfiles'
-alias claude="/Users/wesley/.claude/local/claude"
