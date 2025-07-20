@@ -22,6 +22,7 @@ export PATH=/snap/bin:$PATH
 export PATH=$HOME/.npm-global/bin:$PATH
 export PATH=$HOME/.bin:$PATH
 export PATH=$HOME/.local/bin:$PATH
+export PATH=$HOME/.claude/local:$PATH
 
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
@@ -200,7 +201,6 @@ cd() {
 alias srsync="rsync -av -e ssh --exclude='.git/' --exclude='node_modules/' --exclude='*.pyc' --exclude='__pycache__/' --exclude='.venv/' --exclude='env/' --exclude='.env/' --exclude='.mypy_cache/' --exclude='.pytest_cache/'"
 alias dot='dotfiles'
 alias pbcopy='xsel --clipboard --input'
-alias claude="~/.claude/local/claude"
 
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
