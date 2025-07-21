@@ -205,5 +205,3 @@ alias pbcopy='xsel --clipboard --input'
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 get-natural
-
-. "$HOME/.local/bin/env"
