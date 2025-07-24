@@ -41,6 +41,9 @@ find_venv_root() {
     local dir="$PWD"
     while [[ "$dir" != "/" ]]; do
         if [[ -d "$dir/.venv" ]]; then
+            if [[ -f "$dir/uv.lock" ]]; then
+                return
+            fi
             echo "$dir"
             return
         fi
