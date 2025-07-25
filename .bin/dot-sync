@@ -1,8 +1,11 @@
 #!/bin/bash
 
-this_computer=$(scutil --get ComputerName)
+case "$(uname)" in
+Darwin) this_computer=$(scutil --get ComputerName) ;;
+Linux) this_computer=$(hostname) ;;
+esac
 
-computers=("turnip" "sfizio" "cipolla")
+computers=("turnip" "sfizio" "cipolla" "xicamatl")
 
 for computer in "${computers[@]}"; do
     if [ "$this_computer" != "$computer" ]; then
