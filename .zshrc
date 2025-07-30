@@ -93,3 +93,4 @@ if [ -f "$HOME/.local/bin/env" ]; then
 fi
 
 export DYLD_FALLBACK_LIBRARY_PATH="$(brew --prefix)/lib:$DYLD_FALLBACK_LIBRARY_PATH"
+export KITTY_CONFIG_DIRECTORY="$HOME/.config/kitty/macos"
