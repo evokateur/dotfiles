@@ -1,0 +1,37 @@
+set editor="vim"
+
+set from="wesley@evokateur.net"
+set realname="Wesley Hinkle"
+
+set smtp_url = "smtp://evokateur@mail.sonic.net:587/"
+set smtp_pass=`pass members.sonic.net/evokateur`
+
+set imap_user="wchinkle"
+set imap_pass=`pass members.sonic.net/wchinkle`
+
+set mail_check=90
+set timeout=15
+
+set folder="imaps://imap.sonic.net:993"
+set spoolfile="+INBOX"
+
+set record = '=INBOX.Sent Messages'
+set postponed = '=INBOX.Drafts'
+
+save-hook . '=INBOX.Archive'
+
+set alias_file=~/.mutt/aliases
+source $alias_file
+
+set sort=threads
+set strict_threads=yes
+
+set sort_browser=date
+set sort_aux=reverse-last-date-received
+
+set mailcap_path=~/.mutt/mailcap
+
+alternative_order text/plain text text/html
+auto_view text/html
+
+send-hook . set signature=~/.mutt/sig
