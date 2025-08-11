@@ -206,6 +206,13 @@ venv() {
     echo "VIRTUAL_ENV=$VIRTUAL_ENV"
 }
 
+gemini() {
+    if [ -z "$GEMINI_API_KEY" ]; then
+        export GEMINI_API_KEY="$(pass api/google)"
+    fi
+    command gemini "$@"
+}
+
 alias srsync="rsync -av -e ssh --exclude='.git/' --exclude='node_modules/' --exclude='*.pyc' --exclude='__pycache__/' --exclude='.venv/' --exclude='env/' --exclude='.env/' --exclude='.mypy_cache/' --exclude='.pytest_cache/'"
 alias dot='dotfiles'
 alias pbcopy='xsel --clipboard --input'
