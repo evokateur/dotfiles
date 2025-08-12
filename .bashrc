@@ -8,6 +8,8 @@ case $- in
 *) return ;;
 esac
 
+export EDITOR=vim
+
 export PATH=/sbin:$PATH
 export PATH=/usr/sbin:$PATH
 export PATH=/usr/local/sbin:$PATH
