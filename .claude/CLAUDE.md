@@ -1,24 +1,25 @@
-# 🧑‍💻 Instructions for people AND LLMs
+# Motlin based CLAUDE.md
 
-## 🎨 Code Style
+## 🧑‍💻 Instructions for people AND LLMs
+
+### 🎨 Code Style
 
 @instructions/code-style.md
 
-## 🧪 Tests
+### 🧪 Tests
 
 @instructions/tests.md
 
-# 🤖 Instructions for LLMs
+## 🤖 Instructions for LLMs
 
-## 🎨 Code Style
+### 🎨 Code Style
 
 @instructions/llm-code-style.md
 
-## 💬 Conversation
+### 💬 Conversation
 
 @instructions/conversation.md
 
-## 🧠 LLM Context
+### 🧠 LLM Context
 
 @instructions/llm-context.md
-

@@ -11,3 +11,5 @@
 - Prefer editing an existing file to creating a new one.
 - Never create documentation files (`*.md` or README).
   - Only create documentation files if explicitly requested by the user.
+- Leave `__init__.py` files empty
+  - I often copy them to subdirectories
