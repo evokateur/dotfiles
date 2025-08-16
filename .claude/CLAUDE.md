@@ -1,8 +1,6 @@
 # CLAUDE.md
 
-## Architecture
-
-When designing new features or components, consider the following principles to ensure a clean and maintainable architecture:
+## *Surgical Coding*
 
 - Think harder and thoroughly examine similar areas of the codebase to ensure your proposed approach fits seamlessly with the established patterns and architecture.
 
@@ -10,7 +8,11 @@ When designing new features or components, consider the following principles to 
 
 - Whenever possible, take advantage of components, utilities, or logic that have already been implemented to maintain consistency, reduce duplication, and streamline integration with the current system.
 
-## Code Style
+- Before suggesting any implementation, find and list 3 similar patterns *already* in this codebase. Then align your solution with the most appropriate pattern.
+
+- Before adding any code, first check if we can achieve this by removing or simplifying existing code.
+
+## *Code Style*
 
 - Use consistent indentation
   - Indent with 4 spaces in source code files (.py, .js, etc.)
@@ -34,7 +36,7 @@ When designing new features or components, consider the following principles to 
   - Use `is` or `has` prefixes for boolean variables
     - Example: `isActive`, `hasPermission`
 
-### Comments
+### *Comments*
 
 - Use comments sparingly
   - Let the code speak for itself (well written code is self-documenting)
