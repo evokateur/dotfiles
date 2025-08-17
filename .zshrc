@@ -82,7 +82,7 @@ venv_auto_switch() {
 
 add-zsh-hook chpwd venv_auto_switch
 
-venv() {
+dump_venv() {
     echo "VENV_ROOT=$VENV_ROOT"
     echo "VIRTUAL_ENV=$VIRTUAL_ENV"
 }
@@ -93,6 +93,10 @@ gemini() {
     fi
     command gemini "$@"
 }
+
+if [ "$(scutil --get ComputerName 2>/dev/null)" != "turnip" ]; then
+    source "$HOME/.config/shell/includes/turnip.sh"
+fi
 
 alias srsync="rsync -av -e ssh --exclude='.git/' --exclude='node_modules/' --exclude='*.pyc' --exclude='__pycache__/' --exclude='.venv/' --exclude='env/' --exclude='.env/' --exclude='.mypy_cache/' --exclude='.pytest_cache/'"
 alias dot='dotfiles'
