@@ -25,10 +25,10 @@
 - Don't write forgiving code
 - Don't add defensive try/catch blocks
   - Usually we let exceptions propagate out
-  - Dead programs tell no lies
+  - "Dead programs tell no lies" - Uncle Bob"
 
 - Write functions that are easy to read and understand.
-  - Use descriptive names for functions
+  - Use descriptive names for functions that obviate the necessity for comments.
 
 - Don't use abbreviations or acronyms
   - Choose `number` instead of `num` and `greaterThan` instead of `gt`
@@ -51,7 +51,7 @@
   - Example: `this.timeout(10_000); // Increase timeout for API calls`
   - This is bad because a reader doesn't know what the timeout was increased from, and doesn't care about the old behavior
 
-- Don't add comments that emphasize different versions of the code, like "this code now handles"
+- Don't add comments that emphasize different versions of the code, like "this code now handles.."
 - Do not use end-of-line comments
   - Place comments above the code they describe
 - Leave `__init__.py` files empty
