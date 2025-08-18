@@ -109,7 +109,7 @@ echo "bclm set to 100, waiting for effect.."
 if ! wait_for "is_plugged_and_charging"; then
     echo "waiting timed out.."
     reset_bclm_and_report
-    exit 1
+    exit 0
 fi
 
 while is_plugged_and_charging; do
