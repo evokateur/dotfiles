@@ -150,14 +150,6 @@ export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 
-dotfiles() {
-    if [[ "$1" == "add" && "$2" == "." ]]; then
-        echo "❌ Refusing to run 'dotfiles add .' — be specific!"
-        return 1
-    fi
-    /usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME "$@"
-}
-
 find_venv_root() {
     local dir="$PWD"
     while [[ "$dir" != "/" ]]; do
@@ -215,12 +207,13 @@ gemini() {
     command gemini "$@"
 }
 
+source "$HOME/.config/shell/includes/dotfiles.sh"
+
 if [ "$(scutil --get ComputerName 2>/dev/null)" != "turnip" ]; then
     source "$HOME/.config/shell/includes/turnip.sh"
 fi
 
 alias srsync="rsync -av -e ssh --exclude='.git/' --exclude='node_modules/' --exclude='*.pyc' --exclude='__pycache__/' --exclude='.venv/' --exclude='env/' --exclude='.env/' --exclude='.mypy_cache/' --exclude='.pytest_cache/'"
-alias dot='dotfiles'
 alias pbcopy='xsel --clipboard --input'
 
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
