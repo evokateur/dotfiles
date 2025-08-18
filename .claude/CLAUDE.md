@@ -33,7 +33,7 @@
   - Use `is` or `has` prefixes for boolean variables
     - Example: `isActive`, `hasPermission`
 
-### *Comments*
+### *Comments (in code)*
 
 - Use comments sparingly
   - Let the code speak for itself (well written code is self-documenting)
@@ -53,3 +53,7 @@
   - Place comments above the code they describe
 - Leave `__init__.py` files empty
   - I often copy them to subdirectories
+
+### *Comments (in general)*
+
+- Avoid military firearms idioms
