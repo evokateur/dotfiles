@@ -20,7 +20,8 @@ Running `bootstrap.sh`
 
 4. Configures the `~/.dotfiles` repo to ignore untracked files
 
-The `.zshrc` in the config branch contains a function for working with the `~/.dotfiles` repo
+Both `.zshrc` and `.bashrc` in the `config` branch source `~/.config/shell/includes/dotfiles.sh`,
+which contains a function for working with the `~/.dotfiles` repo:
 
 ```shell
 dotfiles() {
@@ -32,27 +33,20 @@ dotfiles() {
 }
 ```
 
-as well as a corresponding alias
-
-```shell
-alias dot='dotfiles'
-```
-
 Some example usage below
 
 ```shell
-√ ~ $ dot status
+√ ~ $ dotfiles status
 On branch config
 nothing to commit (use -u to show untracked files)
-√ ~ $ dot add .
+√ ~ $ dotfiles add .
 ❌ Refusing to run 'dotfiles add .' — be specific!
-?1 ~ $ dot add .zprofile
-√ ~ $ dot status
+?1 ~ $ dotfiles add .zprofile
+√ ~ $ dotfiles status
 On branch config
 Changes to be committed:
   (use "git restore --staged <file>..." to unstage)
-	new file:   .zprofile
+ new file:   .zprofile
 
 Untracked files not listed (use -u option to show untracked files)
 ```
-
