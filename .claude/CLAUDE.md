@@ -2,14 +2,10 @@
 
 ## *Surgical Coding*
 
-- Think harder and thoroughly examine similar areas of the codebase to ensure your proposed approach fits seamlessly with the established patterns and architecture.
-
+- Think hard and thoroughly examine similar areas of the codebase to ensure your proposed approach fits seamlessly with the established patterns and architecture.
 - Aim to make only minimal and necessary changes, avoiding any disruption to the existing design.
-
 - Whenever possible, take advantage of components, utilities, or logic that have already been implemented to maintain consistency, reduce duplication, and streamline integration with the current system.
-
 - Before suggesting any implementation, find and list 3 similar patterns *already* in this codebase. Then align your solution with the most appropriate pattern.
-
 - Before adding any code, first check if we can achieve this by removing or simplifying existing code.
 
 ## *Code Style*
@@ -25,7 +21,8 @@
 - Don't write forgiving code
 - Don't add defensive try/catch blocks
   - Usually we let exceptions propagate out
-  - "Dead programs tell no lies" - Uncle Bob"
+  - A program that crashes is much easier to debug than one that silently fails
+    - "Dead programs tell no lies" - Uncle Bob"
 
 - Write functions that are easy to read and understand.
   - Use descriptive names for functions that obviate the necessity for comments.
