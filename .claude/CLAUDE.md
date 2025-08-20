@@ -4,6 +4,7 @@
 
 - **Important:** I prefer to design or verify the structure of the code myself. I don't expect you to write any code that hasn't been specified in a plan document
 - I've added `/llm-context/` as a global git exclude path, which makes it a perfect location of planning docs, or any other needed context
+  - If `llm-context/` doesn't exist, create it
 
 ## Planning for Surgical Code changes
 
