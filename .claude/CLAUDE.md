@@ -2,64 +2,48 @@
 
 ## Coding by LLMs
 
-- **Important:** I prefer to design or verify the structure of the code myself. I don't expect you to write any code that hasn't been specified in a plan document
-- I've added `/llm-context/` as a global git exclude path, which makes it a perfect location of planning docs, or any other needed context
-  - If `llm-context/` doesn't exist, create it
+- Planning before coding
+  - Always plan before coding
+  - Use `/llm-context/` to keep planning docs or supporting context
+    - Create it if it doesn't exist
+  - Do not implement code without a documented plan
+  - Think hard before suggesting changes
+    - Inspect related areas of the codebase for consistency
+    - Find and list 3 similar patterns already in the codebase, then align your solution with the most appropriate pattern
+  - Prefer minimal changes
+    - Consider code simplification or removal before adding code
+    - Reuse existing components, utilities, or logic whenever possible
 
-## Planning for Surgical Code changes
+## Coding by LLMs and Humans
 
-- Think hard and thoroughly examine similar areas of the codebase to ensure your proposed approach fits seamlessly with the established patterns and architecture.
-- Aim for minimal and necessary changes, avoiding any disruption to the existing design.
-- Whenever possible, take advantage of components, utilities, or logic that have already been implemented to maintain consistency, reduce duplication, and streamline integration with the current system.
-- Before suggesting any implementation, find and list 3 similar patterns *already* in this codebase. Then align your solution with the most appropriate pattern.
-- Always check if a goal ban be achieved by removing or simplifying code, rather than adding code.
+- Indentation
+  - Source code (.py, .js, etc.): 4 spaces
+  - Markdown files (.md): 2 spaces
 
-## Coding Style for LLMs and Humans
-
-- Use consistent indentation
-  - Indent with 4 spaces in source code files (.py, .js, etc.)
-  - Indent with 2 spaces in Markdown files (.md)
-
-- Prefer editing an existing file to creating a new one.
-- Never create documentation files (`*.md` or README).
-  - Only create documentation files if explicitly requested by the user.
-
-- Don't write forgiving code
-- Don't add defensive try/catch blocks
-  - Usually we let exceptions propagate out
-  - A program that crashes is much easier to debug than one that silently fails
-    - "Dead programs tell no lies" - Uncle Bob"
-
-- Write functions that are easy to read and understand.
-  - Use descriptive names for functions that obviate the necessity for comments.
-
-- Don't use abbreviations or acronyms
-  - Choose `number` instead of `num` and `greaterThan` instead of `gt`
+- Naming
+  - Use descriptive names instead of comments
+  - Don't use abbreviations or acronyms (except standard ones, e.g. `stdout`, `id`, `url`, etc.)
   - Avoid single-letter variable names, except for loop counters
-  - Use `is` or `has` prefixes for boolean variables
-    - Example: `isActive`, `hasPermission`
+  - Follow conventions for specific languages:
+    - Python: `snake_case` for variables and functions, `CamelCase` for classes
+    - JavaScript: `camelCase` for variables and functions, `PascalCase` for classes
+  - Use is or has prefixes for boolean variables and functions
+    - Example: `isActive` or `is_active`, `hasPermission` or `has_permission`
 
-### *Comments (in code)*
+- Functions
+  - Use descriptive function names
+  - Keep functions small and focused on a single task
+  - Avoid long parameter lists; use objects or dictionaries if necessary
+  - Avoid side effects in functions; they should be pure when possible
 
-- Use comments sparingly
-  - Let the code speak for itself by being well written and self-documenting
-    - Aim for descriptive names for functions, classes, and variables
-    - Consider a comment to be a small technical debt that needs to be paid off
+- Error Handling
+  - Don't write forgiving code
+  - Don't add defensive try/catch blocks. Let exceptions propagate out
+  - "Dead programs tell no lies"
 
-- Don't comment out code
-  - Remove it instead
-
-- Don't add comments that describe the process of changing code
-  - Comments should not include past tense verbs like added, removed, or changed
-  - Example: `this.timeout(10_000); // Increase timeout for API calls`
-  - This is bad because a reader doesn't know what the timeout was increased from, and doesn't care about the old behavior
-
-- Don't add comments that emphasize different versions of the code, like "this code now handles.."
-- Do not use end-of-line comments
-  - Place comments above the code they describe
-- Leave `__init__.py` files empty
-  - I often copy them to subdirectories
-
-### Conversational Etiquette
-
-- Avoid certain militaristic metaphors, like "locked and loaded" (obviously it's OK to "deploy" things)
+- Comments
+  - Use comments sparingly; code should be self-documenting
+  - Don't comment out code
+  - Don't add historical or process-based comments (e.g "increased timeout," "added handler")
+  - Don't emphasize different versions of the code
+  - Leave `__init__.py` files empty (they are often copied)
