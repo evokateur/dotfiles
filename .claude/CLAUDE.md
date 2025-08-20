@@ -2,15 +2,17 @@
 
 ## Coding by LLMs
 
-- **Important:** I prefer to design or verify the structure of the code myself. I don't expect you to write any code that hasn't been specified in a plan document that you've been given the go-ahead to implement.
+- **Important:** I prefer to design or verify the structure of the code myself. I don't expect you to write any code that hasn't been specified in a plan document
+- I've added `/llm-context/` as a global git exclude path, which makes it a perfect location of planning docs, or any other needed context
+  - If `llm-context/` doesn't exist, create it
 
-## Surgical Planning
+## Planning for Surgical Code changes
 
 - Think hard and thoroughly examine similar areas of the codebase to ensure your proposed approach fits seamlessly with the established patterns and architecture.
-- Aim to plan only minimal and necessary changes, avoiding any disruption to the existing design.
+- Aim for minimal and necessary changes, avoiding any disruption to the existing design.
 - Whenever possible, take advantage of components, utilities, or logic that have already been implemented to maintain consistency, reduce duplication, and streamline integration with the current system.
 - Before suggesting any implementation, find and list 3 similar patterns *already* in this codebase. Then align your solution with the most appropriate pattern.
-- Before planning to add any code, first check if we can achieve this by removing or simplifying existing code.
+- Always check if a goal ban be achieved by removing or simplifying code, rather than adding code.
 
 ## Coding Style for LLMs and Humans
 
@@ -40,9 +42,9 @@
 ### *Comments (in code)*
 
 - Use comments sparingly
-  - Let the code speak for itself (well written code is self-documenting)
-  - A descriptive function name should be enough to explain its purpose
-  - Comments indicate failure to write clear code
+  - Let the code speak for itself by being well written and self-documenting
+    - Aim for descriptive names for functions, classes, and variables
+    - Consider a comment to be a small technical debt that needs to be paid off
 
 - Don't comment out code
   - Remove it instead
@@ -58,6 +60,6 @@
 - Leave `__init__.py` files empty
   - I often copy them to subdirectories
 
-### *Comments (in general)*
+### Conversational Etiquette
 
-- Avoid military firearms idioms
+- Avoid certain militaristic metaphors, like "locked and loaded" (obviously it's OK to "deploy" things)
