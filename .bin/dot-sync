@@ -7,9 +7,12 @@ esac
 
 computers=("turnip" "sfizio" "cipolla" "xicamatl")
 
+timeout=17
 for computer in "${computers[@]}"; do
     if [ "$this_computer" != "$computer" ]; then
         echo "🔄  running 'dotfiles pull' on $computer.."
-        ssh "$computer" "source ~/.config/shell/includes/dotfiles.sh && dotfiles pull"
+        if ! ssh -o ConnectTimeout=${timeout} "$computer" "source ~/.config/shell/includes/dotfiles.sh && dotfiles pull" 2>/dev/null; then
+            echo "Waited $timeout seconds.. $computer must be asleep."
+        fi
     fi
 done
