@@ -5,16 +5,29 @@ if [ "$(id -u)" -ne 0 ]; then
     exit 1
 fi
 
-echo "telling dropbox to activate.."
-osascript -e 'tell application "Dropbox" to activate'
+if ! pgrep -x "Dropbox" >/dev/null; then
+    echo "telling Dropbox to activate.."
+    osascript -e 'tell application "Dropbox" to activate'
+fi
 
 echo "starting full charge cycle.."
 bclm-cc || exit 1
 
-echo "telling dropbox to quit.."
+if pgrep -x "Docker Desktop" >/dev/null; then
+    echo "telling Docker Desktop to quit.."
+    osascript -e 'tell application "Docker Desktop" to quit'
+fi
+
+echo "telling Dropbox to quit.."
 osascript -e 'tell application "Dropbox" to quit'
 
-echo "telling docker desktop to quit.."
-osascript -e 'tell application "Docker Desktop" to quit'
+if mullvad status | grep "Disconnected" >/dev/null; then
+    if ! pgrep -x "Mullvad VPN" >/dev/null; then
+        echo "telling Mullvad VPN to activate.."
+        osascript -e 'tell application "Mullvad VPN" to activate'
+    fi
+    echo "telling mullvad to connect.."
+    mullvad connect || exit 1
+fi
 
 echo "undock!, undock!"
