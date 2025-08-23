@@ -1,43 +1,35 @@
 plait() {
-    echo "[turnip]"
-    ssh turnip.local "/Users/wesley/bin/plait $(printf '%q ' "$@")"
+    ssh turnip.local "echo '[turnip]';/Users/wesley/bin/plait $(printf '%q ' "$@")"
 }
 
 plaiting() {
-    echo "[turnip]"
-    ssh turnip.local "/Users/wesley/bin/plaiting"
+    ssh turnip.local "echo '[turnip]';/Users/wesley/bin/plaiting"
 }
 
 unplait() {
-    echo "[turnip]"
-    ssh turnip.local "/Users/wesley/bin/unplait"
+    ssh turnip.local "echo '[turnip]';/Users/wesley/bin/unplait"
 }
 
 drummer() {
-    echo "[turnip]"
-    ssh turnip.local "/Users/wesley/bin/drummer"
+    ssh turnip.local "echo '[turnip]';/Users/wesley/bin/drummer"
 }
 
 kalx() {
-    echo "[turnip]"
-    ssh turnip.local "/Users/wesley/bin/kalx"
+    ssh turnip.local "echo '[turnip]';/Users/wesley/bin/kalx"
 }
+
 kdvs() {
-    echo "[turnip]"
-    ssh turnip.local "/Users/wesley/bin/kdvs"
+    ssh turnip.local "echo '[turnip]';/Users/wesley/bin/kdvs"
 }
 
 kxlu() {
-    echo "[turnip]"
-    ssh turnip.local "/Users/wesley/bin/kxlu"
+    ssh turnip.local "echo '[turnip]';/Users/wesley/bin/kxlu"
 }
 
 rfi() {
-    echo "[turnip]"
-    ssh turnip.local "/Users/wesley/bin/rfi"
+    ssh turnip.local "echo '[turnip]';/Users/wesley/bin/rfi"
 }
 
 wfmu() {
-    echo "[turnip]"
-    ssh turnip.local "/Users/wesley/bin/wfmu"
+    ssh turnip.local "echo '[turnip]';/Users/wesley/bin/wfmu"
 }
