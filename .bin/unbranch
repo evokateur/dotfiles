@@ -1,7 +1,12 @@
 #!/bin/bash
 
-default_branch=$(git remote show origin | sed -n '/HEAD branch/s/.*: //p')
+default_branch=$(git remote show origin | sed -n -E '/(HEAD branch|Branche HEAD)/s/.*: //p')
 current_branch=$(git rev-parse --abbrev-ref HEAD)
+
+if [ -z "$default_branch" ]; then
+    echo "Could not determine default branch, exiting."
+    exit 1
+fi
 
 if [ "$current_branch" != "$default_branch" ]; then
     echo "On branch '${current_branch}'. Switch to '${default_branch}' before running this script."
