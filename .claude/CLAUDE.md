@@ -17,7 +17,7 @@
 ## Coding by LLMs and Humans
 
 - Indentation
-  - Source code (.py, .js, etc.): 4 spaces
+  - Source code (.py, .js, .c, .php, etc.): 4 spaces
   - Markdown files (.md): 2 spaces
 
 - Naming
@@ -25,8 +25,9 @@
   - Don't use abbreviations or acronyms (except standard ones, e.g. `stdout`, `id`, `url`, etc.)
   - Avoid single-letter variable names, except for loop counters
   - Follow conventions for specific languages:
-    - Python: `snake_case` for variables and functions, `CamelCase` for classes
+    - Python: `snake_case` for variables and functions, `PascalCase` for classes
     - JavaScript: `camelCase` for variables and functions, `PascalCase` for classes
+    - HTML: kebab-case for file names and CSS classes
   - Use is or has prefixes for boolean variables and functions
     - Example: `isActive` or `is_active`, `hasPermission` or `has_permission`
 
