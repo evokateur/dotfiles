@@ -7,7 +7,7 @@ esac
 
 computers=("turnip" "sfizio" "cipolla" "xicamatl")
 
-timeout=17
+timeout=30
 for computer in "${computers[@]}"; do
     if [ "$this_computer" != "$computer" ]; then
         echo "🔄  running 'dotfiles pull' on $computer.."

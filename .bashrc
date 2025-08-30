@@ -208,7 +208,7 @@ gemini() {
 }
 
 source "$HOME/.config/shell/includes/dotfiles.sh"
-alias dit='dotfiles'
+alias dots='dotfiles'
 
 if [ "$(scutil --get ComputerName 2>/dev/null)" != "turnip" ]; then
     source "$HOME/.config/shell/includes/turnip.sh"
