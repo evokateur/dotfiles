@@ -208,12 +208,13 @@ gemini() {
 }
 
 source "$HOME/.config/shell/includes/dotfiles.sh"
-alias dots='dotfiles'
+source "$HOME/.config/shell/includes/tar.sh"
 
 if [ "$(scutil --get ComputerName 2>/dev/null)" != "turnip" ]; then
     source "$HOME/.config/shell/includes/turnip.sh"
 fi
 
+alias dots='dotfiles'
 alias srsync="rsync -av -e ssh --exclude='.git/' --exclude='node_modules/' --exclude='*.pyc' --exclude='__pycache__/' --exclude='.venv/' --exclude='env/' --exclude='.env/' --exclude='.mypy_cache/' --exclude='.pytest_cache/'"
 alias pbcopy='xsel --clipboard --input'
 alias ccusage='npx ccusage@latest'
