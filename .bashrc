@@ -26,6 +26,9 @@ export PATH=$HOME/.bin:$PATH
 export PATH=$HOME/.local/bin:$PATH
 export PATH=$HOME/.claude/local:$PATH
 
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
 HISTCONTROL=ignoreboth
@@ -126,15 +129,6 @@ alias dd='dd status=progress'
 alias _='sudo'
 alias _i='sudo -i'
 
-# Alias definitions.
-# You may want to put all your additions into a separate file like
-# ~/.bash_aliases, instead of adding them here directly.
-# See /usr/share/doc/bash-doc/examples in the bash-doc package.
-
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
-fi
-
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
@@ -146,9 +140,16 @@ if ! shopt -oq posix; then
     fi
 fi
 
-export PYENV_ROOT="$HOME/.pyenv"
-[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
+
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+source "$HOME/.config/shell/includes/dotfiles.sh"
+source "$HOME/.config/shell/includes/tar.sh"
+
+if [ "$(scutil --get ComputerName 2>/dev/null)" != "turnip" ]; then
+    source "$HOME/.config/shell/includes/turnip.sh"
+fi
 
 find_venv_root() {
     local dir="$PWD"
@@ -207,18 +208,18 @@ gemini() {
     command gemini "$@"
 }
 
-source "$HOME/.config/shell/includes/dotfiles.sh"
-source "$HOME/.config/shell/includes/tar.sh"
+# Alias definitions.
+# You may want to put all your additions into a separate file like
+# ~/.bash_aliases, instead of adding them here directly.
+# See /usr/share/doc/bash-doc/examples in the bash-doc package.
 
-if [ "$(scutil --get ComputerName 2>/dev/null)" != "turnip" ]; then
-    source "$HOME/.config/shell/includes/turnip.sh"
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
 fi
 
 alias dots='dotfiles'
 alias srsync="rsync -av -e ssh --exclude='.git/' --exclude='node_modules/' --exclude='*.pyc' --exclude='__pycache__/' --exclude='.venv/' --exclude='env/' --exclude='.env/' --exclude='.mypy_cache/' --exclude='.pytest_cache/'"
 alias pbcopy='xsel --clipboard --input'
 alias ccusage='npx ccusage@latest'
-
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 get-natural
