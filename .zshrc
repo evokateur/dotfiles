@@ -24,6 +24,8 @@ export PYENV_ROOT="$HOME/.pyenv"
 
 export DYLD_FALLBACK_LIBRARY_PATH="$(brew --prefix)/lib:$DYLD_FALLBACK_LIBRARY_PATH"
 
+source "$HOME/.config/shell/env/api-keys.sh"
+
 set -o vi
 
 setopt nonomatch
