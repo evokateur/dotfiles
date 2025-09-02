@@ -1,5 +1,7 @@
 # Shell Configuration Organization (.bashrc/.zshrc)
 
+by Claude
+
 ## Recommended Section Order
 
 ### 1. Shell Options & Interactive Check
