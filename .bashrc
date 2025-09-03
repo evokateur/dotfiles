@@ -151,7 +151,7 @@ source "$HOME/.config/shell/functions/tar.sh"
 source "$HOME/.config/shell/functions/venv.sh"
 
 if [ "$(scutil --get ComputerName 2>/dev/null)" != "turnip" ]; then
-    source "$HOME/.config/shell/functions/turnip.sh"
+    source "$HOME/.config/shell/functions/remote-plait.sh"
 fi
 
 venv_auto_activate
