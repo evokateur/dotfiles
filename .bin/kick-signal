@@ -1,6 +1,6 @@
 #!/bin/bash
 
-duration="${1:-60}"
+duration="${1:-17}"
 
 case "$(uname -s)" in
 Linux*)
