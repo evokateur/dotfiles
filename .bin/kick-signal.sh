@@ -1,0 +1,17 @@
+#!/bin/bash
+
+duration="${1:-60}"
+
+case "$(uname -s)" in
+Linux*)
+    /usr/bin/signal-desktop-beta --start-in-tray &
+    sleep "$duration"
+    pkill -f /usr/bin/signal-desktop-beta
+    ;;
+Darwin*)
+    "/Applications/Signal.app/Contents/MacOS/Signal" --start-in-tray &
+
+    sleep "$duration"
+    pkill -f "/Applications/Signal.app/Contents/MacOS/Signal"
+    ;;
+esac
