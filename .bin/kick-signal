@@ -1,6 +1,6 @@
 #!/bin/bash
 
-duration="${1:-17}"
+duration="${1:-30}"
 
 case "$(uname -s)" in
 Linux*)
@@ -9,8 +9,7 @@ Linux*)
     pkill -f /usr/bin/signal-desktop-beta
     ;;
 Darwin*)
-    "/Applications/Signal.app/Contents/MacOS/Signal" --start-in-tray &
-
+    open -a "Signal" --args --start-in-tray &
     sleep "$duration"
     pkill -f "/Applications/Signal.app/Contents/MacOS/Signal"
     ;;
