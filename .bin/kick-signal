@@ -5,7 +5,7 @@ duration="${1:-30}"
 case "$(uname -s)" in
 Linux*)
     echo "$(date +"%Y-%m-%d %H:%M:%S") starting Signal.."
-    /usr/bin/signal-desktop-beta --start-in-tray &
+    /usr/bin/signal-desktop-beta --start-in-tray >/dev/null 2>&1 &
     echo "$(date +"%Y-%m-%d %H:%M:%S") waiting $duration seconds.."
     sleep "$duration"
     echo "$(date +"%Y-%m-%d %H:%M:%S") killing Signal.."
