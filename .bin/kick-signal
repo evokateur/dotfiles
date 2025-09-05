@@ -4,13 +4,21 @@ duration="${1:-30}"
 
 case "$(uname -s)" in
 Linux*)
+    echo "$(date +"%Y-%m-%d %H:%M:%S") starting Signal.."
     /usr/bin/signal-desktop-beta --start-in-tray &
+    echo "$(date +"%Y-%m-%d %H:%M:%S") waiting $duration seconds.."
     sleep "$duration"
+    echo "$(date +"%Y-%m-%d %H:%M:%S") killing Signal.."
     pkill -f /usr/bin/signal-desktop-beta
+    echo "$(date +"%Y-%m-%d %H:%M:%S") done."
     ;;
 Darwin*)
+    echo "$(date +"%Y-%m-%d %H:%M:%S") starting Signal.."
     open -a "Signal" --args --start-in-tray &
+    echo "$(date +"%Y-%m-%d %H:%M:%S") waiting $duration seconds.."
     sleep "$duration"
+    echo "$(date +"%Y-%m-%d %H:%M:%S") killing Signal.."
     pkill -f "/Applications/Signal.app/Contents/MacOS/Signal"
+    echo "$(date +"%Y-%m-%d %H:%M:%S") done."
     ;;
 esac
