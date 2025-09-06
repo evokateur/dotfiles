@@ -1,10 +1,5 @@
 #!/bin/bash
 
-if [ "$(id -u)" -ne 0 ]; then
-    echo 'script must be run by root' >&2
-    exit 1
-fi
-
 if ! pgrep -x "Dropbox" >/dev/null; then
     echo "telling Dropbox to activate.."
     osascript -e 'tell application "Dropbox" to activate'
