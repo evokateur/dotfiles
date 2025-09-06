@@ -48,9 +48,6 @@ reset_bclm() {
     if [ -z "$starting_bclm" ]; then
         return 1
     fi
-    if [ "$starting_bclm" -eq 100 ]; then
-        return 1
-    fi
     sudo bclm write "$starting_bclm"
 }
 
