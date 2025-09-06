@@ -14,10 +14,6 @@ drummer() {
     ssh turnip.local "echo '[turnip]';/Users/wesley/bin/drummer"
 }
 
-kalx() {
-    ssh turnip.local "echo '[turnip]';/Users/wesley/bin/kalx"
-}
-
 kdvs() {
     ssh turnip.local "echo '[turnip]';/Users/wesley/bin/kdvs"
 }
@@ -32,4 +28,8 @@ rfi() {
 
 wfmu() {
     ssh turnip.local "echo '[turnip]';/Users/wesley/bin/wfmu"
+}
+
+tango() {
+    ssh turnip.local "echo '[turnip]';/Users/wesley/bin/tango"
 }
