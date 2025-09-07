@@ -4,10 +4,10 @@ set from="wesley@evokateur.net"
 set realname="Wesley Hinkle"
 
 set smtp_url = "smtp://evokateur@mail.sonic.net:587/"
-set smtp_pass=`pass members.sonic.net/evokateur`
+set smtp_pass=`pass sonic.net/evokateur`
 
 set imap_user="wchinkle"
-set imap_pass=`pass members.sonic.net/wchinkle`
+set imap_pass=`pass sonic.net/wchinkle`
 
 set mail_check=90
 set timeout=15
