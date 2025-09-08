@@ -33,3 +33,7 @@ wfmu() {
 tango() {
     ssh turnip.local "echo '[turnip]';/Users/wesley/bin/tango"
 }
+
+kfjc() {
+    ssh turnip.local "echo '[turnip]';/Users/wesley/bin/kfjc"
+}
