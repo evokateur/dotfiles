@@ -37,3 +37,7 @@ tango() {
 kfjc() {
     ssh turnip.local "echo '[turnip]';/Users/wesley/bin/kfjc"
 }
+
+666() {
+    ssh turnip.local "echo '[turnip]';/users/wesley/bin/666"
+}
