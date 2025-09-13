@@ -1,0 +1,15 @@
+#!/bin/bash
+limit=$(ulimit -u)
+warn=$((limit * 90 / 100))
+
+echo "Monitoring processes for $USER (limit: $limit, warn at: $warn)..."
+while true; do
+    count=$(ps -u "$USER" | wc -l)
+    ts=$(date "+%H:%M:%S")
+    if [ "$count" -gt "$warn" ]; then
+        echo "[$ts] ⚠️  Process count high: $count / $limit"
+    else
+        echo "[$ts] Process count: $count / $limit"
+    fi
+    sleep 2
+done
