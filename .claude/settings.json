@@ -146,7 +146,7 @@
       "Bash(npm run start:*)",
       "Bash(op)",
       "Bash(op:*)",
-      "Bash(rm -rf: *)"
+      "Bash(rm -rf: :*)"
     ]
   },
   "model": "opus",
