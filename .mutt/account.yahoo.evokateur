@@ -1,0 +1,32 @@
+set from="evokateur@yahoo.com"
+set realname="Wesley Hinkle"
+
+set smtp_url = "smtps://smtp.mail.yahoo.com:465/"
+set smtp_pass="`pass yahoo.com/evokateur`"
+
+set imap_user="evokateur"
+set imap_pass="`pass app/mail.yahoo.com`"
+
+set folder="imaps://imap.mail.yahoo.com:993"
+set spoolfile="+INBOX"
+
+set record = "=Sent"
+set postponed = "=Draft"
+
+save-hook . "=Archive"
+
+send-hook . set signature=~/.mutt/sig
+
+# Yahoo-specific optimizations
+set imap_passive=no           # Don't open new connections unnecessarily  
+set imap_idle=yes             # Use IDLE command for real-time updates
+set mail_check=300            # Check less frequently (5 minutes)
+
+# Folder subscriptions - only subscribe to folders you actually use
+# This prevents mutt from seeing all the promotional/spam folders Yahoo creates
+# You can add these after connecting and seeing what folders exist:
+# subscribe "INBOX"
+# subscribe "Sent" 
+# subscribe "Draft"
+# subscribe "Trash"
+# unsubscribe "Bulk Mail"

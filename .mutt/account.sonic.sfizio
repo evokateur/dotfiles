@@ -1,0 +1,17 @@
+set from="sfizio@evokateur.net"
+set realname="Wesley Hinkle"
+
+set smtp_url = "smtp://evokateur@mail.sonic.net:587/"
+set smtp_pass="`pass sonic.net/evokateur`"
+
+set imap_user="sfizio"
+set imap_pass="`pass sonic.net/sfizio`"
+
+set folder="imaps://imap.sonic.net:993"
+set spoolfile="+INBOX"
+
+set record = '=INBOX.Sent Messages'
+set postponed = '=INBOX.Drafts'
+
+save-hook . '=INBOX.Archive'
+send-hook . set signature=~/.mutt/sig
