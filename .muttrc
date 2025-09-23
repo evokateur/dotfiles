@@ -7,6 +7,8 @@ set timeout=15
 set imap_keepalive=900
 set imap_check_subscribed=yes
 set imap_list_subscribed=yes
+set imap_fetch_chunk_size=200
+set imap_idle=no
 
 set read_inc=100
 set write_inc=100

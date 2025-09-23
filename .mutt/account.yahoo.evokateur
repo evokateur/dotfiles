@@ -5,7 +5,7 @@ set smtp_url = "smtps://smtp.mail.yahoo.com:465/"
 set smtp_pass="`pass yahoo.com/evokateur`"
 
 set imap_user="evokateur"
-set imap_pass="`pass app/mail.yahoo.com`"
+set imap_pass="`pass yahoo.com/evokateur-mutt`"
 
 set folder="imaps://imap.mail.yahoo.com:993"
 set spoolfile="+INBOX"
