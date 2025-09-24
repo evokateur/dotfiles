@@ -2,10 +2,10 @@ set from="evokateur@yahoo.com"
 set realname="Wesley Hinkle"
 
 set smtp_url="smtps://evokateur@yahoo.com@smtp.mail.yahoo.com:465/"
-set smtp_pass="`pass yahoo.com/evokateur-mutt`"
+set smtp_pass="`pass evokateur@yahoo.com/mutt`"
 
 set imap_user="evokateur@yahoo.com"
-set imap_pass="`pass yahoo.com/evokateur-mutt`"
+set imap_pass="`pass evokateur@yahoo.com/mutt`"
 
 set folder="imaps://imap.mail.yahoo.com:993"
 set spoolfile="+INBOX"

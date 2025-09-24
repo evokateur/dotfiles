@@ -3,11 +3,11 @@ set realname="Wesley Hinkle"
 
 # SMTP (sending mail)
 set smtp_url="smtp://wchinkle@smtp.gmail.com:587/"
-set smtp_pass="`pass google.com/wchinkle-mutt`"
+set smtp_pass="`pass wchinkle@gmail.com/mutt`"
 
 # IMAP (receiving mail)
 set imap_user="wchinkle@gmail.com"
-set imap_pass="`pass google.com/wchinkle-mutt`"
+set imap_pass="`pass wchinkle@gmail.com/mutt`"
 
 set folder="imaps://imap.gmail.com:993"
 set spoolfile="+INBOX"
