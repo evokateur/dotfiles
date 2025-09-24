@@ -33,6 +33,7 @@ auto_view text/html
 source ~/.mutt/account.sonic.wchinkle
 
 macro index,pager <f2> '<sync-mailbox><enter-command>source ~/.mutt/account.sonic.wchinkle<enter><change-folder>!<enter>' "Switch to wesley@evokateur.net"
-macro index,pager <f3> '<sync-mailbox><enter-command>source ~/.mutt/account.sonic.sfizio<enter><change-folder>!<enter>' "Switch to sfizio@evokateur.net"
-macro index,pager <f4> '<sync-mailbox><enter-command>source ~/.mutt/account.gmail.wchinkle<enter><change-folder>!<enter>' "Switch to wchinkle@gmail.com"
-macro index,pager <f5> '<sync-mailbox><enter-command>source ~/.mutt/account.yahoo.evokateur<enter><change-folder>!<enter>' "Switch to evokateur@yahoo.com"
+macro index,pager <f3> '<sync-mailbox><enter-command>source ~/.mutt/account.sonic.evokateur<enter><change-folder>!<enter>' "Switch to evokateur@sonic.net"
+macro index,pager <f4> '<sync-mailbox><enter-command>source ~/.mutt/account.sonic.sfizio<enter><change-folder>!<enter>' "Switch to sfizio@evokateur.net"
+macro index,pager <f5> '<sync-mailbox><enter-command>source ~/.mutt/account.gmail.wchinkle<enter><change-folder>!<enter>' "Switch to wchinkle@gmail.com"
+macro index,pager <f6> '<sync-mailbox><enter-command>source ~/.mutt/account.yahoo.evokateur<enter><change-folder>!<enter>' "Switch to evokateur@yahoo.com"
