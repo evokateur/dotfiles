@@ -8,6 +8,10 @@ export default {
     {
       match: /youtu\.be/,
       browser: "YouTube"
+    },
+    {
+      match: /google\.com/,
+      browser: "Chromium"
     }
   ]
 };
