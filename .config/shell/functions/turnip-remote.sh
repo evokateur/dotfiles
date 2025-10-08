@@ -1,5 +1,5 @@
 plait() {
-    ssh turnip.local "echo '[turnip]';/Users/wesley/bin/plait $(printf '%q ' "$@")"
+    ssh -t turnip.local "echo '[turnip]';/Users/wesley/bin/plait $(printf '%q ' "$@")" 2>/dev/null
 }
 
 plaiting() {
