@@ -3,11 +3,11 @@ export default {
   handlers: [
     {
       match: /youtube\.com/,
-      browser: "YouTube"
+      browser: "YouTube Wrapper"
     },
     {
       match: /youtu\.be/,
-      browser: "YouTube"
+      browser: "YouTube Wrapper"
     },
     {
       match: /google\.com/,
