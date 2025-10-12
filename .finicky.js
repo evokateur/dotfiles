@@ -10,7 +10,7 @@ export default {
       browser: "YouTube Wrapper"
     },
     {
-      match: /google\.com/,
+      match: /google\.com(?!\/url)/,
       browser: "Chromium"
     }
   ]
