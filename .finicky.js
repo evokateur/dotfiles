@@ -1,17 +1,17 @@
 export default {
-  defaultBrowser: "Firefox",
-  handlers: [
-    {
-      match: /youtube\.com/,
-      browser: "YouTube Wrapper"
-    },
-    {
-      match: /youtu\.be/,
-      browser: "YouTube Wrapper"
-    },
-    {
-      match: /google\.com(?!\/url)/,
-      browser: "Chromium"
-    }
-  ]
+    defaultBrowser: "Firefox",
+    handlers: [
+        {
+            match: /youtube\.com/,
+            browser: "YouTube Wrapper"
+        },
+        {
+            match: /youtu\.be/,
+            browser: "YouTube Wrapper"
+        },
+        {
+            match: /google\.com(?!\/url)/,
+            browser: "Chromium"
+        }
+    ]
 };
