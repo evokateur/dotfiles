@@ -1,3 +1,5 @@
+set smtp_authenticators = "plain:login"
+
 set editor="vim"
 set sleep_time=0
 
