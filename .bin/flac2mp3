@@ -1,0 +1,14 @@
+#!/bin/bash
+
+command -v ffmpeg >/dev/null 2>&1 || {
+    echo "ffmpeg not found; exiting.."
+    exit 1
+}
+
+DIR="${1:-.}"
+
+for flac_file in "$DIR"/*.flac; do
+    [ -e "$flac_file" ] || continue
+    mp3_file="${flac_file%.flac}.mp3"
+    ffmpeg -i "$flac_file" -vn -ar 44100 -ac 2 -b:a 320k "$mp3_file"
+done
