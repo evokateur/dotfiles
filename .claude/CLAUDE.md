@@ -4,8 +4,9 @@
 
 - Planning before coding
   - Always plan before coding
-  - Use `/llm-context/` to keep planning docs or supporting context
+  - Use `llm-context/` to keep planning docs or supporting context
     - Create it if it doesn't exist
+    - It is globally excluded so you won't create untracked files in it.
   - Do not implement code without a documented plan
   - Think hard before suggesting changes
     - Inspect related areas of the codebase for consistency
