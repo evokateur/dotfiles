@@ -181,5 +181,6 @@ alias srsync="rsync -av -e ssh --exclude='.git/' --exclude='node_modules/' --exc
 alias pbcopy='xsel --clipboard --input'
 alias ccusage='npx ccusage@latest'
 alias claude="~/.claude/local/claude"
+alias rm='rm -I'
 
 get-natural
