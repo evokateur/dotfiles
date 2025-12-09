@@ -2,6 +2,8 @@
 
 ## Coding by LLMs
 
+- Never, *ever*, run `git revert`.
+
 - Planning before coding
   - Always plan before coding
   - Use `llm-context/` to keep planning docs or supporting context
