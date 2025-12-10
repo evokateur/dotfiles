@@ -30,7 +30,7 @@ venv_auto_switch() {
             export VENV_ROOT="$new_root"
         fi
     else
-        if [[ -n "$VIRTUAL_ENV" ]]; then
+        if [[ -n "$VIRTUAL_ENV" ]] && declare -f deactivate >/dev/null; then
             deactivate
             unset VENV_ROOT
         fi
