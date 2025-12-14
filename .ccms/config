@@ -1,4 +1,0 @@
-# ccms configuration
-REMOTE_HOST="oignon.evokateur.net"
-REMOTE_PATH="~/claude-backup"
-RSYNC_OPTS="-avz"

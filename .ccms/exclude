@@ -1,4 +1,0 @@
-# Add exclude patterns here if needed (one per line)
-*.log
-temp/
-.DS_Store
