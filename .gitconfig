@@ -8,7 +8,7 @@
     lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 [core]
 	editor = vim
-	excludesfile = /Users/wesley/.git-exclude
+	excludesfile = ~/.git-exclude
 [push]
 	default = simple
 [init]
