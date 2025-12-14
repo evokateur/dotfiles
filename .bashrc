@@ -146,6 +146,7 @@ eval "$(pyenv init -)"
 
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
+source "$HOME/.config/shell/functions/claude-context.sh"
 source "$HOME/.config/shell/functions/dotfiles.sh"
 source "$HOME/.config/shell/functions/tar.sh"
 source "$HOME/.config/shell/functions/venv.sh"

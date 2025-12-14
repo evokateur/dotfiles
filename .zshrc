@@ -37,6 +37,7 @@ autoload -U add-zsh-hook
 
 eval "$(pyenv init -)"
 
+source "$HOME/.config/shell/functions/claude-context.sh"
 source "$HOME/.config/shell/functions/dotfiles.sh"
 source "$HOME/.config/shell/functions/tar.sh"
 source "$HOME/.config/shell/functions/venv.sh"
