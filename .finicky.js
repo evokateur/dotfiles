@@ -12,6 +12,10 @@ export default {
         {
             match: /google\.com(?!\/url)/,
             browser: "Chromium"
+        },
+        {
+            match: /bzamayo\.com/,
+            browser: "Safari"
         }
     ]
 };
