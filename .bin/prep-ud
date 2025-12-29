@@ -1,5 +1,30 @@
 #!/bin/bash
 
+wait_for() {
+    func="$1"
+    timeout_seconds=10
+    elapsed_seconds=0
+    while [ $elapsed_seconds -lt "$timeout_seconds" ]; do
+        if "$func"; then
+            return 0
+        fi
+        sleep 1
+        elapsed_seconds=$((elapsed_seconds + 1))
+    done
+    return 1
+}
+
+is_vpn_connected() {
+    mullvad status | grep "Connected" >/dev/null
+}
+
+activate_mullvad_app() {
+    if ! pgrep -x "Mullvad VPN" >/dev/null; then
+        echo "telling Mullvad VPN to activate.."
+        osascript -e 'tell application "Mullvad VPN" to activate'
+    fi
+}
+
 if ! pgrep -x "Dropbox" >/dev/null; then
     echo "telling Dropbox to activate.."
     osascript -e 'tell application "Dropbox" to activate'
@@ -17,12 +42,14 @@ echo "telling Dropbox to quit.."
 osascript -e 'tell application "Dropbox" to quit'
 
 if mullvad status | grep "Disconnected" >/dev/null; then
-    if ! pgrep -x "Mullvad VPN" >/dev/null; then
-        echo "telling Mullvad VPN to activate.."
-        osascript -e 'tell application "Mullvad VPN" to activate'
-    fi
+    # activate_mullvad_app
     echo "telling mullvad to connect.."
     mullvad connect || exit 1
 fi
 
-echo "undock!, undock!"
+if wait_for "is_vpn_connected"; then
+    echo "vpn connected; undock!, undock!"
+else
+    echo "vpn failed to connect" >&2
+    exit 1
+fi
