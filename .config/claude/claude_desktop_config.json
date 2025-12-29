@@ -1,0 +1,21 @@
+{
+    "preferences": {
+        "quickEntryShortcut": "off",
+        "menuBarEnabled": false
+    },
+    "mcpServers": {
+        "rag-knowledge": {
+            "command": "/Users/wesley/.local/bin/uv",
+            "args": [
+                "run",
+                "--directory",
+                "/Users/wesley/code/rag-knowledge-mcp",
+                "python",
+                "rag_knowledge_mcp.py"
+            ],
+            "env": {
+                "LOG_LEVEL": "INFO"
+            }
+        }
+    }
+}
