@@ -35,7 +35,11 @@ PS1='%(?.%F{green}√.%F{red}?%?)%f %B%F{240}%1~%f%b $ '
 autoload -Uz compinit && compinit
 autoload -U add-zsh-hook
 
-eval "$(pyenv init -)"
+pyenv() {
+    unset -f pyenv
+    eval "$(command pyenv init -)"
+    pyenv "$@"
+}
 
 source "$HOME/.config/shell/functions/claude-context.sh"
 source "$HOME/.config/shell/functions/dotfiles.sh"
