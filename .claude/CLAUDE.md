@@ -51,3 +51,9 @@
   - Don't add historical or process-based comments (e.g "increased timeout," "added handler")
   - Don't emphasize different versions of the code
   - Leave `__init__.py` files empty (they are often copied)
+
+## README.md writing by LLMs and Humans
+
+- Keep it concise and focused on essential information
+- Do not use sale-y or promotional language
+- Do not include lengthy tutorials or documentation
