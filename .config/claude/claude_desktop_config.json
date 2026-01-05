@@ -15,7 +15,9 @@
     }
   },
   "preferences": {
-    "menuBarEnabled": false,
-    "quickEntryShortcut": "off"
+    "menuBarEnabled": true,
+    "quickEntryShortcut": {
+      "accelerator": "Alt+Space"
+    }
   }
 }
