@@ -18,31 +18,28 @@ is_vpn_connected() {
     mullvad status | grep "Connected" >/dev/null
 }
 
-activate_mullvad_app() {
-    if ! pgrep -x "Mullvad VPN" >/dev/null; then
-        echo "telling Mullvad VPN to activate.."
-        osascript -e 'tell application "Mullvad VPN" to activate'
-    fi
+tell() {
+    local app_name="$1"
+    local what="$2"
+
+    if [ "$what" = "quit" ] && ! pgrep -x "$app_name" >/dev/null; then return 1; fi
+    if [ "$what" = "activate" ] && pgrep -x "$app_name" >/dev/null; then return 1; fi
+
+    echo "telling $app_name to $what.."
+    osascript -e "tell application \"$app_name\" to $what" || return 1
+    return 0
 }
 
-if ! pgrep -x "Dropbox" >/dev/null; then
-    echo "telling Dropbox to activate.."
-    osascript -e 'tell application "Dropbox" to activate'
-fi
+tell "Dropbox" "activate"
 
 echo "starting full charge cycle.."
 bclm-cc || exit 1
 
-if pgrep -x "Docker Desktop" >/dev/null; then
-    echo "telling Docker Desktop to quit.."
-    osascript -e 'tell application "Docker Desktop" to quit'
-fi
+tell "Docker Desktop" "quit"
+tell "Dropbox" "quit"
 
-echo "telling Dropbox to quit.."
-osascript -e 'tell application "Dropbox" to quit'
-
-if mullvad status | grep "Disconnected" >/dev/null; then
-    # activate_mullvad_app
+if ! is_vpn_connected; then
+    # tell_app "Mullvad VPN" "activate"
     echo "telling mullvad to connect.."
     mullvad connect || exit 1
 fi
