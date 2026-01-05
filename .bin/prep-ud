@@ -14,7 +14,7 @@ wait_for() {
     return 1
 }
 
-is_vpn_connected() {
+vpn_is_connected() {
     mullvad status | grep "Connected" >/dev/null
 }
 
@@ -43,13 +43,13 @@ bclm-cc || exit 1
 tell "Docker Desktop" "quit"
 tell "Dropbox" "quit"
 
-if ! is_vpn_connected; then
+if ! vpn_is_connected; then
     # tell_app "Mullvad VPN" "activate"
     echo "telling mullvad to connect.."
     mullvad connect || exit 1
 fi
 
-if wait_for "is_vpn_connected"; then
+if wait_for "vpn_is_connected"; then
     echo "vpn connected; undock!, undock!"
 else
     echo "vpn failed to connect" >&2
