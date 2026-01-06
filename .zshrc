@@ -1,3 +1,5 @@
+ZSHRC_START=$(date +%s.%N)
+
 export CLICOLOR=1
 export LSCOLORS=ExFxBxDxCxegedabagacad
 
@@ -20,7 +22,8 @@ export PATH="$HOME/.pixi/bin:$PATH"
 export PATH="$HOME/.claude/local:$PATH"
 
 export PYENV_ROOT="$HOME/.pyenv"
-[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+[[ -d "$PYENV_ROOT/bin" ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+[[ -d "$PYENV_ROOT/shims" ]] && export PATH="$PYENV_ROOT/shims:$PATH"
 
 export DYLD_FALLBACK_LIBRARY_PATH="$(brew --prefix)/lib:$DYLD_FALLBACK_LIBRARY_PATH"
 
@@ -35,9 +38,11 @@ PS1='%(?.%F{green}√.%F{red}?%?)%f %B%F{240}%1~%f%b $ '
 autoload -Uz compinit && compinit
 autoload -U add-zsh-hook
 
+# eval "$(pyenv init - zsh)"
+
 pyenv() {
     unset -f pyenv
-    eval "$(command pyenv init -)"
+    eval "$(command pyenv init - zsh)"
     pyenv "$@"
 }
 
@@ -71,3 +76,8 @@ alias srsync="rsync -av -e ssh --exclude='.git/' --exclude='node_modules/' --exc
 alias ccusage='npx ccusage@latest'
 alias claude="~/.claude/local/claude"
 alias rm='rm -I'
+
+ZSHRC_END=$(date +%s.%N)
+#printf "zshrc loaded in %.3f s\n" \
+LC_NUMERIC=C printf "zshrc loaded in %.3f s\n" \
+  "$(( ZSHRC_END - ZSHRC_START ))"
