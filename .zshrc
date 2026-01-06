@@ -22,8 +22,7 @@ export PATH="$HOME/.pixi/bin:$PATH"
 export PATH="$HOME/.claude/local:$PATH"
 
 export PYENV_ROOT="$HOME/.pyenv"
-[[ -d "$PYENV_ROOT/bin" ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-[[ -d "$PYENV_ROOT/shims" ]] && export PATH="$PYENV_ROOT/shims:$PATH"
+PATH="$PYENV_ROOT/shims:$PYENV_ROOT/bin:$PATH"
 
 export DYLD_FALLBACK_LIBRARY_PATH="$(brew --prefix)/lib:$DYLD_FALLBACK_LIBRARY_PATH"
 
@@ -37,8 +36,6 @@ PS1='%(?.%F{green}√.%F{red}?%?)%f %B%F{240}%1~%f%b $ '
 
 autoload -Uz compinit && compinit
 autoload -U add-zsh-hook
-
-# eval "$(pyenv init - zsh)"
 
 pyenv() {
     unset -f pyenv
