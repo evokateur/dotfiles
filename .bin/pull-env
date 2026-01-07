@@ -1,0 +1,5 @@
+#!/bin/bash
+
+source ~/.config/shell/functions/dotfiles.sh && dotfiles pull
+pass git pull
+cd ~/.config/nvim && git pull
