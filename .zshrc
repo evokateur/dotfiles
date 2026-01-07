@@ -1,4 +1,5 @@
-ZSHRC_START=$(date +%s.%N)
+zmodload zsh/datetime 2>/dev/null
+ZSHRC_START=$EPOCHREALTIME
 
 export CLICOLOR=1
 export LSCOLORS=ExFxBxDxCxegedabagacad
@@ -74,7 +75,5 @@ alias ccusage='npx ccusage@latest'
 alias claude="~/.claude/local/claude"
 alias rm='rm -I'
 
-ZSHRC_END=$(date +%s.%N)
-#printf "zshrc loaded in %.3f s\n" \
 LC_NUMERIC=C printf "zshrc loaded in %.3f s\n" \
-  "$(( ZSHRC_END - ZSHRC_START ))"
+      "$(( EPOCHREALTIME - ZSHRC_START ))"
