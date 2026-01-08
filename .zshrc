@@ -32,6 +32,7 @@ source "$HOME/.config/shell/env/api-keys.sh"
 set -o vi
 
 setopt nonomatch
+# setopt completealiases completeinword globcomplete menucomplete
 
 PS1='%(?.%F{green}√.%F{red}?%?)%f %B%F{240}%1~%f%b $ '
 
@@ -46,6 +47,7 @@ pyenv() {
 
 source "$HOME/.config/shell/functions/claude-context.sh"
 source "$HOME/.config/shell/functions/dotfiles.sh"
+source "$HOME/.config/shell/functions/hrvst-completion.sh"
 source "$HOME/.config/shell/functions/tar.sh"
 source "$HOME/.config/shell/functions/venv.sh"
 
