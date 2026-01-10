@@ -32,7 +32,6 @@ source "$HOME/.config/shell/env/api-keys.sh"
 set -o vi
 
 setopt nonomatch
-# setopt completealiases completeinword globcomplete menucomplete
 
 PS1='%(?.%F{green}√.%F{red}?%?)%f %B%F{240}%1~%f%b $ '
 
