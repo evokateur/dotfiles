@@ -22,12 +22,16 @@ tell() {
     local some_app="$1"
     local what="$2"
 
+    is_running() {
+        pgrep -x "$1" >/dev/null
+    }
+
     case "$what" in
     quit)
-        pgrep -x "$some_app" >/dev/null || return 1
+        is_running "$some_app" || return 0
         ;;
     activate)
-        ! pgrep -x "$some_app" >/dev/null || return 1
+        ! is_running "$some_app" || return 0
         ;;
     esac
 
@@ -35,13 +39,13 @@ tell() {
     osascript -e "tell application \"$some_app\" to $what" || return 1
 }
 
-tell "Dropbox" "activate"
+tell "Dropbox" "activate" || exit 1
 
 echo "starting full charge cycle.."
 bclm-cc || exit 1
 
-tell "Docker Desktop" "quit"
-tell "Dropbox" "quit"
+tell "Docker Desktop" "quit" || exit 1
+tell "Dropbox" "quit" || exit 1
 
 if ! vpn_is_connected; then
     # tell_app "Mullvad VPN" "activate"
@@ -49,6 +53,7 @@ if ! vpn_is_connected; then
     mullvad connect || exit 1
 fi
 
+echo "checking vpn connection.."
 if wait_for "vpn_is_connected"; then
     echo "vpn connected; undock!, undock!"
 else
