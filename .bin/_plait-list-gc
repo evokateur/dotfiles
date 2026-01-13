@@ -1,0 +1,33 @@
+#!/bin/bash
+
+# Add to crontab:
+# */1 * * * * /path/to/plait-list-gc >> /path/to/plait-list-gc.log 2>&1
+
+STATE_FILE="/tmp/_plait-music-state"
+
+is_apple_music_playing() {
+    state=$(osascript -e 'tell application "Music" to player state as string' 2>/dev/null)
+    if [[ "$state" == "playing" ]]; then
+        return 0 # true
+    else
+        return 1 # false
+    fi
+}
+
+# Read previous state
+if [ -f "$STATE_FILE" ]; then
+    prev_state=$(cat "$STATE_FILE")
+else
+    prev_state="not_playing"
+fi
+
+if ! is_apple_music_playing; then
+    if [ "$prev_state" = "not_playing" ]; then
+        if [ "$(osascript -e 'tell application "Music" to delete (every playlist whose name is "_plait-list")')" == "Music" ]; then
+            echo "_plait-list clobbered at $(date)"
+        fi
+    fi
+    echo "not_playing" >"$STATE_FILE"
+else
+    echo "playing" >"$STATE_FILE"
+fi
