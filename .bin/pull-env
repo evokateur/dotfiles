@@ -6,5 +6,10 @@ echo
 echo "Running 'pass git pull'.."
 pass git pull
 echo
-echo "Running 'git pull' in ~/.config/nvim.."
+echo "Running 'git pull' in ~/.config/nvim/.."
 cd ~/.config/nvim && git pull
+echo
+echo "Running 'git pull' in ~/obsidian-vault/.."
+cd ~/obsidian-vault/ && git pull
+echo
+echo "Done."
