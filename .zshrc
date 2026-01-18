@@ -69,7 +69,6 @@ gemini() {
     command gemini "$@"
 }
 
-alias dit='dotfiles'
 alias dots='dotfiles'
 alias srsync="rsync -av -e ssh --exclude='.git/' --exclude='node_modules/' --exclude='*.pyc' --exclude='__pycache__/' --exclude='.venv/' --exclude='env/' --exclude='.env/' --exclude='.mypy_cache/' --exclude='.pytest_cache/'"
 alias ccusage='npx ccusage@latest'
