@@ -1,13 +1,5 @@
 #!/bin/sh
 
-if ! type bclm >//dev/null 2>&1; then
-    echo 'bclm command not found, exiting' >&2
-    exit 1
-fi
-
-starting_bclm=$(bclm read)
-echo "current bclm is $starting_bclm"
-
 has_battery() {
     pmset -g batt | grep -q 'InternalBattery'
 }
@@ -79,6 +71,11 @@ handle_interrupt() {
     exit 0
 }
 
+if ! type bclm >//dev/null 2>&1; then
+    echo 'bclm command not found, exiting' >&2
+    exit 1
+fi
+
 if ! has_battery; then
     echo 'no battery found, exiting' >&2
     exit 1
@@ -88,6 +85,9 @@ if is_not_plugged; then
     echo 'not plugged in, exiting' >&2
     exit 1
 fi
+
+starting_bclm=$(bclm read)
+echo "current bclm is $starting_bclm"
 
 if [ "$starting_bclm" -eq 100 ]; then
     echo 'nothing to do, exiting'
