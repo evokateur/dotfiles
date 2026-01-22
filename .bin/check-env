@@ -1,15 +1,18 @@
 #!/bin/bash
 
-echo "Running 'dotfiles status'.."
+source "$HOME/.config/shell/env/colors.sh"
+FORMAT="${ITALIC}${BLUE}%s${RESET}\n"
+
+printf "$FORMAT" "Running 'dotfiles status'.."
 source "$HOME/.config/shell/functions/dotfiles.sh" && dotfiles status
 echo
-echo "Running 'pass git status'.."
+printf "$FORMAT" "Running 'pass git status'.."
 pass git status
 echo
-echo "Running 'git status' in ~/.config/nvim/.."
+printf "$FORMAT" "Running 'git status' in ~/.config/nvim.."
 cd ~/.config/nvim && git status
 echo
-echo "Running 'git status' in ~/obsidian-vault/.."
+printf "$FORMAT" "Running 'git status' in ~/obsidian-vault.."
 cd ~/obsidian-vault/ && git status
 echo
 echo "Done."
