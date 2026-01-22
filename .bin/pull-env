@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo "Running 'dotfiles pull'.."
-source ~/.config/shell/functions/dotfiles.sh && dotfiles pull
+source "$HOME/.config/shell/functions/dotfiles.sh" && dotfiles pull
 echo
 echo "Running 'pass git pull'.."
 pass git pull
