@@ -3,16 +3,16 @@
 source "$HOME/.config/shell/env/colors.sh"
 FORMAT="${ITALIC}${BLUE}%s${RESET}\n"
 
-printf "$FORMAT" "Running 'dotfiles pull'.."
+printf "$FORMAT" "🔄 Running 'dotfiles pull'.."
 source "$HOME/.config/shell/functions/dotfiles.sh" && dotfiles pull
 echo
-printf "$FORMAT" "Running 'pass git pull'.."
+printf "$FORMAT" "🔄 Running 'pass git pull'.."
 pass git pull
 echo
-printf "$FORMAT" "Running 'git pull' in ~/.config/nvim.."
+printf "$FORMAT" "🔄 Running 'git pull' in ~/.config/nvim.."
 cd ~/.config/nvim && git pull
 echo
-printf "$FORMAT" "Running 'git pull' in ~/obsidian-vault.."
+printf "$FORMAT" "🔄 Running 'git pull' in ~/obsidian-vault.."
 cd ~/obsidian-vault/ && git pull
 echo
 echo "Done."
