@@ -72,7 +72,6 @@ gemini() {
 alias dots='dotfiles'
 alias srsync="rsync -av -e ssh --exclude='.git/' --exclude='node_modules/' --exclude='*.pyc' --exclude='__pycache__/' --exclude='.venv/' --exclude='env/' --exclude='.env/' --exclude='.mypy_cache/' --exclude='.pytest_cache/'"
 alias ccusage='npx ccusage@latest'
-alias claude="~/.claude/local/claude"
 alias rm='rm -I'
 
 LC_NUMERIC=C printf "zshrc loaded in %.3f s\n" \
