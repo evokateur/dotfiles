@@ -14,5 +14,3 @@ cd ~/.config/nvim && git status
 echo
 printf "$FORMAT" "Running 'git status' in ~/obsidian-vault.."
 cd ~/obsidian-vault/ && git status
-echo
-echo "Done."

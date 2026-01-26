@@ -14,5 +14,3 @@ cd ~/.config/nvim && git pull
 echo
 printf "$FORMAT" "🔄 Running 'git pull' in ~/obsidian-vault.."
 cd ~/obsidian-vault/ && git pull
-echo
-echo "Done."
