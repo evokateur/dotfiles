@@ -1,0 +1,26 @@
+chat:
+  model: gpt-4o
+  temperature: 0.7
+mcp:
+  rag-knowledge:
+    command: /Users/wesley/.local/bin/uv
+    args:
+      - run
+      - --directory
+      - /Users/wesley/code/rag-knowledge-mcp
+      - python
+      - rag_knowledge_mcp.py
+    env:
+      LOG_LEVEL: INFO
+    x-tool-name: rag_search_knowledge
+crews:
+  cv_analysis:
+    agents:
+      cv_analyst:
+        model: gpt-4o-mini
+        temperature: 0.7
+  job_posting_analysis:
+    agents:
+      job_analyst:
+        model: gpt-4o-mini
+        temperature: 0.7
