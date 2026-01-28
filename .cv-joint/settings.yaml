@@ -1,7 +1,7 @@
 chat:
   model: gpt-4o
   temperature: 0.7
-mcp:
+mcpServers:
   rag-knowledge:
     command: /Users/wesley/.local/bin/uv
     args:
