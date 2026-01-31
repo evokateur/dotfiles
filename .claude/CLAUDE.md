@@ -6,10 +6,12 @@
 
 - Planning before coding
   - Always plan before coding
-  - Use `.llm-context/` to keep planning docs or supporting context
-    - Create it if it doesn't exist as a directory or a symlink
+  - Use `./.llm-context/` to keep planning docs or supporting context
+    - Typically this will be a symlink to a folder outside the repo
+    - You may create it as a directory if a symlink or directory doesn't exist
     - It is globally excluded so you won't create untracked files in it.
-  - Do not implement code without a documented plan
+    - You may read and write to it freely
+  - Don't go off implementing without a vetted plan
   - Think hard before suggesting changes
     - Inspect related areas of the codebase for consistency
     - Find and list 3 similar patterns already in the codebase, then align your solution with the most appropriate pattern
@@ -19,12 +21,27 @@
 
 ## Coding by LLMs and Humans
 
+- Domain Driven Design
+  - Use domain language everywhere (ubiquitously!)
+  - Make business rules explicit and visible
+  - Let complexity drive use of DDD patterns
+    - Start simple, i.e. clear functions and domain names
+    - Add patterns and structure when needed
+  - Keep domain code pure to a degree that's pragmatic
+    - Expressing the domain model clearly is the main idea of the day
+    - A pure domain interface is more important than a pure implementation
+    - Keep any implementation easy to refactor to a pure domain model
+
 - Indentation
-  - Source code (.py, .js, .c, .php, etc.): 4 spaces
-  - Markdown files (.md): 2 spaces
+  - In general:
+    - Source code (.py, .js, .c, .php, etc.): 4 spaces
+    - Markdown files (.md): 2 spaces
+  - However:
+    - Always follow the established convention of the codebase
+    - Ascertain the existing convention before defaulting to the preferred
 
 - Naming
-  - Use descriptive names instead of comments
+  - Prefer descriptive names to names that require comments to understand
   - Don't use abbreviations or acronyms (except standard ones, e.g. `stdout`, `id`, `url`, etc.)
   - Avoid single-letter variable names, except for loop counters
   - Follow conventions for specific languages:
@@ -42,8 +59,8 @@
 
 - Error Handling
   - Don't write forgiving code
-  - Don't add defensive try/catch blocks. Let exceptions propagate out
-  - "Dead programs tell no lies"
+  - Don't add defensive try/catch blocks. Let exceptions propagate out:
+    - "Dead programs tell no lies"
 
 - Comments
   - Use comments sparingly; code should be self-documenting
@@ -54,6 +71,6 @@
 
 ## README.md writing by LLMs and Humans
 
-- Keep it concise and focused on essential information
+- Keep it concise and focused on essentials, need-to-know
 - Do not use sale-y or promotional language
-- Do not include lengthy tutorials or documentation
+- Avoid lengthy tutorials or documentation or TMI 
