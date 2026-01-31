@@ -165,8 +165,9 @@
       }
     ]
   },
-  "alwaysThinkingEnabled": true,
   "enabledPlugins": {
     "pyright-lsp@claude-plugins-official": true
-  }
+  },
+  "alwaysThinkingEnabled": true,
+  "promptSuggestionEnabled": false
 }
