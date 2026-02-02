@@ -13,7 +13,7 @@ computers=("turnip" "sfizio" "cipolla" "xicamatl")
 
 for computer in "${computers[@]}"; do
     if [ "$this_computer" != "$computer" ]; then
-        printf "$FORMAT" "🔄 Running 'dotfiles pull' on $computer.."
+        printf "$FORMAT" "Running 'dotfiles pull' on $computer.."
         ssh -o ConnectTimeout=${timeout} "$computer" "source ~/.config/shell/functions/dotfiles.sh && dotfiles pull"
     fi
 done

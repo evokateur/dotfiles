@@ -1,5 +1,8 @@
 #!/bin/bash
 
+source "$HOME/.config/shell/env/colors.sh"
+FORMAT="${ITALIC}${BLUE}%s${RESET}\n"
+
 case "$(uname)" in
 Darwin) this_computer=$(scutil --get ComputerName) ;;
 Linux) this_computer=$(hostname) ;;
@@ -10,7 +13,7 @@ computers=("turnip" "sfizio" "cipolla" "xicamatl")
 
 for computer in "${computers[@]}"; do
     if [ "$this_computer" != "$computer" ]; then
-        echo "🔄  running 'git pull' in ~/.config/nvim on $computer.."
+        printf "$FORMAT" "Running 'git pull' in ~/.config/nvim on $computer.."
         ssh -o ConnectTimeout=${timeout} "$computer" "cd ~/.config/nvim; git pull"
     fi
 done
