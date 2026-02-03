@@ -73,6 +73,7 @@ alias dots='dotfiles'
 alias srsync="rsync -av -e ssh --exclude='.git/' --exclude='node_modules/' --exclude='*.pyc' --exclude='__pycache__/' --exclude='.venv/' --exclude='env/' --exclude='.env/' --exclude='.mypy_cache/' --exclude='.pytest_cache/'"
 alias ccusage='npx ccusage@latest'
 alias rm='rm -I'
+alias vault='git --git-dir=$HOME/obsidian-vault/.git --work-tree=$HOME/obsidian-vault'
 
 LC_NUMERIC=C printf "zshrc loaded in %.3f s\n" \
       "$(( EPOCHREALTIME - ZSHRC_START ))"

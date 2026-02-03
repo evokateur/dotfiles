@@ -184,5 +184,6 @@ alias pbcopy='xsel --clipboard --input'
 alias ccusage='npx ccusage@latest'
 alias claude="~/.claude/local/claude"
 alias rm='rm -I'
+alias vault='git --git-dir=$HOME/obsidian-vault/.git --work-tree=$HOME/obsidian-vault'
 
 get-natural
