@@ -26,4 +26,4 @@ crews:
         temperature: 0.7
 repositories:
   filesystem:
-    data_dir: "~/obsidian-vault/projects/cv-joint/app-data"
+    data_dir: "~/obsidian-vault/areas/job-search/cv-joint"
