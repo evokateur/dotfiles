@@ -1,0 +1,3 @@
+#!/bin/bash
+
+kitten @ launch --type=os-window --title "CV Joint" --cwd="$HOME/code/cv-joint" uv run joint
