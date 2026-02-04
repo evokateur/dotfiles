@@ -12,6 +12,10 @@
       "env": {
         "LOG_LEVEL": "INFO"
       }
+    },
+      "obsidian": {
+      "command": "npx",
+      "args": ["@mauricio.wolff/mcp-obsidian@latest", "/Users/wesley/obsidian-vault"]
     }
   },
   "preferences": {
