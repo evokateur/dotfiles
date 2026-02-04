@@ -13,15 +13,19 @@
         "LOG_LEVEL": "INFO"
       }
     },
-      "obsidian": {
+    "obsidian": {
       "command": "npx",
-      "args": ["@mauricio.wolff/mcp-obsidian@latest", "/Users/wesley/obsidian-vault"]
+      "args": [
+        "@mauricio.wolff/mcp-obsidian@latest",
+        "/Users/wesley/obsidian-vault"
+      ]
     }
   },
   "preferences": {
     "menuBarEnabled": true,
     "quickEntryShortcut": {
       "accelerator": "Alt+Space"
-    }
+    },
+    "sidebarMode": "chat"
   }
 }

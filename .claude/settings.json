@@ -128,6 +128,7 @@
       "WebFetchTool(domain:www.anthropic.com)",
       "mcp__brave-search__brave_web_search",
       "mcp__fetch__fetch",
+      "mcp__rag-knowledge__rag_search_knowledge",
       "mcp__sentry__find_issues",
       "mcp__sentry__find_projects",
       "mcp__sentry__get_issue_details"
