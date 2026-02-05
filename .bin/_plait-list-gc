@@ -1,22 +1,21 @@
 #!/bin/bash
 
-# Add to crontab:
-# */1 * * * * /path/to/plait-list-gc >> /path/to/plait-list-gc.log 2>&1
+# crontab:
+# */1 * * * * ~/.bin/_plait-list-gc >> ~/log/_plait-list-gc.log 2>&1
 
-STATE_FILE="/tmp/_plait-music-state"
+player_state_file="/tmp/player-state"
 
 is_apple_music_playing() {
     state=$(osascript -e 'tell application "Music" to player state as string' 2>/dev/null)
     if [[ "$state" == "playing" ]]; then
-        return 0 # true
+        return 0
     else
-        return 1 # false
+        return 1
     fi
 }
 
-# Read previous state
-if [ -f "$STATE_FILE" ]; then
-    prev_state=$(cat "$STATE_FILE")
+if [ -f "$player_state_file" ]; then
+    prev_state=$(cat "$player_state_file")
 else
     prev_state="not_playing"
 fi
@@ -27,7 +26,7 @@ if ! is_apple_music_playing; then
             echo "_plait-list clobbered at $(date)"
         fi
     fi
-    echo "not_playing" >"$STATE_FILE"
+    echo "not_playing" >"$player_state_file"
 else
-    echo "playing" >"$STATE_FILE"
+    echo "playing" >"$player_state_file"
 fi
