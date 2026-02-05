@@ -6,12 +6,9 @@
 
 - Planning before coding
   - Always plan before coding
-  - Use `./.llm-context/` to keep planning docs or supporting context
-    - Typically this will be a symlink to a folder outside the repo
-    - You may create it as a directory if a symlink or directory doesn't exist
-    - It is globally excluded so you won't create untracked files in it.
-    - You may read and write to it freely
-  - Don't go off implementing without a vetted plan
+  - Use `projects/{project-name}/llm-context/` in the Obsidian vault to keep planning docs or supporting context
+    - You may create `projects/{project-name}/llm-context` in the vault if it doesn't exist
+  - Don't start implementing without a vetted plan
   - Think hard before suggesting changes
     - Inspect related areas of the codebase for consistency
     - Find and list 3 similar patterns already in the codebase, then align your solution with the most appropriate pattern
@@ -27,10 +24,14 @@
   - Let complexity drive use of DDD patterns
     - Start simple, i.e. clear functions and domain names
     - Add patterns and structure when needed
-  - Keep domain code pure to a degree that's pragmatic
-    - Expressing the domain model clearly is the main idea of the day
-    - A pure domain interface is more important than a pure implementation
-    - Keep any implementation easy to refactor to a pure domain model
+  - Keep domain code pure to a pragmatic degree
+    - Expressing the domain clearly is the main idea of the day
+    - A pure domain *interface* is more important than pure implementation
+    - Make client code behave as if it were interacting with a pure domain model, in any case
+
+- Maintain a clear separation of concerns
+  - Separate business logic from infrastructure and framework code
+  - Use layers or modules to organize code by responsibility
 
 - Indentation
   - In general:
@@ -41,15 +42,15 @@
     - Ascertain the existing convention before defaulting to the preferred
 
 - Naming
-  - Prefer descriptive names to names that require comments to understand
+  - Prefer descriptive names to names that require comments to be understood
   - Don't use abbreviations or acronyms (except standard ones, e.g. `stdout`, `id`, `url`, etc.)
   - Avoid single-letter variable names, except for loop counters
-  - Follow conventions for specific languages:
+  - Casing: follow the conventions of each language:
     - Python: `snake_case` for variables and functions, `PascalCase` for classes
     - JavaScript: `camelCase` for variables and functions, `PascalCase` for classes
     - HTML: kebab-case for file names and CSS classes
-  - Use is or has prefixes for boolean variables and functions
-    - Example: `isActive` or `is_active`, `hasPermission` or `has_permission`
+  - Name boolean variables and functions so they read well with "if X ____"
+    - Examples: `isActive` or `is_active`, `hasPermission` or `has_permission`
 
 - Functions
   - Use descriptive function names
@@ -72,5 +73,5 @@
 ## README.md writing by LLMs and Humans
 
 - Keep it concise and focused on essentials, need-to-know
-- Do not use sale-y or promotional language
-- Avoid lengthy tutorials or documentation or TMI 
+- Do not use sales-y or promotional language
+- Avoid lengthy tutorials or documentation or TMI
