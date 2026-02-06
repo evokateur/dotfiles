@@ -27,3 +27,5 @@ crews:
 repositories:
   filesystem:
     data_dir: "~/obsidian-vault/areas/job-search/cv-joint"
+markdown_writer:
+  root_dir: "~/obsidian-vault/areas/job-search/cv-joint"
