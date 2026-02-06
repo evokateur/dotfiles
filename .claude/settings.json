@@ -131,7 +131,15 @@
       "mcp__rag-knowledge__rag_search_knowledge",
       "mcp__sentry__find_issues",
       "mcp__sentry__find_projects",
-      "mcp__sentry__get_issue_details"
+      "mcp__sentry__get_issue_details",
+      "mcp__obsidian__list_directory",
+      "mcp__obsidian__read_note",
+      "mcp__obsidian__write_note",
+      "mcp__obsidian__patch_note",
+      "mcp__obsidian__delete_note",
+      "mcp__obsidian__move_note",
+      "mcp__obsidian__update_frontmatter",
+      "mcp__obsidian__manage_tags"
     ],
     "deny": [
       "Bash(git add --all:*)",
