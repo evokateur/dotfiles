@@ -178,7 +178,9 @@ if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
-alias dots='dotfiles'
+alias vault='git --git-dir=$HOME/obsidian-vault/.git --work-tree=$HOME/obsidian-vault'
+alias ov='git --git-dir=$HOME/obsidian-vault/.git --work-tree=$HOME/obsidian-vault'
+alias dfl='dotfiles'
 alias srsync="rsync -av -e ssh --exclude='.git/' --exclude='node_modules/' --exclude='*.pyc' --exclude='__pycache__/' --exclude='.venv/' --exclude='env/' --exclude='.env/' --exclude='.mypy_cache/' --exclude='.pytest_cache/'"
 alias pbcopy='xsel --clipboard --input'
 alias ccusage='npx ccusage@latest'
