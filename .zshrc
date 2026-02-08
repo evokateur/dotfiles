@@ -76,5 +76,5 @@ alias srsync="rsync -av -e ssh --exclude='.git/' --exclude='node_modules/' --exc
 alias ccusage='npx ccusage@latest'
 alias rm='rm -I'
 
-LC_NUMERIC=C printf "zshrc loaded in %.3f s\n" \
-      "$(( EPOCHREALTIME - ZSHRC_START ))"
+#LC_NUMERIC=C printf "zshrc loaded in %.3f s\n" \
+#      "$(( EPOCHREALTIME - ZSHRC_START ))"
