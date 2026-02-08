@@ -26,6 +26,7 @@
     "quickEntryShortcut": {
       "accelerator": "Alt+Space"
     },
-    "sidebarMode": "chat"
+    "sidebarMode": "chat",
+    "coworkScheduledTasksEnabled": false
   }
 }
