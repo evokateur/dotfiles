@@ -1,0 +1,24 @@
+#!/bin/bash
+
+value="¯\_(ツ)_/¯"
+
+printf '%s' "$value"
+
+if command -v pbcopy >/dev/null 2>&1; then
+    printf '%s' "$value" | pbcopy
+    echo " (copied to paste buffer)"
+elif command -v xclip >/dev/null 2>&1; then
+    printf '%s' "$value" | xclip -selection clipboard
+    echo " (copied to paste buffer)"
+elif command -v xsel >/dev/null 2>&1; then
+    printf '%s' "$value" | xsel --clipboard --input
+    echo " (copied to paste buffer)"
+elif command -v wl-copy >/dev/null 2>&1; then
+    printf '%s' "$value" | wl-copy
+    echo " (copied to paste buffer)"
+elif command -v clip >/dev/null 2>&1; then
+    printf '%s' "$value" | clip
+    echo " (copied to paste buffer)"
+else
+    echo
+fi
