@@ -1,7 +1,7 @@
 dotfiles() {
     if [[ "$1" == "add" && "$2" == "." ]]; then
-        echo "Refusing to add everything in your home directory."
-        echo "You probably meant to run 'dotfiles add -u'.."
+        echo "That would add everything in your home directory! D:"
+        echo "You probably mean: 'dotfiles add -u'.."
         # 'dotfiles add -u' will add only tracked files that are modified or deleted.
         return 1
     fi
