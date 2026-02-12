@@ -7,8 +7,11 @@
 - Planning before coding
   - Always plan before coding
   - Use `.llm-context/` to keep planning docs or supporting context
-    - It most likely exists as a symlink, check for both a symlink and a directory
-    - Create a directory if it doesn't exist
+    - This *should* exist as a symlink. If it does not I have forgotten to create it, and you may do the following:
+      - Look for `projects/{project name}/llm-context/` in the Obsidian vault. You may create either of the folders if they don't exist
+      - It's OK to write Obsidian notes to `projects/{project name}/llm-context/`, but..
+      - You should be able to create `.llm-context` as a relative symlink to `../../obsidian-vault/projects/{project name}/llm-context`
+      - It's preferable to write notes in the symlinked directory, of course
   - Don't start implementing without a vetted plan
   - Think hard before suggesting changes
     - Inspect related areas of the codebase for consistency
@@ -43,7 +46,7 @@
     - Ascertain the existing convention before defaulting to the preferred
 
 - Naming
-  - Prefer descriptive names to names that require comments to be understood
+  - Prefer descriptive names that preclude the need for explanatory comments
   - Don't use abbreviations or acronyms (except standard ones, e.g. `stdout`, `id`, `url`, etc.)
   - Avoid single-letter variable names, except for loop counters
   - Casing: follow the conventions of each language:
@@ -51,7 +54,7 @@
     - JavaScript: `camelCase` for variables and functions, `PascalCase` for classes
     - HTML: kebab-case for file names and CSS classes
   - Name boolean variables and functions so they read well with "if X ____"
-    - Examples: `isActive` or `is_active`, `hasPermission` or `has_permission`
+    - Examples: `isActive`, `is_not_active`, `hasPermission`, `does_not_have_permission`, `contains_y`, `doesNotContainY`
 
 - Functions
   - Use descriptive function names
