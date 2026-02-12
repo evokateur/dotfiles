@@ -6,9 +6,9 @@
 
 - Planning before coding
   - Always plan before coding
-  - Use `projects/{project-name}/llm-context/` in the Obsidian vault to keep LLM planning docs or supporting context
-    - You may create `projects/{project-name}/llm-context` in the vault if it doesn't exist
-    - It is OK, and expected, to put notes containing collaborative plans or analysis in `projects/{project-name}`
+  - Use `.llm-context/` to keep planning docs or supporting context
+    - It most likely exists as a symlink, check for both a symlink and a directory
+    - Create a directory if it doesn't exist
   - Don't start implementing without a vetted plan
   - Think hard before suggesting changes
     - Inspect related areas of the codebase for consistency
