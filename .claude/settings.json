@@ -178,5 +178,6 @@
     "pyright-lsp@claude-plugins-official": true
   },
   "alwaysThinkingEnabled": true,
-  "promptSuggestionEnabled": false
+  "promptSuggestionEnabled": false,
+  "model": "sonnet"
 }
