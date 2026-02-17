@@ -28,6 +28,7 @@ PATH="$PYENV_ROOT/shims:$PYENV_ROOT/bin:$PATH"
 export DYLD_FALLBACK_LIBRARY_PATH="$(brew --prefix)/lib:$DYLD_FALLBACK_LIBRARY_PATH"
 
 source "$HOME/.config/shell/env/api-keys.sh"
+source "$HOME/.config/shell/env/paths.sh"
 
 set -o vi
 
