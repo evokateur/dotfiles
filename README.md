@@ -35,12 +35,13 @@ dotfiles() {
 
 Some example usage below
 
-```shell
+```sh
 √ ~ $ dotfiles status
 On branch config
 nothing to commit (use -u to show untracked files)
 √ ~ $ dotfiles add .
-❌ Refusing to run 'dotfiles add .' — be specific!
+That would add everything in your home directory! D:
+You probably mean: 'dotfiles add -u'..
 ?1 ~ $ dotfiles add .zprofile
 √ ~ $ dotfiles status
 On branch config
