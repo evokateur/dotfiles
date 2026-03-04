@@ -1,0 +1,30 @@
+#compdef test-pass
+# Zsh tab-completion for test-pass.
+# Mirrors exactly what the built-in `pass` completer does:
+# it walks ~/.password-store and strips the .gpg suffix.
+#
+# Installation:
+#   Place this file somewhere on your $fpath, e.g.:
+#     ~/.zsh/completions/_test-pass
+#   Then add to ~/.zshrc (if not already present):
+#     fpath=(~/.zsh/completions $fpath)
+#     autoload -Uz compinit && compinit
+
+_test-pass() {
+  local store="${PASSWORD_STORE_DIR:-$HOME/.password-store}"
+
+  # Bail out gracefully if the store doesn't exist
+  [[ -d "$store" ]] || return 1
+
+  local -a entries
+  # Find all .gpg files, strip the store prefix and the .gpg suffix
+  while IFS= read -r -d '' f; do
+    f="${f#$store/}"   # remove leading store path
+    f="${f%.gpg}"      # remove .gpg extension
+    entries+=("$f")
+  done < <(find "$store" -name '*.gpg' -not -path '*/.git/*' -print0 2>/dev/null)
+
+  _describe 'password' entries
+}
+
+_test-pass "$@"

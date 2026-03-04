@@ -36,6 +36,8 @@ setopt nonomatch
 
 PS1='%(?.%F{green}√.%F{red}?%?)%f %B%F{240}%1~%f%b $ '
 
+fpath=(~/.zsh/completions $fpath)
+
 autoload -Uz compinit && compinit
 autoload -U add-zsh-hook
 

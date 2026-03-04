@@ -1,0 +1,51 @@
+#!/usr/bin/env bash
+# test-pass — muscle memory typing test for passwords stored in `pass`
+# Usage: test-pass <pass-name>   e.g.  test-pass xkcd/1
+
+set -euo pipefail
+
+# ── helpers ──────────────────────────────────────────────────────────────────
+
+usage() {
+  echo "Usage: test-pass <pass-name>"
+  echo "       test-pass xkcd/1"
+  exit 1
+}
+
+die() { echo "error: $*" >&2; exit 1; }
+
+# ── args ─────────────────────────────────────────────────────────────────────
+
+[[ $# -eq 1 ]] || usage
+PASS_NAME="$1"
+
+# ── fetch the stored password ─────────────────────────────────────────────────
+
+STORED="$(pass "$PASS_NAME" 2>/dev/null)" \
+  || die "Could not retrieve '$PASS_NAME' from pass (does it exist?)"
+
+# pass can return multi-line entries; we only care about the first line
+STORED="$(echo "$STORED" | head -n1)"
+
+# ── prompt for blind input (no echo) ─────────────────────────────────────────
+
+printf "Type the password for \033[1m%s\033[0m: " "$PASS_NAME"
+
+# read -s disables echo, just like sudo / ssh prompts
+IFS= read -rs TYPED
+echo   # newline after the silent input
+
+# ── compare ──────────────────────────────────────────────────────────────────
+
+if [[ "$TYPED" == "$STORED" ]]; then
+  echo $'\033[32m✓  Correct!\033[0m'
+  exit 0
+else
+  # Show length difference as a hint without revealing the password
+  STORED_LEN=${#STORED}
+  TYPED_LEN=${#TYPED}
+  echo $'\033[31m✗  Incorrect.\033[0m'
+  printf "   Expected length: %d  |  You typed: %d character%s\n" \
+    "$STORED_LEN" "$TYPED_LEN" "$( [[ $TYPED_LEN -ne 1 ]] && echo s )"
+  exit 1
+fi

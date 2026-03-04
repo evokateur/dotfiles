@@ -1,0 +1,32 @@
+# Bash tab-completion for test-pass.
+#
+# Installation (pick one):
+#
+#   A) Per-user:
+#      Place this file at ~/.local/share/bash-completion/completions/test-pass
+#      (bash-completion >= 2.x picks it up automatically on demand)
+#
+#   B) System-wide:
+#      Place at /etc/bash_completion.d/test-pass
+#
+#   C) Manual / older systems:
+#      source this file from ~/.bashrc
+
+_test-pass() {
+  local store="${PASSWORD_STORE_DIR:-$HOME/.password-store}"
+  local cur="${COMP_WORDS[COMP_CWORD]}"
+
+  [[ -d "$store" ]] || return 1
+
+  local -a entries
+  while IFS= read -r -d '' f; do
+    f="${f#$store/}"
+    f="${f%.gpg}"
+    entries+=("$f")
+  done < <(find "$store" -name '*.gpg' -not -path '*/.git/*' -print0 2>/dev/null)
+
+  # Filter entries matching what's been typed so far
+  mapfile -t COMPREPLY < <(compgen -W "${entries[*]}" -- "$cur")
+}
+
+complete -F _test-pass test-pass
