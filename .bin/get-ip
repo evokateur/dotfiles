@@ -1,0 +1,12 @@
+#!/bin/bash
+
+url="http://ip-api.com/json/${1}"
+
+json=$(curl -s -X GET -H 'Accept: application/json' -d '' "${url}")
+
+if jq -e . >/dev/null 2>&1 <<<${json}
+then
+    echo $json | jq .
+else
+    echo $json
+fi
