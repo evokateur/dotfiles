@@ -158,6 +158,7 @@
       "Bash(rm -rf: :*)"
     ]
   },
+  "model": "sonnet",
   "enabledMcpjsonServers": [
     "brave-search"
   ],
@@ -178,6 +179,5 @@
     "pyright-lsp@claude-plugins-official": true
   },
   "alwaysThinkingEnabled": true,
-  "promptSuggestionEnabled": false,
-  "model": "sonnet"
+  "promptSuggestionEnabled": false
 }

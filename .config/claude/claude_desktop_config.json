@@ -27,6 +27,8 @@
       "accelerator": "Alt+Space"
     },
     "coworkScheduledTasksEnabled": false,
-    "sidebarMode": "chat"
+    "sidebarMode": "chat",
+    "coworkWebSearchEnabled": true,
+    "ccdScheduledTasksEnabled": true
   }
 }
