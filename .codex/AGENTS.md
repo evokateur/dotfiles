@@ -1,27 +1,21 @@
 # AGENTS.md
 
-## Coding by LLMs
+## General Strategy
 
-- Planning before coding
-  - Always plan before coding
-  - Use `.llm-context/` to keep planning docs or supporting context
-    - This *should* exist as a symlink. If it does not I have forgotten to create it, and you may do the following:
-      - Look for `projects/{project name}/llm-context/` in the Obsidian vault. You may create either of the folders if they don't exist
-      - It's OK to write Obsidian notes to `projects/{project name}/llm-context/`, but..
-      - You should be able to create `.llm-context` as a relative symlink to `../../obsidian-vault/projects/{project name}/llm-context`
-      - It's preferable to write notes in the symlinked directory, of course
-  - Don't start implementing without a vetted plan
-  - Think hard before suggesting changes
-    - Inspect related areas of the codebase for consistency
-    - Find and list 3 similar patterns already in the codebase, then align your solution with the most appropriate pattern
-  - Prefer minimal changes
-    - Consider code simplification or removal before adding code
-    - Reuse existing components, utilities, or logic whenever possible
+- Always plan before coding
+- Don't start implementing without a vetted plan
+- Think hard before suggesting changes
+  - Inspect related areas of the codebase for consistency
+  - Find and list 3 similar patterns already in the codebase, then align your solution with the most appropriate pattern
+- Prefer minimal changes
+  - Consider code simplification or removal before adding code
+  - Reuse existing components, utilities, or logic whenever possible
+- Keep it simple - NEVER over-engineer, ALWAYS simplify, NO unnecessary defensive programming. No extra features - focus on simplicity.
+- Be concise. Keep README minimal. IMPORTANT: no emojis ever
 
-## Coding by LLMs and Humans
+## Coding Standards
 
-- Domain Driven Design
-  - Use use consistent domain language 
+- Favor a Domain Driven Design
   - Make business rules explicit and visible
   - Let complexity drive the use of DDD patterns
     - Start simple, i.e. clear functions and domain names
@@ -29,33 +23,34 @@
   - Keep domain code pure to a pragmatic degree
     - Expressing the domain clearly is the main idea
     - A pure domain *interface* is more important than a pure implementation
-    - Have client code behave as if it were interacting with a pure domain model
+    - Client code should depend on a domain abstraction
 
 - Maintain a clear separation of concerns
   - Separate business logic from infrastructure and framework code
   - Use layers or modules to organize code by responsibility
 
+- Naming
+  - Use intention-revealing names for variables, functions, classes, and files
+  - Use pronounceable names rather than abbreviations or acronyms
+    - EXCEPT standard abbreviations, e.g. `stdout`, `id`, `url`, etc.)
+  - Avoid disinformation in names, e.g. don't use "get" for a function that modifies state or has side effects
+  - Avoid single-letter variable names, except for loop counters
+  - Don't add gratuitous context to variable names
+  - Name boolean variables and functions so they read well with "if X ____ then"
+    - Examples: `isActive`, `is_not_active`, `hasPermission`, `does_not_have_permission`, `contains_y`, `doesNotContainY`
+
+- Casing
+  - Follow established conventions for the language and codebase
+    - Python: `snake_case` for variables and functions, `PascalCase` for classes
+    - JavaScript: `camelCase` for variables and functions, `PascalCase` for classes
+
 - Indentation
+  - Follow established convention to keep diffs meaningful.
   - General preference:
     - Source code (`.py`, `.js`, `.c`, `.php`, etc.): 4 spaces
     - Markdown files (`.md`): 2 spaces
-  - However:
-    - ALWAYS follow established conventions in an existing codebase
-    - Ascertain the existing convention before defaulting to the preferred
-
-- Naming
-  - Prefer descriptive names that preclude the need for explanatory comments
-  - Don't use abbreviations or acronyms (except standard ones, e.g. `stdout`, `id`, `url`, etc.)
-  - Avoid single-letter variable names, except for loop counters
-  - Casing: follow the conventions of each language:
-    - Python: `snake_case` for variables and functions, `PascalCase` for classes
-    - JavaScript: `camelCase` for variables and functions, `PascalCase` for classes
-    - HTML: kebab-case for file names and CSS classes
-  - Name boolean variables and functions so they read well with "if X ____"
-    - Examples: `isActive`, `is_not_active`, `hasPermission`, `does_not_have_permission`, `contains_y`, `doesNotContainY`
 
 - Functions
-  - Use descriptive function names
   - Keep functions small and focused on a single task
   - Avoid long parameter lists; use objects or dictionaries if necessary
   - Avoid side effects in functions; they should be pure when possible
@@ -66,14 +61,8 @@
     - "Dead programs tell no lies"
 
 - Comments
-  - Use comments sparingly; code should be self-documenting
-  - Don't comment out code
+  - Use comments ONLY when necessary; code should be self-documenting
+  - Don't leave commented out code
   - Don't add historical or process-based comments (e.g "increased timeout," "added handler")
   - Don't emphasize different versions of the code
   - Leave `__init__.py` files empty (they are often copied)
-
-## README.md writing by LLMs and Humans
-
-- Keep it concise and focused on essentials, need-to-know
-- Do not use sales-y or promotional language
-- Avoid lengthy tutorials or documentation or TMI
