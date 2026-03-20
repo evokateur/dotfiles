@@ -41,3 +41,11 @@ kfjc() {
 666() {
     ssh turnip.local "echo '[turnip]';/Users/wesley/bin/666"
 }
+
+sheena() {
+    ssh turnip.local "echo '[turnip]';/Users/wesley/bin/sheena"
+}
+
+rocknsoul() {
+    ssh turnip.local "echo '[turnip]';/Users/wesley/bin/rocknsoul"
+}

@@ -26,9 +26,10 @@
     "quickEntryShortcut": {
       "accelerator": "Alt+Space"
     },
-    "coworkScheduledTasksEnabled": false,
+    "coworkScheduledTasksEnabled": true,
     "ccdScheduledTasksEnabled": true,
     "sidebarMode": "chat",
-    "coworkWebSearchEnabled": true
+    "coworkWebSearchEnabled": true,
+    "chromeExtensionEnabled": false
   }
 }
