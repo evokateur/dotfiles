@@ -22,6 +22,8 @@ export PATH="$HOME/node_modules/.bin:$PATH"
 export PATH="$HOME/.pixi/bin:$PATH"
 export PATH="$HOME/.claude/local:$PATH"
 
+export PATH=/Users/wesley/.opencode/bin:$PATH
+
 export PYENV_ROOT="$HOME/.pyenv"
 PATH="$PYENV_ROOT/shims:$PYENV_ROOT/bin:$PATH"
 
