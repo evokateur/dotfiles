@@ -3,10 +3,7 @@
 ## General Strategy
 
 - Always plan before coding
-- Don't start implementing without a vetted plan
-- Think hard before suggesting changes
-  - Inspect related areas of the codebase for consistency
-  - Find and list 3 similar patterns already in the codebase, then align your solution with the most appropriate pattern
+  - Don't start implementing without a vetted plan
 - Prefer minimal changes
   - Consider code simplification or removal before adding code
   - Reuse existing components, utilities, or logic whenever possible
@@ -15,15 +12,14 @@
 
 ## Coding Standards
 
-- Favor a Domain Driven Design
-  - Make business rules explicit and visible
-  - Let complexity drive the use of DDD patterns
-    - Start simple, i.e. clear functions and domain names
-    - Add patterns and structure when needed
-  - Keep domain code pure to a pragmatic degree
-    - Expressing the domain clearly is the main idea
-    - A pure domain *interface* is more important than a pure implementation
-    - Client code should depend on a domain abstraction
+- Make business rules explicit and visible
+- Let complexity drive the use of DDD patterns
+  - Start simple, i.e. clear functions and domain names
+  - Add patterns and structure when needed
+- Keep domain code pure to a pragmatic degree
+  - Expressing the domain clearly is the main idea
+  - A pure domain *interface* is more important than a pure implementation
+  - Client code should depend on a domain abstraction
 
 - Maintain a clear separation of concerns
   - Separate business logic from infrastructure and framework code
