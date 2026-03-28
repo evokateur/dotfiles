@@ -1,4 +1,0 @@
-#!/bin/bash
-
-cd ~/code/cv-joint || exit
-uv run joint
