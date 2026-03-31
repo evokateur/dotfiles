@@ -23,13 +23,13 @@
   },
   "preferences": {
     "menuBarEnabled": true,
+    "chromeExtensionEnabled": false,
     "quickEntryShortcut": {
       "accelerator": "Alt+Space"
     },
-    "coworkScheduledTasksEnabled": true,
+    "coworkScheduledTasksEnabled": false,
     "ccdScheduledTasksEnabled": true,
     "sidebarMode": "chat",
-    "coworkWebSearchEnabled": true,
-    "chromeExtensionEnabled": false
+    "coworkWebSearchEnabled": true
   }
 }
