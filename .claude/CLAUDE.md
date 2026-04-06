@@ -3,7 +3,7 @@
 ## General Strategy
 
 - Always plan before coding
-- Don't start implementing without a vetted plan
+- Don't start implementing a plan until it's been vetted by the user
 - Think hard before suggesting changes
   - Inspect related areas of the codebase for consistency
   - Find and list 3 similar patterns already in the codebase, then align your solution with the most appropriate pattern
