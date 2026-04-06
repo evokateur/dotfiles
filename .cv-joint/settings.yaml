@@ -26,6 +26,6 @@ crews:
         temperature: 0.7
 repositories:
   filesystem:
-    data_dir: "~/obsidian-vault/areas/job-search/cv-joint"
+    data_dir: "~/vaults/caveau/areas/job-search/cv-joint"
 markdown_writer:
-  root_dir: "~/obsidian-vault/areas/job-search/cv-joint"
+  root_dir: "~/vaults/caveau/areas/job-search/cv-joint"
