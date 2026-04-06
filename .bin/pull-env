@@ -12,8 +12,8 @@ echo
 printf "$FORMAT" "Running 'git pull' in ~/.config/nvim.."
 cd ~/.config/nvim && git pull
 echo
-printf "$FORMAT" "Running 'git pull' in ~/obsidian-vault.."
-cd ~/obsidian-vault/ && git pull
+printf "$FORMAT" "Running 'git pull' in ${VAULT_PATH}.."
+cd "$VAULT_PATH" && git pull
 echo
 printf "$FORMAT" "Running 'git pull' in ~/code/cv-joint.."
 cd ~/code/cv-joint && git pull
