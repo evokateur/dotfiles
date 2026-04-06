@@ -12,5 +12,5 @@ echo
 printf "$FORMAT" "Running 'git status' in ~/.config/nvim.."
 cd ~/.config/nvim && git status
 echo
-printf "$FORMAT" "Running 'git status' in ~/obsidian-vault.."
-cd ~/obsidian-vault/ && git status
+printf "$FORMAT" "Running 'git status' in ${VAULT_PATH}.."
+cd "$VAULT_PATH" && git status
