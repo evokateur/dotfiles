@@ -29,6 +29,16 @@ PATH="$PYENV_ROOT/shims:$PYENV_ROOT/bin:$PATH"
 
 export DYLD_FALLBACK_LIBRARY_PATH="$(brew --prefix)/lib:$DYLD_FALLBACK_LIBRARY_PATH"
 
+# pnpm
+export PNPM_HOME="/Users/wesley/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+
+PAKE_CREATE_APP=1
+
 source "$HOME/.config/shell/env/api-keys.sh"
 source "$HOME/.config/shell/env/paths.sh"
 
@@ -74,8 +84,8 @@ gemini() {
     command gemini "$@"
 }
 
-alias vault='git --git-dir=$HOME/obsidian-vault/.git --work-tree=$HOME/obsidian-vault'
-alias ov='git --git-dir=$HOME/obsidian-vault/.git --work-tree=$HOME/obsidian-vault'
+alias vault='git --git-dir=$VAULT_PATH/.git --work-tree=$VAULT_PATH'
+alias ov='git --git-dir=$VAULT_PATH/.git --work-tree=$VAULT_PATH'
 alias dfl='dotfiles'
 alias srsync="rsync -av -e ssh --exclude='.git/' --exclude='node_modules/' --exclude='*.pyc' --exclude='__pycache__/' --exclude='.venv/' --exclude='env/' --exclude='.env/' --exclude='.mypy_cache/' --exclude='.pytest_cache/'"
 alias ccusage='npx ccusage@latest'
