@@ -1,0 +1,17 @@
+#!/bin/sh
+set -eu
+
+GIT="git --git-dir=$VAULT_PATH/.git --work-tree=$VAULT_PATH"
+
+hostname_value=$(hostname)
+date_value=$(date '+%Y-%m-%d %H:%M:%S')
+commit_message="$hostname_value vault backup: $date_value"
+
+$GIT pull --no-edit
+
+if ! $GIT diff --quiet || ! $GIT diff --cached --quiet; then
+    $GIT add -A
+    $GIT commit -m "$commit_message"
+fi
+
+$GIT push
