@@ -3,7 +3,7 @@ set -eu
 
 GIT="git --git-dir=$VAULT_PATH/.git --work-tree=$VAULT_PATH"
 
-hostname_value=$(hostname)
+hostname_value=$(hostname | sed 's/\.local$//')
 date_value=$(date '+%Y-%m-%d %H:%M:%S')
 commit_message="$hostname_value vault backup: $date_value"
 
