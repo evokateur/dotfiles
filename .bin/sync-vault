@@ -9,8 +9,9 @@ commit_message="$hostname_value vault backup: $date_value"
 
 $GIT pull --no-edit
 
+$GIT add -A
+
 if ! $GIT diff --quiet || ! $GIT diff --cached --quiet; then
-    $GIT add -A
     $GIT commit -m "$commit_message"
 fi
 
