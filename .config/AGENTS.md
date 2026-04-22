@@ -66,3 +66,8 @@
   - Don't add historical or process-based comments (e.g "increased timeout," "added handler")
   - Don't emphasize different versions of the code
   - Leave `__init__.py` files empty (they are often copied)
+
+## Project Documents
+
+  - Project documents will normally be found in the Obsidian vault under `projects/<project name>`
+  - In many cases a symlink named `docs` will provide direct read/write access to the directory.
