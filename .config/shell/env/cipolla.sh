@@ -1,0 +1,1 @@
+export DISABLE_AUTOUPDATER=1

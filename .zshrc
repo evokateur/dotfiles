@@ -42,6 +42,10 @@ PAKE_CREATE_APP=1
 source "$HOME/.config/shell/env/api-keys.sh"
 source "$HOME/.config/shell/env/paths.sh"
 
+if [ "$(scutil --get ComputerName 2>/dev/null)" = "cipolla" ]; then
+    source "$HOME/.config/shell/env/cipolla.sh"
+fi
+
 set -o vi
 
 setopt nonomatch
@@ -68,6 +72,7 @@ source "$HOME/.config/shell/functions/venv.sh"
 if [ "$(scutil --get ComputerName 2>/dev/null)" != "turnip" ]; then
     source "$HOME/.config/shell/functions/turnip-remote.sh"
 fi
+
 
 if [ -f "$HOME/.local/bin/env" ]; then
     . "$HOME/.local/bin/env"
