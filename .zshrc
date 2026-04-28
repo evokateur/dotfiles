@@ -42,9 +42,9 @@ PAKE_CREATE_APP=1
 source "$HOME/.config/shell/env/api-keys.sh"
 source "$HOME/.config/shell/env/paths.sh"
 
-if [ "$(scutil --get ComputerName 2>/dev/null)" = "cipolla" ]; then
-    source "$HOME/.config/shell/env/cipolla.sh"
-fi
+_host_env="$HOME/.config/shell/env/$(scutil --get ComputerName 2>/dev/null).sh"
+[[ -f $_host_env ]] && source $_host_env
+unset _host_env
 
 set -o vi
 
