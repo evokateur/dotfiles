@@ -27,5 +27,3 @@ crews:
 repositories:
   filesystem:
     data_dir: "~/vaults/caveau/areas/job-search/cv-joint"
-markdown_writer:
-  root_dir: "~/vaults/caveau/areas/job-search/cv-joint"
