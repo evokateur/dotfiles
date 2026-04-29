@@ -67,7 +67,13 @@
   - Don't emphasize different versions of the code
   - Leave `__init__.py` files empty (they are often copied)
 
+## Testing
+
+- TDD is preferable, plan to write failing tests, watch them fail, then..
+- Do not use mocks. Fake it until you make it.
+- Do not write code specifically to make testing easier. The implementation should be test-agnostic.
+
 ## Project Documents
 
-  - Project documents will normally be found in the Obsidian vault under `projects/<project name>`
-  - In many cases a symlink named `docs` will provide direct read/write access to the directory.
+- Project documents will normally be found in the Obsidian vault under `projects/<project name>`
+- In many cases a symlink named `docs` will provide direct read/write access to the directory.
