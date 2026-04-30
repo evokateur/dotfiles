@@ -11,7 +11,7 @@
   - Consider code simplification or removal before adding code
   - Reuse existing components, utilities, or logic whenever possible
 - Keep it simple - NEVER over-engineer, ALWAYS simplify, NO unnecessary defensive programming. No extra features - focus on simplicity.
-- Be concise. Keep README minimal. IMPORTANT: do not use emojis, but respect their use in the occasional ironic or whimsical case.
+- Be concise. Keep README minimal. IMPORTANT: do not use emojis, except in the occasional ironic or whimsical case.
 
 ## Coding Standards
 
@@ -69,9 +69,9 @@
 
 ## Testing
 
-- TDD is preferable, plan to write failing tests, watch them fail, then..
+- TDD is preferable. When planning include writing failing tests, ascertaining that they fail as predicted, then implementation until they pass.
+- Do not write code specifically to make testing easier. Implementation should be test-agnostic.
 - Do not use mocks. Fake it until you make it.
-- Do not write code specifically to make testing easier. The implementation should be test-agnostic.
 
 ## Project Documents
 
