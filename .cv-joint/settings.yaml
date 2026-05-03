@@ -17,13 +17,19 @@ crews:
   cv_analysis:
     agents:
       cv_analyst:
-        model: gpt-4o-mini
+        model: gpt-4o
         temperature: 0.7
   job_posting_analysis:
     agents:
       job_analyst:
-        model: gpt-4o-mini
+        model: gpt-4o
         temperature: 0.7
+  cv_optimization:
+    agents:
+      cv_strategist:
+        model: "claude-sonnet-4-20250514"
+      cv_rewriter:
+        model: "claude-sonnet-4-20250514"
 repositories:
   filesystem:
     data_dir: "~/vaults/caveau/areas/job-search/cv-joint"
