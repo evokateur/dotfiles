@@ -75,5 +75,4 @@
 
 ## Project Documents
 
-- Project documents will normally be found in the Obsidian vault under `projects/<project name>`
-- In many cases a symlink named `docs` will provide direct read/write access to the directory.
+- Project documents should be kept as Obsidian notes in `projects/<project nam>`
