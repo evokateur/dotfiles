@@ -89,6 +89,14 @@ gemini() {
     command gemini "$@"
 }
 
+claude() {
+    if [ -n "$SSH_CONNECTION" ] && [ -z "$KEYCHAIN_UNLOCKED" ]; then
+        security unlock-keychain ~/Library/Keychains/login.keychain-db
+        export KEYCHAIN_UNLOCKED=true
+    fi
+    command claude "$@"
+}
+
 alias vault='git --git-dir=$VAULT_PATH/.git --work-tree=$VAULT_PATH'
 alias ov='git --git-dir=$VAULT_PATH/.git --work-tree=$VAULT_PATH'
 alias dfl='dotfiles'
