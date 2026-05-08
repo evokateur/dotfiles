@@ -31,7 +31,6 @@ export PATH=/home/wesley/.opencode/bin:$PATH
 export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 
-source "$HOME/.config/shell/env/api-keys.sh"
 source "$HOME/.config/shell/env/paths.sh"
 source "$HOME/.config/shell/functions/hrvst-completion.bash"
 

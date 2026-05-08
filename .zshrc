@@ -39,7 +39,6 @@ esac
 
 PAKE_CREATE_APP=1
 
-source "$HOME/.config/shell/env/api-keys.sh"
 source "$HOME/.config/shell/env/paths.sh"
 
 _host_env="$HOME/.config/shell/env/$(scutil --get ComputerName 2>/dev/null).sh"
