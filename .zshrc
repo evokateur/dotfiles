@@ -63,6 +63,7 @@ pyenv() {
 }
 
 source "$HOME/.config/shell/functions/claude-context.sh"
+source "$HOME/.config/shell/functions/claude-wrapper.sh"
 source "$HOME/.config/shell/functions/dotfiles.sh"
 source "$HOME/.config/shell/functions/hrvst-completion.zsh"
 source "$HOME/.config/shell/functions/tar.sh"
@@ -86,14 +87,6 @@ gemini() {
         export GEMINI_API_KEY="$(pass api/google)"
     fi
     command gemini "$@"
-}
-
-claude() {
-    if [ -n "$SSH_CONNECTION" ] && [ -z "$KEYCHAIN_UNLOCKED" ]; then
-        security unlock-keychain ~/Library/Keychains/login.keychain-db
-        export KEYCHAIN_UNLOCKED=true
-    fi
-    command claude "$@"
 }
 
 alias vault='git --git-dir=$VAULT_PATH/.git --work-tree=$VAULT_PATH'
