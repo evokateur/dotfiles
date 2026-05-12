@@ -73,7 +73,7 @@
 - Do not write code specifically to make testing easier. Implementation should be test-agnostic.
 - Do not use mocks. Fake it until you make it.
 
-## Project Documents
+## Project Documents in Obsidian
 
 - Project documents are to be kept as Obsidian notes in `projects/<project name>/.`
-- LLM generated Markdown used for context and planning should be kept in `projects/<project name>/llm-context/.`
+- LLM generated Markdown used for context and planning should also be kept as Obsidian notes in `projects/<project name>/llm-context/.`
