@@ -75,4 +75,5 @@
 
 ## Project Documents
 
-- Project documents should be kept as Obsidian notes in `projects/<project nam>`
+- Project documents are to be kept as Obsidian notes in `projects/<project name>/.`
+- LLM generated Markdown used for context and planning should be kept in `projects/<project name>/llm-context/.`
