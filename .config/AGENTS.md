@@ -75,5 +75,6 @@
 
 ## Project Documents in Obsidian
 
-- Project documents are to be kept as Obsidian notes in `projects/<project name>/.`
-- LLM generated Markdown used for context and planning should also be kept as Obsidian notes in `projects/<project name>/llm-context/.`
+- Project documents are kept in the Obsidian vault as notes:
+  - General docs in the folder `projects/<project name>/`
+  - LLM generated Markdown for context and planning in `projects/<project name>/llm-context/`
