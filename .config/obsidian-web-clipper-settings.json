@@ -1,0 +1,137 @@
+{
+  "migrationVersion": 1,
+  "template_17787952202251hua00mva": {
+    "id": "17787952202251hua00mva",
+    "name": "Default",
+    "behavior": "create",
+    "noteNameFormat": "{{title}}",
+    "path": "clippings",
+    "noteContentFormat": "{{content}}",
+    "context": "",
+    "properties": [
+      {
+        "id": "1778795220225usgylpy6v",
+        "name": "title",
+        "value": "{{title}}"
+      },
+      {
+        "id": "1778795220225ba9zbqvbl",
+        "name": "source",
+        "value": "{{url}}"
+      },
+      {
+        "id": "1778795220225ur3ynuvdz",
+        "name": "author",
+        "value": "{{author|split:\", \"|wikilink|join}}"
+      },
+      {
+        "id": "1778795220225spjsuyw42",
+        "name": "published",
+        "value": "{{published}}"
+      },
+      {
+        "id": "17787952202253y5882ym5",
+        "name": "created",
+        "value": "{{date}}"
+      },
+      {
+        "id": "1778795220225ubyruhsja",
+        "name": "description",
+        "value": "{{description}}"
+      },
+      {
+        "id": "1778795220225xhmfpbo9x",
+        "name": "tags",
+        "value": "clippings"
+      }
+    ],
+    "triggers": []
+  },
+  "template_list": [
+    "17787952202251hua00mva"
+  ],
+  "interpreter_settings": {
+    "interpreterModel": "",
+    "models": [],
+    "providers": [],
+    "interpreterEnabled": false,
+    "interpreterAutoRun": false,
+    "defaultPromptContext": ""
+  },
+  "property_types": [
+    {
+      "name": "title",
+      "type": "text",
+      "defaultValue": "{{title|lower|replace:\" \",\"-\"}}"
+    },
+    {
+      "name": "source",
+      "type": "text",
+      "defaultValue": "{{url}}"
+    },
+    {
+      "name": "author",
+      "type": "multitext",
+      "defaultValue": "{{author|split:\", \"|wikilink|join}}"
+    },
+    {
+      "name": "published",
+      "type": "date",
+      "defaultValue": "{{published}}"
+    },
+    {
+      "name": "created",
+      "type": "date",
+      "defaultValue": "{{date}}"
+    },
+    {
+      "name": "description",
+      "type": "text",
+      "defaultValue": "{{description}}"
+    },
+    {
+      "name": "tags",
+      "type": "multitext",
+      "defaultValue": "clippings"
+    }
+  ],
+  "reader_settings": {
+    "fontSize": 16,
+    "lineHeight": 1.6,
+    "maxWidth": 38,
+    "lightTheme": "default",
+    "darkTheme": "same",
+    "appearance": "auto",
+    "fonts": [],
+    "defaultFont": "",
+    "blendImages": true,
+    "colorLinks": false,
+    "followLinks": true,
+    "pinPlayer": true,
+    "autoScroll": true,
+    "highlightActiveLine": true,
+    "customCss": ""
+  },
+  "vaults": [
+    "caveau"
+  ],
+  "general_settings": {
+    "showMoreActionsButton": false,
+    "betaFeatures": false,
+    "legacyMode": false,
+    "silentOpen": false,
+    "openBehavior": "popup",
+    "saveBehavior": "addToObsidian"
+  },
+  "highlighter_settings": {
+    "highlighterEnabled": true,
+    "alwaysShowHighlights": true,
+    "highlightBehavior": "highlight-inline"
+  },
+  "stats": {
+    "addToObsidian": 1,
+    "saveFile": 0,
+    "copyToClipboard": 0,
+    "share": 0
+  }
+}
