@@ -1,0 +1,15 @@
+#!/bin/bash
+
+source "$HOME/.config/shell/env/colors.sh"
+FORMAT="${ITALIC}${BLUE}%s${RESET}\n"
+
+printf "$FORMAT" "kiLliNg GPG agent.."
+gpgconf --kill gpg-agent
+
+printf "$FORMAT" "removing stale lock files.."
+find ~/.gnupg -type f -name "*.lock" -delete
+
+printf "$FORMAT" "restarting GPG agent.."
+gpg-agent --daemon
+
+printf "$FORMAT" "done."
