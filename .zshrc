@@ -56,12 +56,7 @@ fpath=(~/.zsh/completions $fpath)
 autoload -Uz compinit && compinit
 autoload -U add-zsh-hook
 
-pyenv() {
-    unset -f pyenv
-    eval "$(command pyenv init - zsh)"
-    pyenv "$@"
-}
-
+source "$HOME/.config/shell/functions/wrappers.sh"
 source "$HOME/.config/shell/functions/claude-context.sh"
 source "$HOME/.config/shell/functions/claude-wrapper.sh"
 source "$HOME/.config/shell/functions/dotfiles.sh"
@@ -73,7 +68,6 @@ if [ "$(scutil --get ComputerName 2>/dev/null)" != "turnip" ]; then
     source "$HOME/.config/shell/functions/turnip-remote.sh"
 fi
 
-
 if [ -f "$HOME/.local/bin/env" ]; then
     . "$HOME/.local/bin/env"
 fi
@@ -81,13 +75,6 @@ fi
 venv_auto_activate
 
 add-zsh-hook chpwd venv_auto_switch
-
-gemini() {
-    if [ -z "$GEMINI_API_KEY" ]; then
-        export GEMINI_API_KEY="$(pass api/google)"
-    fi
-    command gemini "$@"
-}
 
 alias vault='git --git-dir=$VAULT_PATH/.git --work-tree=$VAULT_PATH'
 alias ov='git --git-dir=$VAULT_PATH/.git --work-tree=$VAULT_PATH'
