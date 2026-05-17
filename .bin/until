@@ -1,0 +1,57 @@
+#!/bin/bash
+
+input="${1//:/}"
+
+if [[ "$input" =~ ^[0-9]{1,4}$ ]]; then
+    padded=$(printf "%04s" "$input" | tr ' ' '0')
+    hour="${padded:0:2}"
+    min="${padded:2:2}"
+    if ! ((10#$hour >= 0 && 10#$hour < 24)) || ! ((10#$min >= 0 && 10#$min < 60)); then
+        echo "Invalid time: $hour:$min" >&2
+        exit 1
+    fi
+else
+    echo "Usage: until <hhmm or hh:mm>" >&2
+    exit 1
+fi
+
+now_epoch=$(date +%s)
+
+case "$(uname -s)" in
+Darwin)
+    now_epoch=$(date -j -f "%s" "$now_epoch" "+%s")
+    ;;
+Linux)
+    now_epoch=$(date -d "@$now_epoch" "+%s" 2>/dev/null)
+    ;;
+*)
+    echo "Unsupported OS: $(uname -s)" >&2
+    exit 1
+    ;;
+esac
+
+case $(uname -s) in
+Darwin)
+    target_epoch=$(date -j -f "%H:%M" "$hour:$min" "+%s" 2>/dev/null)
+    ;;
+Linux)
+    target_epoch=$(date -d "$hour:$min" "+%s" 2>/dev/null)
+    ;;
+esac
+
+if ((target_epoch <= now_epoch)); then
+    case $(uname -s) in
+    Darwin)
+        target_epoch=$(date -j -v+1d -f "%H:%M" "$hour:$min" "+%s")
+        ;;
+    Linux)
+        target_epoch=$(date -d "tomorrow $hour:$min" +%s 2>/dev/null)
+        ;;
+    esac
+fi
+
+diff=$((target_epoch - now_epoch))
+hours=$((diff / 3600))
+minutes=$(((diff % 3600) / 60))
+
+printf "%d:%02d\n" "$hours" "$minutes"
