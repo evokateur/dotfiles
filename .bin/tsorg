@@ -1,1 +1,46 @@
-/Users/wesley/code/infrastructure/scripts/tsorg.sh
+#!/bin/bash
+
+me=$(basename "$0")
+
+number_of_files() {
+    if [ -e "$1" ]; then
+        echo "$#"
+    else
+        echo 0
+    fi
+}
+
+if [ -z "$1" ]; then
+    echo "usage: ${me} [file] (as in 'ls file')"
+    #files=(`ls -p | grep -v /`)
+else
+    files=("$@")
+fi
+
+for file in "${files[@]}"; do
+    if [ -f "$file" ]; then
+        year=$(date -r "$file" +%Y)
+        month=$(date -r "$file" +%m)
+        day=$(date -r "$file" +%d)
+        if [ ! -d "$year" ]; then
+            mkdir "$year"
+        fi
+        if [ ! -d "$year/$month" ]; then
+            mkdir "$year/$month"
+        fi
+        if [ ! -d "$year/$month/$day" ]; then
+            mkdir "$year/$month/$day"
+        fi
+        if [ "$file" != "$(basename "$0")" ]; then
+            filename=$(basename "$file")
+            count=$(number_of_files "$year/$month/$day/$filename")
+
+            if ((count > 0)); then
+                filename="${filename}.${count}"
+            fi
+
+            mv "$file" "$year/$month/$day/$filename"
+            echo "moved ./$file to $year/$month/$day/$filename"
+        fi
+    fi
+done
