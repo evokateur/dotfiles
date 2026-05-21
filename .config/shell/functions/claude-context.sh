@@ -15,7 +15,7 @@ _cc_sync_set_vars() {
     case "$current_dir" in
     "$HOME" | "$HOME"/*) ;;
     *)
-        echo "Error: Paths outside \$HOME are not supported."
+        echo "Error: the local CWD must be inside \$HOME."
         return 1
         ;;
     esac
@@ -200,7 +200,7 @@ _cc_sync_set_remote_spec_vars() {
 
         case "$relative_path" in
         /*)
-            echo "Error: Paths outside \$HOME are not supported."
+            echo "Error: remote path must be relative to \$HOME."
             return 1
             ;;
         esac
@@ -265,6 +265,12 @@ _cc_sync_run_to() {
     local rsync_options=("$@")
     local remote_context_dir remote_context_path sync_source sync_destination
     local remote_context_exists=false
+
+    if [ ! -d "$local_context_path" ]; then
+        echo "Error: Claude context directory does not exist on this machine"
+        echo "Expected path: $local_context_path"
+        return 1
+    fi
 
     _cc_sync_set_remote_context_vars "$remote_host" "$relative_path" || return 1
 
