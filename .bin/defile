@@ -1,0 +1,27 @@
+#!/bin/bash
+
+set -e
+
+if [ "$#" -ne 2 ]; then
+    echo "Usage: $0 <directory> <filename-pattern>"
+    exit 1
+fi
+
+DIR="$1"
+PATTERN="$2"
+
+FILES=$(find "$DIR" -type f -name "$PATTERN")
+
+if [ -z "$FILES" ]; then
+    echo "No files matching pattern '$PATTERN' found in '$DIR'."
+    exit 0
+fi
+
+echo "The following files will be removed:"
+echo "$FILES"
+echo -n "Proceed? [y/N]: "
+read -r CONFIRM
+
+if [[ "$CONFIRM" =~ ^[Yy]$ ]]; then
+    echo "$FILES" | xargs rm -v
+fi
