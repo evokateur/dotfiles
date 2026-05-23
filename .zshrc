@@ -40,6 +40,7 @@ esac
 PAKE_CREATE_APP=1
 
 source "$HOME/.config/shell/env/paths.sh"
+source "$HOME/.config/shell/env/vars.sh"
 
 _host_env="$HOME/.config/shell/env/$(scutil --get ComputerName 2>/dev/null).sh"
 [[ -f $_host_env ]] && source $_host_env
