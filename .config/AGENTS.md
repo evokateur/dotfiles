@@ -4,22 +4,21 @@
 
 - Always plan before coding
   - Let the user drive the planning process by asking questions and providing options
-  - Don't start implementing a plan until it's been vetted by the user
+  - Do NOT start implementing until a plan doc has been persisted, reviewed, and approved
 - Think hard before suggesting changes
   - Inspect related areas of the codebase for consistency
 - Prefer minimal changes
   - Consider code simplification or removal before adding code
   - Reuse existing components, utilities, or logic whenever possible
 - Keep it simple - NEVER over-engineer, ALWAYS simplify, NO unnecessary defensive programming. No extra features - focus on simplicity.
-- Be concise. Keep README minimal. IMPORTANT: do not use emojis, except in the occasional ironic or whimsical case.
+- Be concise. Keep README minimal. IMPORTANT: do not use emojis, except in the occasional ironic or whimsical cases.
 
 ## Coding Standards
 
 - Make business rules explicit and visible
-- Favor a Domain Driven Design whenever possible
+- Observe principles of Domain Driven Design whenever possible
 - Let complexity drive the use of DDD patterns
-  - Start simple, i.e. clear functions and domain names
-  - Add patterns and structure when needed
+  - Start simple, i.e. clear functions and consistent domain language, and only add patterns when complexity demands it
 - Keep domain code pure to a pragmatic degree
   - Expressing the domain clearly is the main idea
   - A pure domain *interface* is more important than a pure implementation
@@ -32,11 +31,12 @@
 - Naming
   - Use intention-revealing names for variables, functions, classes, and files
   - Use pronounceable names rather than abbreviations or acronyms
-    - EXCEPT standard abbreviations, e.g. `stdout`, `id`, `url`, etc.)
+    - EXCEPTIONS:
+      - standard abbreviations, e.g. `stdout`, `id`, `url`, etc.)
+      - single letter variable names for loop counters (e.g. `i`, `j`, `k`) or mathematical concepts (e.g. `x`, `y`, `z`)
   - Avoid disinformation in names, e.g. don't use "get" for a function that modifies state or has side effects
-  - Avoid single-letter variable names, except for loop counters
-  - Don't add gratuitous context to variable names – let namespaces and structure provide context
-  - Name boolean variables and functions so they read well with "if X ____ then"
+  - Don't add unnecessary context to variable names – let namespaces and structure provide context
+  - Name boolean variables and functions so they read well in the construct "if (thing) *predicate* then"
     - Examples: `isActive`, `is_not_active`, `hasPermission`, `does_not_have_permission`, `contains_y`, `doesNotContainY`
 
 - Casing
@@ -69,7 +69,7 @@
 
 ## Testing
 
-- TDD is preferable. When planning include writing failing tests, ascertaining that they fail as predicted, then implementation until they pass.
+- Test driven development is preferable. When planning include failing tests, checking they fail as predicted, then implementation until they pass.
 - Do not write code specifically to make testing easier. Implementation should be test-agnostic.
 - Do not use mocks. Fake it until you make it.
 
