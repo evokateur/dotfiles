@@ -4,7 +4,7 @@
 
 - Always plan before coding
   - Let the user drive the planning process by asking questions and providing options
-  - Write LLM generated plans to the vault in `projects/<project name>/llm-context/`
+  - Write LLM generated plans as a note in the Obsidian vault folder `projects/<project name>/llm-context/`
   - Do NOT start implementing until a plan doc has been persisted, reviewed, and approved
 - Think hard before suggesting changes
   - Inspect related areas of the codebase for consistency
@@ -37,7 +37,7 @@
       - single letter variable names for loop counters (e.g. `i`, `j`, `k`) or mathematical concepts (e.g. `x`, `y`, `z`)
   - Avoid disinformation in names, e.g. don't use "get" for a function that modifies state or has side effects
   - Don't add unnecessary context to variable names – let namespaces and structure provide context
-  - Name boolean variables and functions so they read well in the construct "if (thing) *predicate* then"
+  - Name boolean variables and functions so as to a form a clear predicate in `if [thing] <name> then`
     - Examples: `isActive`, `is_not_active`, `hasPermission`, `does_not_have_permission`, `contains_y`, `doesNotContainY`
 
 - Casing
