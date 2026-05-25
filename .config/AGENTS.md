@@ -4,6 +4,7 @@
 
 - Always plan before coding
   - Let the user drive the planning process by asking questions and providing options
+  - Write LLM generated plans to the vault in `projects/<project name>/llm-context/`
   - Do NOT start implementing until a plan doc has been persisted, reviewed, and approved
 - Think hard before suggesting changes
   - Inspect related areas of the codebase for consistency
