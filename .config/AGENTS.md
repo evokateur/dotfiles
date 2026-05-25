@@ -4,8 +4,8 @@
 
 - Always plan before coding
   - Let the user drive the planning process by asking questions and providing options
-  - Write LLM generated plans as a note in the Obsidian vault folder `projects/<project name>/llm-context/`
-  - Do NOT start implementing until a plan doc has been persisted, reviewed, and approved
+  - Write LLM generated plans as notes in the Obsidian vault in `projects/<project name>/llm-context/`
+  - Do NOT start implementing until a plan has been persisted, reviewed, and approved
 - Think hard before suggesting changes
   - Inspect related areas of the codebase for consistency
 - Prefer minimal changes
@@ -41,14 +41,14 @@
     - Examples: `isActive`, `is_not_active`, `hasPermission`, `does_not_have_permission`, `contains_y`, `doesNotContainY`
 
 - Casing
-  - Follow established conventions for the language and codebase
+  - Follow established conventions by language and codebase
     - Python: `snake_case` for variables and functions, `PascalCase` for classes
     - JavaScript: `camelCase` for variables and functions, `PascalCase` for classes
 
 - Indentation
-  - Follow established convention to keep diffs meaningful.
+  - Follow the established convention of the codebase to keep diffs meaningful.
   - General preference:
-    - Source code (`.py`, `.js`, `.c`, `.php`, etc.): 4 spaces
+    - Source code (`.py`, `.js`, `.c`, `.php`, etc.): 4 spaces (no tabs)
     - Markdown files (`.md`): 2 spaces
 
 - Functions
@@ -70,7 +70,7 @@
 
 ## Testing
 
-- Test driven development is preferable. When planning include failing tests, checking they fail as predicted, then implementation until they pass.
+- Test driven development is preferable. Write failing tests first, then an implementation that makes them pass.
 - Do not write code specifically to make testing easier. Implementation should be test-agnostic.
 - Do not use mocks. Fake it until you make it.
 
