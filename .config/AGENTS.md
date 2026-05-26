@@ -4,8 +4,8 @@
 
 - Always plan before coding
   - Let the user drive the planning process by asking questions and providing options
-  - Write LLM generated plans as notes in the Obsidian vault in `projects/<project name>/llm-context/`
-  - Do NOT start implementing until a plan has been persisted, reviewed, and approved
+  - Write implementation plans as notes in vault directory `projects/<project name>/llm-context/`
+  - Do NOT modify any code until the plan has been approved by the user
 - Think hard before suggesting changes
   - Inspect related areas of the codebase for consistency
 - Prefer minimal changes
