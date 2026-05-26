@@ -4,8 +4,8 @@
     "id": "17787952202251hua00mva",
     "name": "Default",
     "behavior": "create",
-    "noteNameFormat": "{{title}}",
-    "path": "clippings",
+    "noteNameFormat": "{{title|kebab}}",
+    "path": "resources/clippings",
     "noteContentFormat": "{{content}}",
     "context": "",
     "properties": [
@@ -62,7 +62,7 @@
     {
       "name": "title",
       "type": "text",
-      "defaultValue": "{{title|lower|replace:\" \",\"-\"}}"
+      "defaultValue": "{{title}}"
     },
     {
       "name": "source",
@@ -129,7 +129,7 @@
     "highlightBehavior": "highlight-inline"
   },
   "stats": {
-    "addToObsidian": 1,
+    "addToObsidian": 7,
     "saveFile": 0,
     "copyToClipboard": 0,
     "share": 0

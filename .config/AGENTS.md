@@ -4,7 +4,7 @@
 
 - Always plan before coding
   - Let the user drive the planning process
-  - Write plans as obsidian notes in `projects/<project name>/llm-context/`
+  - Write plans as Obsidian notes in `projects/<project name>/llm-context/`
   - Do NOT start implementing until a plan has been persisted, reviewed, and approved
 - Think hard before suggesting changes
   - Inspect related areas of the codebase for consistency
@@ -75,5 +75,5 @@
 ## Project Documents in Obsidian
 
 - Project documents are kept in the Obsidian vault as notes:
-  - General docs in the folder `projects/<project name>/`
   - LLM generated Markdown for context and planning in `projects/<project name>/llm-context/`
+  - General docs in the folder `projects/<project name>/`
