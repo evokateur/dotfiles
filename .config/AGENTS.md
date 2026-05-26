@@ -3,41 +3,40 @@
 ## General Strategy
 
 - Always plan before coding
-  - Let the user drive the planning process by asking questions and providing options
-  - Write LLM generated plans to the vault in `projects/<project name>/llm-context/`
-  - Do NOT start implementing until a plan doc has been persisted, reviewed, and approved
+  - Let the user drive the planning process
+  - Write plans as obsidian notes in `projects/<project name>/llm-context/`
+  - Do NOT start implementing until a plan has been persisted, reviewed, and approved
 - Think hard before suggesting changes
   - Inspect related areas of the codebase for consistency
 - Prefer minimal changes
   - Consider code simplification or removal before adding code
   - Reuse existing components, utilities, or logic whenever possible
 - Keep it simple - NEVER over-engineer, ALWAYS simplify, NO unnecessary defensive programming. No extra features - focus on simplicity.
-- Be concise. Keep README minimal. IMPORTANT: do not use emojis, except in the occasional ironic or whimsical cases.
+- Be concise. Keep README minimal.
+- IMPORTANT: do not use emojis, except in the occasional ironic or whimsical case
 
-## Coding Standards
+## Coding Style
 
-- Make business rules explicit and visible
 - Observe principles of Domain Driven Design whenever possible
-- Let complexity drive the use of DDD patterns
-  - Start simple, i.e. clear functions and consistent domain language, and only add patterns when complexity demands it
+- Make business rules explicit and visible
+- Let complexity drive the use of patterns
+  - Start simple and only add patterns when complexity demands it
 - Keep domain code pure to a pragmatic degree
   - Expressing the domain clearly is the main idea
   - A pure domain *interface* is more important than a pure implementation
   - Client code should depend on a domain abstraction
 
 - Maintain a clear separation of concerns
-  - Separate business logic from infrastructure and framework code
-  - Use layers or modules to organize code by responsibility
 
 - Naming
   - Use intention-revealing names for variables, functions, classes, and files
   - Use pronounceable names rather than abbreviations or acronyms
     - EXCEPTIONS:
       - standard abbreviations, e.g. `stdout`, `id`, `url`, etc.)
-      - single letter variable names for loop counters (e.g. `i`, `j`, `k`) or mathematical concepts (e.g. `x`, `y`, `z`)
+      - single letter loop counters, or mathematical concepts
   - Avoid disinformation in names, e.g. don't use "get" for a function that modifies state or has side effects
   - Don't add unnecessary context to variable names – let namespaces and structure provide context
-  - Name boolean variables and functions so they read well in the construct "if (thing) *predicate* then"
+  - Name boolean variables and functions so they read well in "if (thing) *predicate* then"
     - Examples: `isActive`, `is_not_active`, `hasPermission`, `does_not_have_permission`, `contains_y`, `doesNotContainY`
 
 - Casing
@@ -52,9 +51,8 @@
     - Markdown files (`.md`): 2 spaces
 
 - Functions
-  - Keep functions small and focused on a single task
-  - Avoid long parameter lists; use objects or dictionaries if necessary
-  - Avoid side effects in functions; they should be pure when possible
+  - Keep functions small and focused on a single objective
+  - Favor objects or dictionaries over long parameter lists
 
 - Error Handling
   - Don't write forgiving code
@@ -70,7 +68,7 @@
 
 ## Testing
 
-- Test driven development is preferable. When planning include failing tests, checking they fail as predicted, then implementation until they pass.
+- Write failing tests before writing code
 - Do not write code specifically to make testing easier. Implementation should be test-agnostic.
 - Do not use mocks. Fake it until you make it.
 
