@@ -40,14 +40,14 @@
     - Examples: `isActive`, `is_not_active`, `hasPermission`, `does_not_have_permission`, `contains_y`, `doesNotContainY`
 
 - Casing
-  - Follow established conventions for the language and codebase
+  - Follow established conventions by language and codebase
     - Python: `snake_case` for variables and functions, `PascalCase` for classes
     - JavaScript: `camelCase` for variables and functions, `PascalCase` for classes
 
 - Indentation
-  - Follow established convention to keep diffs meaningful.
+  - Follow the established convention of the codebase to keep diffs meaningful.
   - General preference:
-    - Source code (`.py`, `.js`, `.c`, `.php`, etc.): 4 spaces
+    - Source code (`.py`, `.js`, `.c`, `.php`, etc.): 4 spaces (no tabs)
     - Markdown files (`.md`): 2 spaces
 
 - Functions
