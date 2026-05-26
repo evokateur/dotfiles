@@ -4,7 +4,7 @@
     "id": "17787952202251hua00mva",
     "name": "Default",
     "behavior": "create",
-    "noteNameFormat": "{{title|lower|replace:\" \",\"-\"}}",
+    "noteNameFormat": "{{title|kebab}}",
     "path": "resources/clippings",
     "noteContentFormat": "{{content}}",
     "context": "",
