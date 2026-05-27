@@ -3,16 +3,36 @@ set -eu
 
 GIT="git --git-dir=$VAULT_PATH/.git --work-tree=$VAULT_PATH"
 
-hostname_value=$(hostname | sed 's/\.local$//')
-date_value=$(date '+%Y-%m-%d %H:%M:%S')
-commit_message="$hostname_value vault backup: $date_value"
+while getopts "m:" opt; do
+  case $opt in
+  m)
+    if [ -z "$OPTARG" ]; then
+      echo "Error: -m requires a non-empty argument."
+      exit 1
+    fi
+    commit_message="$OPTARG"
+    ;;
+  \?)
+    echo "Usage: $0 [-m message]"
+    exit 1
+    ;;
+  esac
+done
+
+shift $((OPTIND - 1))
+
+if [ -z "${commit_message:-}" ]; then
+  hostname_value=$(hostname | sed 's/\.local$//')
+  date_value=$(date '+%Y-%m-%d %H:%M:%S')
+  commit_message="$hostname_value vault backup: $date_value"
+fi
 
 $GIT pull --no-edit
 
 $GIT add -A
 
 if ! $GIT diff --quiet || ! $GIT diff --cached --quiet; then
-    $GIT commit -m "$commit_message"
+  $GIT commit -m "$commit_message"
 fi
 
 $GIT push
