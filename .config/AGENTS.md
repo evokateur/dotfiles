@@ -3,9 +3,9 @@
 ## General Strategy
 
 - Always plan before coding
-  - Let the user drive the planning process
-  - Write plans as Obsidian notes in `projects/<project name>/llm-context/`
-  - Do NOT start implementing until a plan has been persisted, reviewed, and approved
+  - Let the user drive the planning process by asking questions and providing options
+  - Write plans as Obsidian notes in the folder `projects/<project name>/llm-context/`
+  - Do NOT modify any code until the plan has been approved by the user
 - Think hard before suggesting changes
   - Inspect related areas of the codebase for consistency
 - Prefer minimal changes
@@ -36,7 +36,7 @@
       - single letter loop counters, or mathematical concepts
   - Avoid disinformation in names, e.g. don't use "get" for a function that modifies state or has side effects
   - Don't add unnecessary context to variable names – let namespaces and structure provide context
-  - Name boolean variables and functions so they read well in "if (thing) *predicate* then"
+  - Name boolean variables and functions in such a way that reads well with: `if [object] <boolean variable name> then`
     - Examples: `isActive`, `is_not_active`, `hasPermission`, `does_not_have_permission`, `contains_y`, `doesNotContainY`
 
 - Casing
@@ -74,6 +74,6 @@
 
 ## Project Documents in Obsidian
 
-- Project documents are kept in the Obsidian vault as notes:
-  - LLM generated Markdown for context and planning in `projects/<project name>/llm-context/`
-  - General docs in the folder `projects/<project name>/`
+- Project documents are kept as notes in the Obsidian vault:
+  - General notes in the folder `projects/<project name>/`
+  - LLM generated context and planning in `projects/<project name>/llm-context/`
