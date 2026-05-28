@@ -2,7 +2,7 @@
 
 ## General Strategy
 
-- Always plan before coding
+- ALWAYS plan before coding
   - Let the user drive the planning process by asking questions and providing options
   - Write plans as Obsidian notes in the folder `projects/<project name>/llm-context/`
   - Do NOT modify any code until the plan has been approved by the user
