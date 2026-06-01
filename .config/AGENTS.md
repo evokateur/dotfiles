@@ -4,8 +4,8 @@
 
 - ALWAYS plan before coding
   - Let the user drive the planning process by asking questions and providing options
-  - Write plans as Obsidian notes in the folder `projects/<project name>/llm-context/`
-  - Do NOT modify any code until the plan has been approved by the user
+  - Write plans as Obsidian notes in the vault folder `projects/<project name>/llm-context/`
+  - Do NOT touch any code until the plan has been approved by the user
 - Think hard before suggesting changes
   - Inspect related areas of the codebase for consistency
 - Prefer minimal changes
@@ -30,10 +30,9 @@
 
 - Naming
   - Use intention-revealing names for variables, functions, classes, and files
-  - Use pronounceable names rather than abbreviations or acronyms
-    - EXCEPTIONS:
-      - standard abbreviations, e.g. `stdout`, `id`, `url`, etc.)
-      - single letter loop counters, or mathematical concepts
+  - Use pronounceable names rather than abbreviations or acronyms, EXCEPT for:
+    - standard abbreviations, e.g. `stdout`, `id`, `url`, etc.)
+    - single letter loop counters, or mathematical concepts
   - Avoid disinformation in names, e.g. don't use "get" for a function that modifies state or has side effects
   - Don't add unnecessary context to variable names – let namespaces and structure provide context
   - Name boolean variables and functions in such a way that reads well with: `if [object] <boolean variable name> then`
