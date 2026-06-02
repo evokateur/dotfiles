@@ -33,7 +33,7 @@ export PYENV_ROOT="$HOME/.pyenv"
 
 source "$HOME/.config/shell/env/paths.sh"
 source "$HOME/.config/shell/env/vars.sh"
-source "$HOME/.config/shell/functions/hrvst-completion.bash"
+source "$HOME/.config/shell/functions/completions.sh"
 
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
