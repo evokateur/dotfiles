@@ -1,0 +1,13 @@
+#!/bin/bash
+
+if [ -z "$1" ]; then
+    echo "Usage: $0 <pasta>"
+    exit 1
+fi
+
+pasta=$1
+
+COPY_PASTA_FILE="$HOME/vaults/caveau/areas/dev/copy-pasta.md"
+
+printf '\n' >>"$COPY_PASTA_FILE"
+printf '%s\n' '```sh' "$pasta" '```' >>"$COPY_PASTA_FILE"
