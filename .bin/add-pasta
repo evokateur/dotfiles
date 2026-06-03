@@ -9,5 +9,9 @@ pasta=$1
 
 COPY_PASTA_FILE="$HOME/vaults/caveau/areas/dev/copy-pasta.md"
 
-printf '\n' >>"$COPY_PASTA_FILE"
-printf '%s\n' '```sh' "$pasta" '```' >>"$COPY_PASTA_FILE"
+{
+    printf '\n'
+    printf '\n'
+    printf '%s\n' '```sh' "$pasta"
+    printf '```'
+} >>"$COPY_PASTA_FILE"
