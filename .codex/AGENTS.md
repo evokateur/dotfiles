@@ -1,1 +1,1 @@
-../.config/AGENTS.md
+../vaults/caveau/projects/ai-coding/claude.md
