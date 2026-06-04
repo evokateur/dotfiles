@@ -1,21 +1,21 @@
 export default {
-    defaultBrowser: "Firefox",
-    handlers: [
-        {
-            match: /youtube\.com/,
-            browser: "YouTube Wrapper"
-        },
-        {
-            match: /youtu\.be/,
-            browser: "YouTube Wrapper"
-        },
-        {
-            match: /google\.com(?!\/url)/,
-            browser: "Chromium"
-        },
-        {
-            match: /bzamayo\.com/,
-            browser: "Safari"
-        }
-    ]
+  defaultBrowser: "Firefox",
+  handlers: [
+    {
+      match: /youtube\.com/,
+      browser: "YouTube Wrapper"
+    },
+    {
+      match: /youtu\.be/,
+      browser: "YouTube Wrapper"
+    },
+    {
+      match: /google\.com(?!\/url)/,
+      browser: "Chromium"
+    },
+    {
+      match: /bzamayo\.com/,
+      browser: "Safari"
+    }
+  ]
 };
