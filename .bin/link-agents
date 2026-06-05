@@ -1,0 +1,35 @@
+#!/bin/bash
+
+set -euo pipefail
+
+project="${1:-$(basename "$(pwd -P)")}"
+
+agents_file_relative_path="../../vaults/caveau/projects/${project}/llm-context/agents.md"
+
+if [ ! -f "$agents_file_relative_path" ]; then
+    printf '%s\n' "$agents_file_relative_path: No such file, exiting." >&2
+    exit 1
+fi
+
+create_link() {
+    local linkname="$1"
+
+    if [ -f "$linkname" ] && [ ! -L "$linkname" ]; then
+        printf 'A real %s is here; leaving it alone.\n' "$linkname"
+        ls -l "$linkname"
+        return
+    fi
+
+    if [ -L "$linkname" ]; then
+        rm "$linkname"
+        printf 'Replacing %s symlink..\n' "$linkname"
+    else
+        printf 'Creating %s symlink..\n' "$linkname"
+    fi
+
+    ln -s "$agents_file_relative_path" "$linkname"
+    ls -l "$linkname"
+}
+
+create_link CLAUDE.md
+create_link AGENTS.md
