@@ -33,8 +33,6 @@ if [ -z "${commit_message:-}" ]; then
     commit_message="$hostname_value vault backup: $date_value"
 fi
 
-exit 0
-
 $GIT pull --no-edit
 
 $GIT add -A
