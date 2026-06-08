@@ -11,6 +11,32 @@ if [ ! -f "$agents_file_relative_path" ]; then
     exit 1
 fi
 
+confirm() {
+    if [ -z "$1" ]; then
+        printf "confirm: missing prompt\n" >&2
+        exit 2
+    fi
+
+    prompt=$1
+
+    # require a TTY to prompt
+    [ -t 0 ] || return 1
+
+    printf "%s " "$prompt" >&2
+    IFS= read -r answer
+
+    case "$answer" in
+    [yY] | [yY]*)
+        unset answer prompt
+        return 0
+        ;;
+    *)
+        unset answer prompt
+        return 1
+        ;;
+    esac
+}
+
 create_link() {
     local linkname="$1"
 
@@ -21,15 +47,16 @@ create_link() {
     fi
 
     if [ -L "$linkname" ]; then
-        rm "$linkname"
-        printf 'Replacing %s symlink..\n' "$linkname"
-    else
-        printf 'Creating %s symlink..\n' "$linkname"
+        ls -l "$linkname"
+        confirm "Replace $linkname?" && rm -f -- "$linkname"
     fi
 
-    ln -s "$agents_file_relative_path" "$linkname"
-    ls -l "$linkname"
+    if [ ! -L "$linkname" ]; then
+        printf 'Creating %s symlink..\n' "$linkname"
+        ln -s "$agents_file_relative_path" "$linkname"
+        ls -l "$linkname"
+    fi
 }
 
-create_link CLAUDE.md
 create_link AGENTS.md
+create_link CLAUDE.md
