@@ -47,8 +47,9 @@ bclm-cc || exit 1
 tell "Docker Desktop" "quit" || exit 1
 tell "Dropbox" "quit" || exit 1
 
+tell "Mullvad VPN" "activate"
+
 if ! vpn_is_connected; then
-    # tell_app "Mullvad VPN" "activate"
     echo "telling mullvad to connect.."
     mullvad connect || exit 1
 fi
