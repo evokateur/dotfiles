@@ -1,0 +1,21 @@
+#!/bin/bash
+set -euo pipefail
+
+config_dir="${HOME}/.config/dconf"
+
+if [[ ! -d "$config_dir" ]]; then
+    exit 0
+fi
+
+host="${HOSTNAME:-$(hostname 2>/dev/null || true)}"
+host="${host%%.*}"
+
+if [[ -z "$host" ]]; then
+    echo "Could not determine hostname, exiting."
+    exit 1
+fi
+
+dump_file="${config_dir}/${host}.conf"
+
+echo "Dumping user dconf to $dump_file.."
+dconf dump / >"$dump_file"
