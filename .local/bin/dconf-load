@@ -29,8 +29,19 @@ is_valid_dconf_dump() {
 }
 
 if is_valid_dconf_dump "$dump_file"; then
-    echo "Loading user dconf from $dump_file.."
-    dconf load / <"$dump_file"
+    ls -l "$dump_file"
+    printf "Do you REALLY want to overwrite your dconf settings from %s? [y/N] " "$dump_file"
+    read -r reply
+    case "$reply" in
+    [yY][eE][sS] | [oO][uU][iI])
+        echo "Loading user dconf from $dump_file.."
+        # dconf load / <"$dump_file"
+        ;;
+    *)
+        echo "Did not hear the word or le mot, exiting."
+        exit 0
+        ;;
+    esac
 else
     echo "$dump_file does not seem to be a dconf dump."
 fi
