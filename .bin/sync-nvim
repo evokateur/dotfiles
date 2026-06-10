@@ -30,7 +30,7 @@ fi
 if [ -z "${commit_message:-}" ]; then
     hostname_value=$(hostname | sed 's/\.local$//')
     date_value=$(date '+%Y-%m-%d %H:%M:%S')
-    commit_message="$hostname_value nvim sync: $date_value"
+    commit_message="$hostname_value lazy sync: $date_value"
 fi
 
 $GIT pull --no-edit
