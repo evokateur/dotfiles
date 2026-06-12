@@ -1,0 +1,16 @@
+#!/bin/bash
+
+source "$HOME/.config/shell/env/colors.sh"
+FORMAT="${ITALIC}${BLUE}%s${RESET}\n"
+
+printf "$FORMAT" "Syncing dotfiles.."
+sync-dotfiles
+echo
+printf "$FORMAT" "Syncing pass.."
+sync-pass
+echo
+printf "$FORMAT" "Syncing nvim.."
+sync-nvim
+echo
+printf "$FORMAT" "Syncing vault.."
+sync-vault
