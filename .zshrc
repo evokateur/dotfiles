@@ -81,6 +81,7 @@ add-zsh-hook chpwd venv_auto_switch
 alias vault='git --git-dir="$VAULT_PATH"/.git --work-tree="$VAULT_PATH"'
 alias ov='git --git-dir="$VAULT_PATH"/.git --work-tree="$VAULT_PATH"'
 alias dfl='dotfiles'
+alias sync-dfl='sync-dotfiles'
 alias srsync="rsync -av -e ssh --exclude='.git/' --exclude='node_modules/' --exclude='*.pyc' --exclude='__pycache__/' --exclude='.venv/' --exclude='env/' --exclude='.env/' --exclude='.mypy_cache/' --exclude='.pytest_cache/'"
 alias ccusage='npx ccusage@latest'
 alias rm='rm -I'

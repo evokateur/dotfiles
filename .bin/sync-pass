@@ -1,0 +1,8 @@
+#!/bin/sh
+set -eu
+
+GIT="pass git"
+
+$GIT pull
+
+$GIT push
