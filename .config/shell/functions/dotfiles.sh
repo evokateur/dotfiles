@@ -1,9 +1,12 @@
 dotfiles() {
-    if [[ "$1" == "add" && "$2" == "." ]]; then
-        echo "That would add everything in your home directory! D:"
-        echo "You probably mean: 'dotfiles add -u'.."
-        # 'dotfiles add -u' will add only tracked files that are modified or deleted.
-        return 1
+    if [[ "$1" == "add" ]]; then
+        case "$2" in
+        . | -A | --all)
+            echo "That would add every untracked file in your home directory! D:"
+            echo "You probably meant: 'dotfiles add -u'"
+            return 1
+            ;;
+        esac
     fi
     /usr/bin/git --git-dir="$HOME"/.dotfiles/ --work-tree="$HOME" "$@"
 }
