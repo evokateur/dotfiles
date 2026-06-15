@@ -29,8 +29,7 @@ fi
 
 if [ -z "${commit_message:-}" ]; then
     hostname_value=$(hostname | sed 's/\.local$//')
-    date_value=$(date '+%Y-%m-%d %H:%M:%S')
-    commit_message="$hostname_value dotfiles sync: $date_value"
+    commit_message="$hostname_value dotfiles sync"
 fi
 
 $GIT pull --no-edit
