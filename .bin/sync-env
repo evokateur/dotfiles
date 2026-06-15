@@ -6,14 +6,14 @@ set -eu
 
 commit_message="$(parse_message_arg "$@")"
 
-blue_italic_echo "Syncing dotfiles..\n"
+blue_italic_echo "Syncing dotfiles.."
 sync-dotfiles "$commit_message"
 
-blue_italic_echo "Syncing pass..\n"
+blue_italic_echo "\nSyncing pass.."
 sync-pass
 
-blue_italic_echo "Syncing nvim..\n"
+blue_italic_echo "\nSyncing nvim.."
 sync-nvim "$commit_message"
 
-blue_italic_echo "Syncing vault.."
+blue_italic_echo "\nSyncing vault.."
 sync-vault "$commit_message"
