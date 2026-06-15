@@ -3,17 +3,17 @@
 . "$HOME/.bin/helpers/fancy-echo.sh"
 . "$HOME/.config/shell/functions/dotfiles.sh"
 
-blue_italic_echo "Running 'dotfiles pull'..\n"
+blue_italic_echo "Running 'dotfiles pull'.."
 dotfiles pull
 
-blue_italic_echo "Running 'pass git pull'..\n"
+blue_italic_echo "\nRunning 'pass git pull'.."
 pass git pull
 
-blue_italic_echo "Running 'git pull' in ~/.config/nvim..\n"
+blue_italic_echo "\nRunning 'git pull' in ~/.config/nvim.."
 cd ~/.config/nvim && git pull
 
-blue_italic_echo "Running 'git pull' in ${VAULT_PATH}..\n"
+blue_italic_echo "\nRunning 'git pull' in ${VAULT_PATH}.."
 cd "$VAULT_PATH" && git pull
 
-blue_italic_echo "Running 'git pull' in ~/code/cv-joint.."
+blue_italic_echo "\nRunning 'git pull' in ~/code/cv-joint.."
 cd ~/code/cv-joint && git pull
