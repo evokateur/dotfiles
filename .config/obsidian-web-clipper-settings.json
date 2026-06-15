@@ -5,7 +5,7 @@
     "name": "Default",
     "behavior": "create",
     "noteNameFormat": "{{title|kebab}}",
-    "path": "resources/clippings",
+    "path": "_stack",
     "noteContentFormat": "{{content}}",
     "context": "",
     "properties": [
