@@ -1,16 +1,16 @@
 #!/bin/bash
 
-source "$HOME/.config/shell/env/colors.sh"
-FORMAT="${ITALIC}${BLUE}%s${RESET}\n"
+. "$HOME/.bin/helpers/fancy-echo.sh"
+. "$HOME/.config/shell/functions/dotfiles.sh"
 
-printf "$FORMAT" "Running 'dotfiles status'.."
-source "$HOME/.config/shell/functions/dotfiles.sh" && dotfiles status
-echo
-printf "$FORMAT" "Running 'pass git status'.."
+blue_italic_echo "Running 'dotfiles status'..\n"
+dotfiles status
+
+blue_italic_echo "Running 'pass git status'..\n"
 pass git status
-echo
-printf "$FORMAT" "Running 'git status' in ~/.config/nvim.."
+
+blue_italic_echo "Running 'git status' in ~/.config/nvim..\n"
 cd ~/.config/nvim && git status
-echo
-printf "$FORMAT" "Running 'git status' in ${VAULT_PATH}.."
+
+blue_italic_echo "Running 'git status' in ${VAULT_PATH}.."
 cd "$VAULT_PATH" && git status

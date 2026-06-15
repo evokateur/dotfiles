@@ -1,19 +1,19 @@
 #!/bin/bash
 
-source "$HOME/.config/shell/env/colors.sh"
-FORMAT="${ITALIC}${BLUE}%s${RESET}\n"
+. "$HOME/.bin/helpers/fancy-echo.sh"
+. "$HOME/.config/shell/functions/dotfiles.sh"
 
-printf "$FORMAT" "Running 'dotfiles pull'.."
-source "$HOME/.config/shell/functions/dotfiles.sh" && dotfiles pull
-echo
-printf "$FORMAT" "Running 'pass git pull'.."
+blue_italic_echo "Running 'dotfiles pull'..\n"
+dotfiles pull
+
+blue_italic_echo "Running 'pass git pull'..\n"
 pass git pull
-echo
-printf "$FORMAT" "Running 'git pull' in ~/.config/nvim.."
+
+blue_italic_echo "Running 'git pull' in ~/.config/nvim..\n"
 cd ~/.config/nvim && git pull
-echo
-printf "$FORMAT" "Running 'git pull' in ${VAULT_PATH}.."
+
+blue_italic_echo "Running 'git pull' in ${VAULT_PATH}..\n"
 cd "$VAULT_PATH" && git pull
-echo
-printf "$FORMAT" "Running 'git pull' in ~/code/cv-joint.."
+
+blue_italic_echo "Running 'git pull' in ~/code/cv-joint.."
 cd ~/code/cv-joint && git pull

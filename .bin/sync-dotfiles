@@ -3,29 +3,8 @@ set -eu
 
 GIT="git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 
-commit_message=""
-
-while getopts "m:" opt; do
-    case $opt in
-    m)
-        if [ -z "$OPTARG" ]; then
-            echo "Error: -m requires a non-empty argument."
-            exit 1
-        fi
-        commit_message="$OPTARG"
-        ;;
-    \?)
-        echo "Usage: $0 [-m message] [message]"
-        exit 1
-        ;;
-    esac
-done
-
-shift $((OPTIND - 1))
-
-if [ -z "${commit_message:-}" ] && [ $# -gt 0 ]; then
-    commit_message="$*"
-fi
+. "$HOME/.bin/helpers/parse-commit-message.sh"
+commit_message="$(parse_message_arg "$@")"
 
 if [ -z "${commit_message:-}" ]; then
     hostname_value=$(hostname | sed 's/\.local$//')

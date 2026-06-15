@@ -1,7 +1,6 @@
 #!/bin/bash
 
-source "$HOME/.config/shell/env/colors.sh"
-FORMAT="${ITALIC}${BLUE}%s${RESET}\n"
+. "$HOME/.bin/helpers/fancy-echo.sh"
 
 case "$(uname)" in
 Darwin) this_computer=$(scutil --get ComputerName) ;;
@@ -13,7 +12,7 @@ computers=("turnip" "sfizio" "cipolla" "xicamatl")
 
 for computer in "${computers[@]}"; do
     if [ "$this_computer" != "$computer" ]; then
-        printf "$FORMAT" "Running 'dotfiles pull' on $computer.."
+        blue_italic_echo "Running 'dotfiles pull' on $computer.."
         ssh -o ConnectTimeout=${timeout} "$computer" "source ~/.config/shell/functions/dotfiles.sh && dotfiles pull"
     fi
 done

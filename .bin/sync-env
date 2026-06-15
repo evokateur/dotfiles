@@ -1,16 +1,19 @@
 #!/bin/bash
+set -eu
 
-source "$HOME/.config/shell/env/colors.sh"
-FORMAT="${ITALIC}${BLUE}%s${RESET}\n"
+. "$HOME/.bin/helpers/fancy-echo.sh"
+. "$HOME/.bin/helpers/parse-commit-message.sh"
 
-printf "$FORMAT" "Syncing dotfiles.."
-sync-dotfiles
-echo
-printf "$FORMAT" "Syncing pass.."
+commit_message="$(parse_message_arg "$@")"
+
+blue_italic_echo "Syncing dotfiles..\n"
+sync-dotfiles "$commit_message"
+
+blue_italic_echo "Syncing pass..\n"
 sync-pass
-echo
-printf "$FORMAT" "Syncing nvim.."
-sync-nvim
-echo
-printf "$FORMAT" "Syncing vault.."
-sync-vault
+
+blue_italic_echo "Syncing nvim..\n"
+sync-nvim "$commit_message"
+
+blue_italic_echo "Syncing vault.."
+sync-vault "$commit_message"

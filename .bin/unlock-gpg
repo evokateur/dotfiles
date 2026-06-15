@@ -1,15 +1,14 @@
 #!/bin/bash
 
-source "$HOME/.config/shell/env/colors.sh"
-FORMAT="${ITALIC}${BLUE}%s${RESET}\n"
+. "$HOME/.bin/helpers/fancy-echo.sh"
 
-printf "$FORMAT" "kiLliNg GPG agent.."
+blue_italic_echo "kiLliNg GPG agent.."
 gpgconf --kill gpg-agent
 
-printf "$FORMAT" "removing stale lock files.."
+blue_italic_echo "removing stale lock files.."
 find ~/.gnupg -type f -name "*.lock" -delete
 
-printf "$FORMAT" "restarting GPG agent.."
+blue_italic_echo "restarting GPG agent.."
 gpg-agent --daemon
 
-printf "$FORMAT" "done."
+blue_italic_echo "done."
