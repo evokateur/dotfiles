@@ -12,6 +12,7 @@ set spoolfile="+INBOX"
 
 set record="=Sent"
 set postponed="=Drafts"
+set trash="=Trash"
 
 save-hook . "=Archive"
 send-hook . set signature=~/.mutt/sig

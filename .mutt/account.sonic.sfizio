@@ -12,6 +12,7 @@ set spoolfile="+INBOX"
 
 set record = '=INBOX.Sent Messages'
 set postponed = '=INBOX.Drafts'
+set trash = '=INBOX.Trash'
 
 save-hook . '=INBOX.Archive'
 send-hook . set signature=~/.mutt/sig
