@@ -6,9 +6,11 @@ cache_dir="$XDG_CACHE_HOME/completions"
 mkdir -p -- "$cache_dir"
 
 # Try macOS stat first, fall back to GNU.
-stat_mtime() {
-    stat -f %m "$1" 2>/dev/null || stat -c %Y "$1" 2>/dev/null
-}
+if [[ "$OSTYPE" == darwin* ]]; then
+    stat_mtime() { stat -f %m "$1" 2>/dev/null; }
+else
+    stat_mtime() { stat -c %Y "$1" 2>/dev/null; }
+fi
 
 # generate_or_use_cache <cmd> [args...]
 # - Runs <cmd> [args...] and caches stdout to a file under $cache_dir/<cmd>.sh
