@@ -20,6 +20,7 @@ generate_or_use_cache() {
     local exe_path
 
     exe_path="$(command -v -- "$cmd" 2>/dev/null)" || exe_path="$cmd"
+    exe_path="${exe_path:A}"
 
     local cache_file="$cache_dir/${cmd}.sh"
     local regenerate=0

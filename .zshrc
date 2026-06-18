@@ -87,5 +87,5 @@ alias ccusage='npx ccusage@latest'
 alias rm='rm -I'
 alias dm='dark-mode'
 
-#LC_NUMERIC=C printf "zshrc loaded in %.3f s\n" \
-#      "$(( EPOCHREALTIME - ZSHRC_START ))"
+LC_NUMERIC=C printf "zshrc loaded in %.3f s\n" \
+    "$(( EPOCHREALTIME - ZSHRC_START ))"
