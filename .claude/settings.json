@@ -183,5 +183,6 @@
     "code-review@claude-plugins-official": true
   },
   "alwaysThinkingEnabled": true,
-  "promptSuggestionEnabled": false
+  "promptSuggestionEnabled": false,
+  "autoUpdatesChannel": "stable"
 }
