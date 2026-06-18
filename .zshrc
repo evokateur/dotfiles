@@ -27,7 +27,7 @@ export PATH=/Users/wesley/.opencode/bin:$PATH
 export PYENV_ROOT="$HOME/.pyenv"
 PATH="$PYENV_ROOT/shims:$PYENV_ROOT/bin:$PATH"
 
-export DYLD_FALLBACK_LIBRARY_PATH="$(brew --prefix)/lib:$DYLD_FALLBACK_LIBRARY_PATH"
+export DYLD_FALLBACK_LIBRARY_PATH="/usr/local/lib:$DYLD_FALLBACK_LIBRARY_PATH"
 
 # pnpm
 export PNPM_HOME="/Users/wesley/Library/pnpm"
@@ -40,11 +40,16 @@ esac
 PAKE_CREATE_APP=1
 
 source "$HOME/.config/shell/env/paths.sh"
-source "$HOME/.config/shell/env/vars.sh"
 
-_host_env="$HOME/.config/shell/env/$(scutil --get ComputerName 2>/dev/null).sh"
+_computer_name="$(scutil --get ComputerName 2>/dev/null)"
+_host_env="$HOME/.config/shell/env/$_computer_name.sh"
 [[ -f $_host_env ]] && source $_host_env
 unset _host_env
+
+if [[ "$_computer_name" != "turnip" ]]; then
+    source "$HOME/.config/shell/functions/turnip-remote.sh"
+fi
+unset _computer_name
 
 set -o vi
 
@@ -54,7 +59,12 @@ PS1='%(?.%F{green}√.%F{red}?%?)%f %B%F{240}%1~%f%b $ '
 
 fpath=(~/.zsh/completions $fpath)
 
-autoload -Uz compinit && compinit
+autoload -Uz compinit
+if [[ -n ${ZDOTDIR:-$HOME}/.zcompdump(#qN.mh+24) ]]; then
+    compinit
+else
+    compinit -C
+fi
 autoload -U add-zsh-hook
 
 source "$HOME/.config/shell/functions/wrappers.sh"
@@ -66,9 +76,6 @@ source "$HOME/.config/shell/functions/completions.sh"
 source "$HOME/.config/shell/functions/tar.sh"
 source "$HOME/.config/shell/functions/venv.sh"
 
-if [ "$(scutil --get ComputerName 2>/dev/null)" != "turnip" ]; then
-    source "$HOME/.config/shell/functions/turnip-remote.sh"
-fi
 
 if [ -f "$HOME/.local/bin/env" ]; then
     . "$HOME/.local/bin/env"

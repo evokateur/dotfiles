@@ -32,7 +32,6 @@ export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 
 source "$HOME/.config/shell/env/paths.sh"
-source "$HOME/.config/shell/env/vars.sh"
 source "$HOME/.config/shell/functions/completions.sh"
 
 # don't put duplicate lines or lines starting with space in the history.
@@ -146,10 +145,10 @@ if ! shopt -oq posix; then
     fi
 fi
 
-eval "$(pyenv init -)"
 
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
+source "$HOME/.config/shell/functions/wrappers.sh"
 source "$HOME/.config/shell/functions/claude-context.sh"
 source "$HOME/.config/shell/functions/dotfiles.sh"
 source "$HOME/.config/shell/functions/tar.sh"
@@ -163,13 +162,6 @@ venv_auto_activate
 
 cd() {
     builtin cd "$@" && venv_auto_switch
-}
-
-gemini() {
-    if [ -z "$GEMINI_API_KEY" ]; then
-        export GEMINI_API_KEY="$(pass api/google)"
-    fi
-    command gemini "$@"
 }
 
 # Alias definitions.
