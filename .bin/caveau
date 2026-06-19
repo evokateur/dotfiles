@@ -1,7 +1,9 @@
 #!/bin/bash
 
+cd "$VAULT_PATH" || exit
+
 if [ "$#" -gt 0 ]; then
-    cd "$VAULT_PATH" && nvim -c "Obsidian $*" .
+    nvim -c "Obsidian $*" .
 else
-    cd "$VAULT_PATH" && nvim .
+    nvim .
 fi
