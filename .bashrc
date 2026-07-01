@@ -145,7 +145,6 @@ if ! shopt -oq posix; then
     fi
 fi
 
-
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 source "$HOME/.config/shell/functions/wrappers.sh"
@@ -173,8 +172,8 @@ if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
-alias vault='git --git-dir="$VAULT_PATH"/.git --work-tree="$VAULT_PATH"'
-alias ov='git --git-dir="$VAULT_PATH"/.git --work-tree="$VAULT_PATH"'
+alias vault='git --git-dir="$VAULT_ROOT"/.git --work-tree="$VAULT_ROOT"'
+alias ov='git --git-dir="$VAULT_ROOT"/.git --work-tree="$VAULT_ROOT"'
 alias dfl='dotfiles'
 alias sync-dfl='sync-dotfiles'
 alias srsync="rsync -av -e ssh --exclude='.git/' --exclude='node_modules/' --exclude='*.pyc' --exclude='__pycache__/' --exclude='.venv/' --exclude='env/' --exclude='.env/' --exclude='.mypy_cache/' --exclude='.pytest_cache/'"

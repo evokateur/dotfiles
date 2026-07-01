@@ -1,7 +1,7 @@
 #!/bin/sh
 set -eu
 
-GIT="git --git-dir=$VAULT_PATH/.git --work-tree=$VAULT_PATH"
+GIT="git --git-dir=$VAULT_ROOT/.git --work-tree=$VAULT_ROOT"
 
 . "$HOME/.bin/helpers/parse-commit-message.sh"
 commit_message="$(parse_message_arg "$@")"

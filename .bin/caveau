@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd "$VAULT_PATH" || exit
+cd "$VAULT_ROOT" || exit
 
 if [ "$#" -gt 0 ]; then
     nvim -c "Obsidian $*" .

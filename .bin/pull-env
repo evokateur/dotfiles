@@ -12,8 +12,8 @@ pass git pull
 blue_italic_echo "\nRunning 'git pull' in ~/.config/nvim.."
 cd ~/.config/nvim && git pull
 
-blue_italic_echo "\nRunning 'git pull' in ${VAULT_PATH}.."
-cd "$VAULT_PATH" && git pull
+blue_italic_echo "\nRunning 'git pull' in ${VAULT_ROOT}.."
+cd "$VAULT_ROOT" && git pull
 
 blue_italic_echo "\nRunning 'git pull' in ~/code/cv-joint.."
 cd ~/code/cv-joint && git pull

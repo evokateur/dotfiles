@@ -12,5 +12,5 @@ pass git status
 blue_italic_echo "\nRunning 'git status' in ~/.config/nvim.."
 cd ~/.config/nvim && git status
 
-blue_italic_echo "\nRunning 'git status' in ${VAULT_PATH}.."
-cd "$VAULT_PATH" && git status
+blue_italic_echo "\nRunning 'git status' in ${VAULT_ROOT}.."
+cd "$VAULT_ROOT" && git status

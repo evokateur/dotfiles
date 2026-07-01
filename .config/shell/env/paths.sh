@@ -1,3 +1,3 @@
-export KB_PATH="$HOME/code/cv-knowledge-base/kb"
-export VAULT_PATH="$HOME/vaults/caveau"
-export NVIM_PATH="$HOME/.config/nvim"
+export NVIM_ROOT="$HOME/.config/nvim"
+export VAULT_ROOT="$HOME/vaults/caveau"
+export RAG_KNOWLEDGE_DIR="$VAULT_ROOT/areas/job-search/kb"
