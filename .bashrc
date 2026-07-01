@@ -184,3 +184,4 @@ alias claude="~/.claude/local/claude"
 alias rm='rm -I'
 
 get-natural
+. "$HOME/.cargo/env"
