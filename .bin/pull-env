@@ -9,11 +9,12 @@ dotfiles pull
 blue_italic_echo "\nRunning 'pass git pull'.."
 pass git pull
 
-blue_italic_echo "\nRunning 'git pull' in ~/.config/nvim.."
-cd ~/.config/nvim && git pull
+blue_italic_echo "\nRunning 'git pull' in ${NVIM_ROOT}.."
+cd "$NVIM_ROOT" && git pull
 
 blue_italic_echo "\nRunning 'git pull' in ${VAULT_ROOT}.."
 cd "$VAULT_ROOT" && git pull
 
-blue_italic_echo "\nRunning 'git pull' in ~/code/cv-joint.."
-cd ~/code/cv-joint && git pull
+CV_JOINT_ROOT="$HOME/code/cv-joint/"
+blue_italic_echo "\nRunning 'git pull' in $CV_JOINT_ROOT.."
+cd "$CV_JOINT_ROOT" && git pull

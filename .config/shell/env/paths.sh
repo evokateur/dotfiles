@@ -1,3 +1,5 @@
 export NVIM_ROOT="$HOME/.config/nvim"
-export VAULT_ROOT="$HOME/vaults/caveau"
+export VAULT_PATH="$HOME/vaults/caveau"
+export VAULT_ROOT="$VAULT_PATH"
 export RAG_KNOWLEDGE_DIR="$VAULT_ROOT/areas/job-search/kb"
+export KB_PATH="$RAG_KNOWLEDGE_DIR"
