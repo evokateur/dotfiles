@@ -182,4 +182,3 @@ alias ccusage='npx ccusage@latest'
 alias rm='rm -I'
 
 get-natural
-. "$HOME/.cargo/env"
