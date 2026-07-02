@@ -16,7 +16,8 @@ pull_src() {
         fi
     else
         echo
-        blue_italic_echo "$repository_root does not exist."
+        red_echo "Invalid directory: $1"
+        exit 1
     fi
 }
 
