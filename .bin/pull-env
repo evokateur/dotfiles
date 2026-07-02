@@ -3,18 +3,28 @@
 . "$HOME/.bin/helpers/fancy-echo.sh"
 . "$HOME/.config/shell/functions/dotfiles.sh"
 
+pull_src() {
+    if [ -d "$1" ]; then
+        repository_root="$1"
+        repository_root="$(git -C "$1" rev-parse --show-toplevel 2>/dev/null)"
+        if [ -z "$repository_root" ]; then
+            red_echo "Error: '$1' is not a git repository."
+            return 1
+        else
+            blue_italic_echo "\nRunning 'git pull' in $repository_root.."
+            cd "$repository_root" && git pull
+        fi
+    fi
+}
+
 blue_italic_echo "Running 'dotfiles pull'.."
 dotfiles pull
 
 blue_italic_echo "\nRunning 'pass git pull'.."
 pass git pull
 
-blue_italic_echo "\nRunning 'git pull' in ${NVIM_ROOT}.."
-cd "$NVIM_ROOT" && git pull
-
-blue_italic_echo "\nRunning 'git pull' in ${VAULT_ROOT}.."
-cd "$VAULT_ROOT" && git pull
-
-CV_JOINT_ROOT="$HOME/code/cv-joint/"
-blue_italic_echo "\nRunning 'git pull' in $CV_JOINT_ROOT.."
-cd "$CV_JOINT_ROOT" && git pull
+pull_src "$NVIM_ROOT"
+pull_src "$VAULT_ROOT"
+pull_src "$HOME/code/cv-joint/"
+pull_src "$HOME/code/mcpvault/"
+pull_src "$HOME/code/rag-knowledge-mcp/"
