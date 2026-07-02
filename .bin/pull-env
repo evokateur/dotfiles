@@ -15,7 +15,8 @@ pull_src() {
             cd "$repository_root" && git pull
         fi
     else
-        echo "$repository_root does not exist."
+        echo
+        blue_italic_echo "$repository_root does not exist."
     fi
 }
 
