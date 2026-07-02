@@ -8,12 +8,14 @@ pull_src() {
         repository_root="$1"
         repository_root="$(git -C "$1" rev-parse --show-toplevel 2>/dev/null)"
         if [ -z "$repository_root" ]; then
-            red_echo "Error: '$1' is not a git repository."
+            red_echo "$repository_root is not a git repository."
             return 1
         else
             blue_italic_echo "\nRunning 'git pull' in $repository_root.."
             cd "$repository_root" && git pull
         fi
+    else
+        echo "$repository_root does not exist."
     fi
 }
 
