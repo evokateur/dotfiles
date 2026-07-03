@@ -33,8 +33,6 @@
       "Bash(git merge-base:*)",
       "Bash(git mv:*)",
       "Bash(git rebase:*)",
-      "Bash(git reset:*)",
-      "Bash(git restore:*)",
       "Bash(git rev-parse:*)",
       "Bash(git stash push:*)",
       "Bash(git stash:*)",
