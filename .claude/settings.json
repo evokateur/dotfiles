@@ -143,9 +143,7 @@
       "mcp__obsidian__manage_tags"
     ],
     "deny": [
-      "Bash(git add --all:*)",
       "Bash(git add --force:*)",
-      "Bash(git add -A:*)",
       "Bash(git add -f:*)",
       "Bash(git commit -a:*)",
       "Bash(git worktree remove --force:*)",
@@ -183,5 +181,6 @@
   },
   "alwaysThinkingEnabled": true,
   "promptSuggestionEnabled": false,
-  "autoUpdatesChannel": "stable"
+  "autoUpdatesChannel": "stable",
+  "model": "opus"
 }
