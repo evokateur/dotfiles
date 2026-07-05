@@ -59,5 +59,10 @@ generate_or_use_cache() {
     source "$cache_file"
 }
 
-generate_or_use_cache hrvst completion
-generate_or_use_cache cv-joint completion
+if command -v hrvst >/dev/null 2>&1; then
+    generate_or_use_cache hrvst completion
+fi
+
+if command -v cv-joint >/dev/null 2>&1; then
+    generate_or_use_cache cv-joint completion
+fi
