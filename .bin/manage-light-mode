@@ -1,0 +1,34 @@
+#!/bin/bash
+
+set -u
+
+config_file="${XDG_CONFIG_HOME:-$HOME/.config}/light-mode-period.sh"
+
+# shellcheck source=/dev/null
+. "$config_file"
+
+hhmm_to_minute() {
+    local time="$1"
+    local hour="${time%:*}"
+    local minute="${time#*:}"
+
+    hour=$((10#$hour))
+    minute=$((10#$minute))
+
+    echo $((hour * 60 + minute))
+}
+
+start_minute="$(hhmm_to_minute "$LIGHT_MODE_START")"
+end_minute="$(hhmm_to_minute "$LIGHT_MODE_END")"
+current_minute="$(hhmm_to_minute "$(date +%H:%M)")"
+
+in_light_mode_period() {
+    [ "$current_minute" -ge "$start_minute" ] &&
+        [ "$current_minute" -le "$end_minute" ]
+}
+
+if in_light_mode_period; then
+    dark-mode off
+else
+    dark-mode on
+fi
