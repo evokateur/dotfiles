@@ -181,6 +181,5 @@
   },
   "alwaysThinkingEnabled": true,
   "promptSuggestionEnabled": false,
-  "autoUpdatesChannel": "stable",
-  "model": "opus"
+  "autoUpdatesChannel": "stable"
 }
