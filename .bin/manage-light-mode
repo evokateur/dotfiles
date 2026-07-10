@@ -28,7 +28,7 @@ in_light_mode_period() {
 }
 
 if in_light_mode_period; then
-    dark-mode off
+    ~/.bin/light-mode on
 else
-    dark-mode on
+    ~/.bin/light-mode off
 fi

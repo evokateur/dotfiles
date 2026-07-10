@@ -1,0 +1,11 @@
+#!/bin/bash
+
+what="$1"
+
+if [ "$what" == "on" ]; then
+    /usr/bin/osascript -e 'tell application "System Events" to tell appearance preferences to set dark mode to false'
+fi
+
+if [ "$what" == "off" ]; then
+    /usr/bin/osascript -e 'tell application "System Events" to tell appearance preferences to set dark mode to true'
+fi
