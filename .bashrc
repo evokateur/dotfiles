@@ -179,7 +179,6 @@ alias pbcopy='xsel --clipboard --input'
 alias ccusage='npx ccusage@latest'
 alias rm='rm -I'
 alias dfl='dotfiles'
-alias sdf='sync-dotfiles'
-alias sv='sync-vault'
+alias sync-dfl='sync-dotfiles'
 
 get-natural

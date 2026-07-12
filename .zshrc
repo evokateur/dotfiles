@@ -91,8 +91,7 @@ alias srsync="rsync -av -e ssh --exclude='.git/' --exclude='node_modules/' --exc
 alias ccusage='npx ccusage@latest'
 alias rm='rm -I'
 alias dfl='dotfiles'
-alias sdf='sync-dotfiles'
-alias sv='sync-vault'
+alias sync-dfl='sync-dotfiles'
 alias dm='dark-mode'
 
 # LC_NUMERIC=C printf "zshrc loaded in %.3f s\n" \
