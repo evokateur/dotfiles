@@ -87,13 +87,13 @@ add-zsh-hook chpwd venv_auto_switch
 
 alias vault='git --git-dir="$VAULT_ROOT"/.git --work-tree="$VAULT_ROOT"'
 alias ov='git --git-dir="$VAULT_ROOT"/.git --work-tree="$VAULT_ROOT"'
-alias dfl='dotfiles'
-alias sync-dfl='sync-dotfiles'
 alias srsync="rsync -av -e ssh --exclude='.git/' --exclude='node_modules/' --exclude='*.pyc' --exclude='__pycache__/' --exclude='.venv/' --exclude='env/' --exclude='.env/' --exclude='.mypy_cache/' --exclude='.pytest_cache/'"
 alias ccusage='npx ccusage@latest'
 alias rm='rm -I'
+alias dfl='dotfiles'
+alias sdf='sync-dotfiles'
+alias sv='sync-vault'
 alias dm='dark-mode'
-alias rciy='exit'
 
 # LC_NUMERIC=C printf "zshrc loaded in %.3f s\n" \
 #     "$(( EPOCHREALTIME - ZSHRC_START ))"

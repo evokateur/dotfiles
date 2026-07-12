@@ -174,11 +174,12 @@ fi
 
 alias vault='git --git-dir="$VAULT_ROOT"/.git --work-tree="$VAULT_ROOT"'
 alias ov='git --git-dir="$VAULT_ROOT"/.git --work-tree="$VAULT_ROOT"'
-alias dfl='dotfiles'
-alias sync-dfl='sync-dotfiles'
 alias srsync="rsync -av -e ssh --exclude='.git/' --exclude='node_modules/' --exclude='*.pyc' --exclude='__pycache__/' --exclude='.venv/' --exclude='env/' --exclude='.env/' --exclude='.mypy_cache/' --exclude='.pytest_cache/'"
 alias pbcopy='xsel --clipboard --input'
 alias ccusage='npx ccusage@latest'
 alias rm='rm -I'
+alias dfl='dotfiles'
+alias sdf='sync-dotfiles'
+alias sv='sync-vault'
 
 get-natural
