@@ -2,33 +2,44 @@
 
 set -u
 
-config_file="${XDG_CONFIG_HOME:-$HOME/.config}/light-mode-period.sh"
+config_file="${XDG_CONFIG_HOME:-$HOME/.light-mode}/config"
+state_file="${XDG_STATE_HOME:-$HOME/.local/state}/light-mode/last-period"
 
 # shellcheck source=/dev/null
 . "$config_file"
 
-hhmm_to_minute() {
+hhmm_to_epoch() {
+    # Epoch seconds for HH:MM on a given date (default today).
     local time="$1"
-    local hour="${time%:*}"
-    local minute="${time#*:}"
-
-    hour=$((10#$hour))
-    minute=$((10#$minute))
-
-    echo $((hour * 60 + minute))
+    local day="${2:-$(date +%F)}"
+    date -j -f "%Y-%m-%d %H:%M:%S" "$day $time:00" +%s
 }
 
-start_minute="$(hhmm_to_minute "$LIGHT_MODE_START")"
-end_minute="$(hhmm_to_minute "$LIGHT_MODE_END")"
-current_minute="$(hhmm_to_minute "$(date +%H:%M)")"
+now="$(date +%s)"
+start_epoch="$(hhmm_to_epoch "$LIGHT_MODE_START")"
+end_epoch="$(hhmm_to_epoch "$LIGHT_MODE_END")"
+yesterday_end_epoch="$(hhmm_to_epoch "$LIGHT_MODE_END" "$(date -v-1d +%F)")"
 
-in_light_mode_period() {
-    [ "$current_minute" -ge "$start_minute" ] &&
-        [ "$current_minute" -le "$end_minute" ]
-}
-
-if in_light_mode_period; then
-    ~/.bin/light-mode on
+# Each period is identified by the moment it began. This lets us act once per
+# period, so a manual override within a period is not undone on the next run.
+if [ "$now" -ge "$start_epoch" ] && [ "$now" -le "$end_epoch" ]; then
+    desired="on"
+    period="$start_epoch"
+elif [ "$now" -lt "$start_epoch" ]; then
+    desired="off"
+    period="$yesterday_end_epoch"
 else
-    ~/.bin/light-mode off
+    desired="off"
+    period="$end_epoch"
 fi
+
+last_period="$(cat "$state_file" 2>/dev/null || true)"
+
+if [ "$period" = "$last_period" ]; then
+    exit 0
+fi
+
+~/.bin/light-mode "$desired"
+
+mkdir -p "$(dirname "$state_file")"
+echo "$period" >"$state_file"
