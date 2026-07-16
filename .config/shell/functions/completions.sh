@@ -66,3 +66,11 @@ fi
 if command -v cv-joint >/dev/null 2>&1; then
     generate_or_use_cache cv-joint completion
 fi
+
+if command -v acli >/dev/null 2>&1; then
+    if [ -n "$ZSH_VERSION" ]; then
+        generate_or_use_cache acli completion zsh
+    else
+        generate_or_use_cache acli completion bash
+    fi
+fi
