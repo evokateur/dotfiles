@@ -20,26 +20,24 @@ start_epoch="$(hhmm_to_epoch "$LIGHT_MODE_START")"
 end_epoch="$(hhmm_to_epoch "$LIGHT_MODE_END")"
 yesterday_end_epoch="$(hhmm_to_epoch "$LIGHT_MODE_END" "$(date -v-1d +%F)")"
 
-# Each period is identified by the moment it began. This lets us act once per
-# period, so a manual override within a period is not undone on the next run.
 if [ "$now" -ge "$start_epoch" ] && [ "$now" -le "$end_epoch" ]; then
-    desired="on"
-    period="$start_epoch"
+    scheduled_state="on"
+    effective_period="$start_epoch"
 elif [ "$now" -lt "$start_epoch" ]; then
-    desired="off"
-    period="$yesterday_end_epoch"
+    scheduled_state="off"
+    effective_period="$yesterday_end_epoch"
 else
-    desired="off"
-    period="$end_epoch"
+    scheduled_state="off"
+    effective_period="$end_epoch"
 fi
 
 last_period="$(cat "$state_file" 2>/dev/null || true)"
 
-if [ "$period" = "$last_period" ]; then
+if [ "$effective_period" = "$last_period" ]; then
     exit 0
 fi
 
-~/.bin/light-mode "$desired"
+~/.bin/light-mode "$scheduled_state"
 
 mkdir -p "$(dirname "$state_file")"
-echo "$period" >"$state_file"
+echo "$effective_period" >"$state_file"
