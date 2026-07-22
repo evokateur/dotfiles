@@ -1,7 +1,3 @@
----
-title: "Ed Donner's CLAUDE.md"
-description: "Example from AI Coding Udemy course"
----
 # Guide for Coding Agents
 
 ## VERY IMPORTANT
