@@ -21,23 +21,23 @@ end_epoch="$(hhmm_to_epoch "$LIGHT_MODE_END")"
 yesterday_end_epoch="$(hhmm_to_epoch "$LIGHT_MODE_END" "$(date -v-1d +%F)")"
 
 if [ "$now" -ge "$start_epoch" ] && [ "$now" -le "$end_epoch" ]; then
-    scheduled_state="on"
-    effective_period="$start_epoch"
+    what="on"
+    current_period="$start_epoch"
 elif [ "$now" -lt "$start_epoch" ]; then
-    scheduled_state="off"
-    effective_period="$yesterday_end_epoch"
+    what="off"
+    current_period="$yesterday_end_epoch"
 else
-    scheduled_state="off"
-    effective_period="$end_epoch"
+    what="off"
+    current_period="$end_epoch"
 fi
 
 last_period="$(cat "$state_file" 2>/dev/null || true)"
 
-if [ "$effective_period" = "$last_period" ]; then
+if [ "$current_period" = "$last_period" ]; then
     exit 0
 fi
 
-~/.bin/light-mode "$scheduled_state"
+~/.bin/light-mode "$what"
 
 mkdir -p "$(dirname "$state_file")"
-echo "$effective_period" >"$state_file"
+echo "$current_period" >"$state_file"
