@@ -20,7 +20,7 @@ start_epoch="$(hhmm_to_epoch "$LIGHT_MODE_START")"
 end_epoch="$(hhmm_to_epoch "$LIGHT_MODE_END")"
 yesterday_end_epoch="$(hhmm_to_epoch "$LIGHT_MODE_END" "$(date -v-1d +%F)")"
 
-if [ "$now" -ge "$start_epoch" ] && [ "$now" -le "$end_epoch" ]; then
+if [ "$now" -ge "$start_epoch" ] && [ "$now" -lt "$end_epoch" ]; then
     what="on"
     current_period="$start_epoch"
 elif [ "$now" -lt "$start_epoch" ]; then
