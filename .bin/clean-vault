@@ -1,0 +1,12 @@
+#!/bin/sh
+
+cd ~/vaults/caveau
+
+while :; do
+  dirs=$(find . \( -path ./.git -o -path ./.obsidian \) -prune -o -type d -empty -print)
+  [ -n "$dirs" ] || break
+  printf '%s\n' "$dirs" | while IFS= read -r d; do
+    echo "rmdir $d"
+    rmdir "$d"
+  done
+done
