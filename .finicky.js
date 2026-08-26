@@ -14,8 +14,8 @@ export default {
       browser: "Chromium"
     },
     {
-      match: /bzamayo\.com/,
-      browser: "Safari"
+      match: /127\.0\.0\.1:32400/,
+      browser: "Plex"
     }
   ]
 };
