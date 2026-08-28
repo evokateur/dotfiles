@@ -182,5 +182,6 @@
   "alwaysThinkingEnabled": true,
   "promptSuggestionEnabled": false,
   "autoUpdatesChannel": "stable",
-  "autoMemoryEnabled": false
+  "autoMemoryEnabled": false,
+  "model": "opus"
 }

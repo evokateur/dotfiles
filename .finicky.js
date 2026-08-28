@@ -1,5 +1,5 @@
 export default {
-  defaultBrowser: "Vivaldi",
+  defaultBrowser: "Firefox",
   handlers: [
     {
       match: /youtube\.com/,
