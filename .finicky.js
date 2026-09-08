@@ -2,6 +2,10 @@ export default {
   defaultBrowser: "Vivaldi",
   handlers: [
     {
+      match: /id\.getharvest\.com/,
+      browser: "Firefox"
+    },
+    {
       match: /youtube\.com/,
       browser: "YouTube Wrapper"
     },
