@@ -18,6 +18,10 @@ export default {
       browser: "Chromium"
     },
     {
+      match: /afterquery\.com/,
+      browser: "Chromium"
+    },
+    {
       match: /127\.0\.0\.1:32400/,
       browser: "Plex"
     }
