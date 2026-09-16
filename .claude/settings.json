@@ -156,6 +156,7 @@
       "Bash(rm -rf: :*)"
     ]
   },
+  "model": "opus",
   "enabledMcpjsonServers": [
     "brave-search"
   ],
@@ -182,6 +183,5 @@
   "alwaysThinkingEnabled": true,
   "promptSuggestionEnabled": false,
   "autoUpdatesChannel": "stable",
-  "autoMemoryEnabled": false,
-  "model": "opus"
+  "autoMemoryEnabled": false
 }
