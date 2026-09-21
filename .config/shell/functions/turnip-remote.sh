@@ -10,6 +10,10 @@ unplait() {
     ssh turnip.local "echo '[turnip]';/Users/wesley/bin/unplait"
 }
 
+plaitout() {
+    ssh turnip.local "echo '[turnip]';/Users/wesley/bin/plaitout"
+}
+
 drummer() {
     ssh turnip.local "echo '[turnip]';/Users/wesley/bin/drummer"
 }
