@@ -11,7 +11,7 @@ unplait() {
 }
 
 plaitout() {
-    ssh turnip.local "echo '[turnip]';/Users/wesley/bin/plaitout"
+    ssh -t turnip.local "echo '[turnip]';/Users/wesley/bin/plaitout" 2>/dev/null
 }
 
 drummer() {
