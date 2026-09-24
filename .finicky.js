@@ -1,5 +1,5 @@
 export default {
-  defaultBrowser: "Vivaldi",
+  defaultBrowser: "VivaldiShim",
   handlers: [
     {
       match: /id\.getharvest\.com/,
