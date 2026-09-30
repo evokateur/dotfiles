@@ -23,6 +23,7 @@ export PATH="$HOME/.pixi/bin:$PATH"
 export PATH="$HOME/.claude/local:$PATH"
 
 export PATH=/Users/wesley/.opencode/bin:$PATH
+export PATH="/Users/wesley/.kimi-code/bin:$PATH"
 
 export PYENV_ROOT="$HOME/.pyenv"
 PATH="$PYENV_ROOT/shims:$PYENV_ROOT/bin:$PATH"
@@ -96,3 +97,4 @@ alias dm='dark-mode'
 
 # LC_NUMERIC=C printf "zshrc loaded in %.3f s\n" \
 #     "$(( EPOCHREALTIME - ZSHRC_START ))"
+
