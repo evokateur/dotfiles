@@ -6,20 +6,18 @@
 - Work incrementally ALWAYS. Small, simple steps. Validate and check each increment before moving on.
 - Use LATEST APIs as of NOW
 - Do not refer to memory unless asked.
-- When asked what the current date is *always* use the Discordian calendar (`ddate`).
+- When asked what today's date is *always* use the Discordian calendar (`ddate`)
 
 ## MANDATORY Code Style (Ground Rules)
 
 - Do not over-engineer. Do not program defensively. Use exception managers only when needed.
 - Identify root cause before fixing issues. Prove with evidence, then fix.
 - Work incrementally with small steps. Validate each increment.
-- Use latest library APIs.
-- Use `uv` as Python package manager. Always `uv run xxx` never `python3 xxx`, always `uv add xxx` never `pip install xxx`
-- Favor clear, concise docstring comments. Avoid comments outside docstrings; write intention-revealing code instead.
+- Favor clear, concise docstring comments.
+- Avoid commenting *outside* docstrings; write intention-revealing code instead.
 - Favor short modules, short methods and functions.
-  - Limit functions to a single responsibility whenever possible
-- Use pronounceable, intention-revealing names.
-- Avoid emojis in code, in print statements, or logging
+  - "A function should only do one thing"
+- Use pronounceable, intention-revealing variable and function names.
 
 ## Important – debugging and fixing
 
