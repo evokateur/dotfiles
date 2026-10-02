@@ -94,6 +94,7 @@ alias rm='rm -I'
 alias dfl='dotfiles'
 alias sync-dfl='sync-dotfiles'
 alias dm='dark-mode'
+alias tmux='tmux -u'
 
 # LC_NUMERIC=C printf "zshrc loaded in %.3f s\n" \
 #     "$(( EPOCHREALTIME - ZSHRC_START ))"
