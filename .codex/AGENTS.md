@@ -13,11 +13,18 @@
 - Do not over-engineer. Do not program defensively. Use exception managers only when needed.
 - Identify root cause before fixing issues. Prove with evidence, then fix.
 - Work incrementally with small steps. Validate each increment.
-- Favor clear, concise docstring comments.
-- Avoid commenting *outside* docstrings; write intention-revealing code instead.
-- Favor short modules, short methods and functions.
+- Favor clear, concise docstring comments
+- Write intention-revealing code that doesn't require comments to be understood
+- Favor short methods and functions.
   - "A function should only do one thing"
-- Use pronounceable, intention-revealing variable and function names.
+
+### Naming
+
+- Use pronounceable, intention-revealing variable and function names
+- Be consistent with variable names:
+  - Do not abbreviate existing variable names
+  - Do not define variables with abbreviated names, except by convention, e.g. `stdout`, `gr`, `i`, `j`, etc.
+- Use or follow a consistent nomenclature
 
 ## Important – debugging and fixing
 
