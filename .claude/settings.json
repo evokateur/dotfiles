@@ -8,6 +8,7 @@
   },
   "includeCoAuthoredBy": false,
   "permissions": {
+    "defaultMode": "default",
     "allow": [
       "Bash(basename:*)",
       "Bash(cat:*)",
