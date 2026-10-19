@@ -38,6 +38,10 @@ tango() {
     ssh turnip.local "echo '[turnip]';/Users/wesley/bin/tango"
 }
 
+jazz() {
+    ssh turnip.local "echo '[turnip]';/Users/wesley/bin/jazz"
+}
+
 kfjc() {
     ssh turnip.local "echo '[turnip]';/Users/wesley/bin/kfjc"
 }
