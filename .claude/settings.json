@@ -185,5 +185,9 @@
   "alwaysThinkingEnabled": true,
   "promptSuggestionEnabled": false,
   "autoUpdatesChannel": "stable",
-  "autoMemoryEnabled": false
+  "autoMemoryEnabled": false,
+  "sandbox": {
+    "enabled": true,
+    "autoAllowBashIfSandboxed": true
+  }
 }
