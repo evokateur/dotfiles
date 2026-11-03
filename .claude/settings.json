@@ -188,6 +188,9 @@
   "autoMemoryEnabled": false,
   "sandbox": {
     "enabled": true,
-    "autoAllowBashIfSandboxed": true
+    "autoAllowBashIfSandboxed": true,
+    "filesystem": {
+        "allowWrite": ["~/.cache/uv"]
+    }
   }
 }

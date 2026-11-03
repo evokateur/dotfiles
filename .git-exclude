@@ -2,3 +2,5 @@
 *.local.yaml
 *.local.md
 *.override.md
+
+**/.claude/.cc-writes/
