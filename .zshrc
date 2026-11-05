@@ -69,9 +69,9 @@ fi
 autoload -U add-zsh-hook
 
 source "$HOME/.config/shell/functions/wrappers.sh"
+source "$HOME/.config/shell/functions/darwin-wrappers.sh"
 source "$HOME/.config/shell/functions/nvim-wrapper.sh"
 source "$HOME/.config/shell/functions/claude-context.sh"
-source "$HOME/.config/shell/functions/claude-wrapper.sh"
 source "$HOME/.config/shell/functions/dotfiles.sh"
 source "$HOME/.config/shell/functions/completions.sh"
 source "$HOME/.config/shell/functions/tar.sh"
