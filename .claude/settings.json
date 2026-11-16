@@ -8,6 +8,7 @@
   },
   "includeCoAuthoredBy": false,
   "permissions": {
+    "additionalDirectories": ["~/vaults/caveau/projects"],
     "defaultMode": "default",
     "allow": [
       "Bash(basename:*)",
