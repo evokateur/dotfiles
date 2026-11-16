@@ -32,6 +32,11 @@ export PATH="/home/wesley/.kimi-code/bin:$PATH"
 export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 
+if [ -n "$SSH_CONNECTION" ]; then
+    gh_token="$(pass api/github/gh-token)"
+    export GH_TOKEN="$gh_token"
+fi
+
 source "$HOME/.config/shell/env/paths.sh"
 source "$HOME/.config/shell/functions/completions.sh"
 

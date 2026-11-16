@@ -30,6 +30,10 @@ PATH="$PYENV_ROOT/shims:$PYENV_ROOT/bin:$PATH"
 
 export DYLD_FALLBACK_LIBRARY_PATH="/usr/local/lib:$DYLD_FALLBACK_LIBRARY_PATH"
 
+if [ -n "$SSH_CONNECTION" ]; then
+    export GH_TOKEN="$(pass api/github/gh-token)"
+fi
+
 # pnpm
 export PNPM_HOME="/Users/wesley/Library/pnpm"
 case ":$PATH:" in
@@ -69,7 +73,6 @@ fi
 autoload -U add-zsh-hook
 
 source "$HOME/.config/shell/functions/wrappers.sh"
-source "$HOME/.config/shell/functions/darwin-wrappers.sh"
 source "$HOME/.config/shell/functions/nvim-wrapper.sh"
 source "$HOME/.config/shell/functions/claude-context.sh"
 source "$HOME/.config/shell/functions/dotfiles.sh"
