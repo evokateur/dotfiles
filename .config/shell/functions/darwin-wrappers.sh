@@ -5,5 +5,5 @@ _ensure_keychain() {
     security unlock-keychain -p "$(pass xkcd/1)" "$kc"
 }
 
-claude() { _ensure_keychain && command claude "$@"; }
+# claude() { _ensure_keychain && command claude "$@"; }
 gh() { _ensure_keychain && command gh "$@"; }
