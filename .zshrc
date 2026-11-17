@@ -73,6 +73,7 @@ fi
 autoload -U add-zsh-hook
 
 source "$HOME/.config/shell/functions/wrappers.sh"
+source "$HOME/.config/shell/functions/darwin-wrappers.sh"
 source "$HOME/.config/shell/functions/nvim-wrapper.sh"
 source "$HOME/.config/shell/functions/claude-context.sh"
 source "$HOME/.config/shell/functions/dotfiles.sh"
@@ -99,6 +100,7 @@ alias sync-dfl='sync-dotfiles'
 alias dm='dark-mode'
 alias tmux='tmux -u'
 alias caveau='cd ~/vaults/caveau;caveau'
+alias sp='shpool'
 
 # LC_NUMERIC=C printf "zshrc loaded in %.3f s\n" \
 #     "$(( EPOCHREALTIME - ZSHRC_START ))"

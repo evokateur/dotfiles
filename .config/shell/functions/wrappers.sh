@@ -20,10 +20,3 @@ codex() {
     fi
     command codex "$@"
 }
-
-claude() {
-    if [ -n "$SSH_CONNECTION" ] && [ -z "$CLAUDE_CODE_OAUTH_TOKEN" ]; then
-        export CLAUDE_CODE_OAUTH_TOKEN="$(pass api/anthropic/claude-oauth)"
-    fi
-    command claude "$@"
-}
