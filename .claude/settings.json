@@ -4,7 +4,8 @@
     "DISABLE_BUG_COMMAND": "1",
     "DISABLE_ERROR_REPORTING": "1",
     "DISABLE_NON_ESSENTIAL_MODEL_CALLS": "1",
-    "DISABLE_TELEMETRY": "1"
+    "DISABLE_TELEMETRY": "1",
+    "CREWAI_DISABLE_TELEMETRY": "1"
   },
   "includeCoAuthoredBy": false,
   "permissions": {
