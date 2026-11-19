@@ -1,5 +1,5 @@
 export default {
-  defaultBrowser: "Vivaldi Shim",
+  defaultBrowser: "Vivaldi",
   handlers: [
     {
       match: /youtube\.com/,
