@@ -196,6 +196,7 @@
     },
     "network": {
         "allowLocalBinding": true
-    }
+    },
+    "excludedCommands": ["hrvst *"]
   }
 }
