@@ -17,3 +17,6 @@ sync-nvim "$commit_message"
 
 blue_italic_echo "\nSyncing vault.."
 sync-vault "$commit_message"
+
+blue_italic_echo "\nSyncing skills.."
+sync-skills "$commit_message"
