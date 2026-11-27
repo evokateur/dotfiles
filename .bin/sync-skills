@@ -1,0 +1,22 @@
+#!/bin/sh
+set -eu
+
+GIT="git --git-dir=$HOME/code/skills/.git --work-tree=$HOME/code/skills"
+
+. "$HOME/.bin/helpers/parse-commit-message.sh"
+commit_message="$(parse_message_arg "$@")"
+
+if [ -z "${commit_message:-}" ]; then
+    hostname_value=$(hostname | sed 's/\.local$//')
+    commit_message="$hostname_value lazy sync"
+fi
+
+$GIT pull --no-edit
+
+$GIT add -A
+
+if ! $GIT diff --quiet || ! $GIT diff --cached --quiet; then
+    $GIT commit -m "$commit_message"
+fi
+
+$GIT push
