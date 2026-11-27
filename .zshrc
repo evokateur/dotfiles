@@ -90,6 +90,8 @@ venv_auto_activate
 
 add-zsh-hook chpwd venv_auto_switch
 
+eval "$(anylist init zsh)"
+
 alias vault='git --git-dir="$VAULT_ROOT"/.git --work-tree="$VAULT_ROOT"'
 alias ov='git --git-dir="$VAULT_ROOT"/.git --work-tree="$VAULT_ROOT"'
 alias srsync="rsync -av -e ssh --exclude='.git/' --exclude='node_modules/' --exclude='*.pyc' --exclude='__pycache__/' --exclude='.venv/' --exclude='env/' --exclude='.env/' --exclude='.mypy_cache/' --exclude='.pytest_cache/'"
