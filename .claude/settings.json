@@ -9,8 +9,6 @@
   },
   "includeCoAuthoredBy": false,
   "permissions": {
-    "additionalDirectories": ["~/vaults/caveau/projects"],
-    "defaultMode": "default",
     "allow": [
       "Bash(basename:*)",
       "Bash(cat:*)",
@@ -157,6 +155,10 @@
       "Bash(op)",
       "Bash(op:*)",
       "Bash(rm -rf: :*)"
+    ],
+    "defaultMode": "default",
+    "additionalDirectories": [
+      "~/vaults/caveau/projects"
     ]
   },
   "model": "opus",
@@ -182,21 +184,26 @@
     "code-review@claude-plugins-official": true,
     "lua-lsp@claude-plugins-official": true,
     "context7@claude-plugins-official": true,
-    "swift-lsp@claude-plugins-official": true
+    "swift-lsp@claude-plugins-official": true,
+    "rust-analyzer-lsp@claude-plugins-official": true
+  },
+  "sandbox": {
+    "enabled": true,
+    "autoAllowBashIfSandboxed": true,
+    "network": {
+      "allowLocalBinding": true
+    },
+    "filesystem": {
+      "allowWrite": [
+        "~/.cache/uv"
+      ]
+    },
+    "excludedCommands": [
+      "hrvst *"
+    ]
   },
   "alwaysThinkingEnabled": true,
   "promptSuggestionEnabled": false,
   "autoUpdatesChannel": "stable",
-  "autoMemoryEnabled": false,
-  "sandbox": {
-    "enabled": true,
-    "autoAllowBashIfSandboxed": true,
-    "filesystem": {
-        "allowWrite": ["~/.cache/uv"]
-    },
-    "network": {
-        "allowLocalBinding": true
-    },
-    "excludedCommands": ["hrvst *"]
-  }
+  "autoMemoryEnabled": false
 }
